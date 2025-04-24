@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">iThink</div>
     <ul class="menu">
@@ -17,6 +18,8 @@
       <li><a href="#giris">Giriş/Kayıt</a></li>
     </ul>
   </nav>
+
+  <!-- GÜNÜN SORUSU KARTI -->
   <section class="question-card">
     <h1>GÜNÜN SORUSU</h1>
     <p>Patronunuz öğle arasında…?</p>
@@ -26,25 +29,23 @@
       <button id="view-btn">Yorumları Gör</button>
     </div>
   </section>
+
+  <!-- FİLTRELER -->
   <section class="filters">
     <button class="active">Günlük</button>
     <button>Haftalık</button>
     <button>Aylık</button>
     <button>Yıllık</button>
   </section>
-  <section class="answers">
-    <ul>
-    <!-- index.html -->
-...
-<section class="answers">
-  <ul id="answers-list">
-    <!-- JavaScript renderAnswers() burada <li> üretecek -->
-  </ul>
-</section>
-...
 
+  <!-- CEVAPLAR -->
+  <section class="answers">
+    <ul id="answers-list">
+      <!-- JavaScript burayı dolduracak -->
     </ul>
   </section>
+
+  <!-- JavaScript bağlantısı -->
   <script src="script.js"></script>
 </body>
 </html>
