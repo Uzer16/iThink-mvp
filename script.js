@@ -20,13 +20,3 @@ function startCountdown() {
 document.addEventListener('DOMContentLoaded', () => {
   startCountdown();
 });
-// script.js devamı
-
-const filters = document.querySelectorAll('.filters button');
-filters.forEach(btn =>
-  btn.addEventListener('click', () => {
-    filters.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    // TODO: Burada seçilen filtreye göre cevapları filtrele
-  })
-);
