@@ -74,3 +74,38 @@ document.addEventListener('DOMContentLoaded', () => {
   setupFilters();
   renderAnswers();
 });
+// 6) Modal ve yorum ekleme mantığı
+function setupCommentModal() {
+  const modal = document.getElementById('comment-modal');
+  const btnOpen = document.getElementById('answer-btn');
+  const btnClose = document.getElementById('modal-close');
+  const btnSubmit = document.getElementById('submit-comment');
+  const textarea = document.getElementById('new-comment');
+
+  // Aç
+  btnOpen.addEventListener('click', () => {
+    textarea.value = '';
+    modal.style.display = 'flex';
+  });
+
+  // Kapat (× ya da mod dışına tıklayınca)
+  btnClose.addEventListener('click', () => modal.style.display = 'none');
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.style.display = 'none';
+  });
+
+  // Gönder
+  btnSubmit.addEventListener('click', () => {
+    const text = textarea.value.trim();
+    if (!text) return alert('Lütfen bir yorum yazın!');
+    answersData.push({ text, votes: 0, period: currentFilter });
+    modal.style.display = 'none';
+    renderAnswers();
+  });
+}
+
+// Başlangıca ekleyelim
+document.addEventListener('DOMContentLoaded', () => {
+  setupCommentModal();
+});
+
