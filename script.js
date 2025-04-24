@@ -1,32 +1,44 @@
 // script.js
 
-// 1) Cevap verilerini tanımlıyoruz:
+// 1) Cevap verileri
 const answersData = [
   { text: 'Tavanda zıplıyor.', votes: 24, period: 'Günlük' },
   { text: 'Kedi kostümü giyer.', votes: 18, period: 'Haftalık' },
   { text: 'Telefona gömülür.', votes: 12, period: 'Aylık' },
-  // İleride isterseniz daha çok veri ekleyebilirsiniz...
 ];
 
-// 2) DOM’a basan fonksiyon:
-function renderAnswers(filter = 'Günlük') {
+// Seçili filtre (başlangıçta Günlük)
+let currentFilter = 'Günlük';
+
+// 2) DOM’a basan fonksiyon
+function renderAnswers() {
   const list = document.getElementById('answers-list');
-  list.innerHTML = ''; // önce temizle
+  list.innerHTML = '';
 
   answersData
-    .filter(a => a.period === filter)
-    .forEach(a => {
+    .filter(a => a.period === currentFilter)
+    .forEach((a, i) => {
       const li = document.createElement('li');
       li.textContent = a.text;
+
+      // Oy sayısını gösteren span
       const span = document.createElement('span');
       span.className = 'votes';
       span.textContent = `😂 ${a.votes}`;
+      span.style.cursor = 'pointer';
+
+      // Tıklanınca oy sayısını artır
+      span.addEventListener('click', () => {
+        answersData[i].votes++;
+        renderAnswers();
+      });
+
       li.appendChild(span);
       list.appendChild(li);
     });
 }
 
-// 3) Sayaç fonksiyonu (önceden eklenmişti):
+// 3) Geri sayım (değişmedi)
 function startCountdown() {
   const display = document.getElementById('countdown');
   function update() {
@@ -43,21 +55,22 @@ function startCountdown() {
   setInterval(update, 1000);
 }
 
-// 4) Filtre butonları:
+// 4) Filtre butonları (şimdi currentFilter güncelliyor)
 function setupFilters() {
   const buttons = document.querySelectorAll('.filters button');
   buttons.forEach(btn =>
     btn.addEventListener('click', () => {
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      renderAnswers(btn.textContent); // period olarak buton metnini gönder
+      currentFilter = btn.textContent;
+      renderAnswers();
     })
   );
 }
 
-// 5) Başlangıç:
+// 5) Başlangıç
 document.addEventListener('DOMContentLoaded', () => {
   startCountdown();
   setupFilters();
-  renderAnswers(); // default Günlük ile başlasın
+  renderAnswers();
 });
