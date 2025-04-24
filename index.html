@@ -1,27 +1,53 @@
-* { box-sizing: border-box; margin:0; padding:0; font-family:sans-serif; }
-body { background:#f2e2c4; color:#4a4a4a; line-height:1.4; }
-.navbar { display:flex; justify-content:space-between; align-items:center;
-  padding:10px 20px; background:rgba(166,196,138,0.8); }
-.navbar .logo { font-size:24px; font-weight:bold; }
-.navbar .menu { list-style:none; display:flex; gap:15px; }
-.navbar .menu a { text-decoration:none; color:#4a4a4a; }
-.question-card { max-width:600px; margin:40px auto; padding:20px;
-  background:rgba(132,169,192,0.8); border-radius:12px; text-align:center; }
-.question-card h1 { font-size:32px; margin-bottom:10px; }
-.question-card p { font-size:20px; margin-bottom:15px; }
-#countdown { font-size:28px; font-weight:bold; margin-bottom:15px; }
-.actions button { margin:0 10px; padding:10px 20px; border:none;
-  border-radius:8px; cursor:pointer; }
-#answer-btn { background:#f28b82; color:white; }
-#view-btn   { background:transparent; border:2px solid #f9bc60; }
-.filters { display:flex; justify-content:center; margin:20px 0; gap:10px; }
-.filters button { padding:8px 16px; border:2px dashed #4a4a4a;
-  border-radius:8px; background:white; cursor:pointer; }
-.filters .active { background:#84a9c0; color:white; }
-.answers { max-width:600px; margin:auto; }
-.answers ul { list-style:none; }
-.answers li { background:white; margin-bottom:12px; padding:12px 16px;
-  border-radius:8px; display:flex; justify-content:space-between;
-  align-items:center; }
-.votes { background:#f28b82; color:white; padding:4px 8px;
-  border-radius:12px; font-size:14px; }
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IThink</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">iThink</div>
+    <ul class="menu">
+      <li><a href="#kurallar">Kurallar</a></li>
+      <li><a href="#oduller">Ödüller</a></li>
+      <li><a href="#sponsorlar">Sponsorlar</a></li>
+      <li><a href="#oneriler">Soru Öneriniz ✎</a></li>
+      <li><a href="#giris">Giriş/Kayıt</a></li>
+    </ul>
+  </nav>
+
+  <!-- GÜNÜN SORUSU KARTI -->
+  <section class="question-card">
+    <h1>GÜNÜN SORUSU</h1>
+    <p>Patronunuz öğle arasında…?</p>
+    <div id="countdown">23:59:12</div>
+    <div class="actions">
+      <button id="answer-btn">Yorum Yap</button>
+      <button id="view-btn">Yorumları Gör</button>
+    </div>
+  </section>
+
+  <!-- FİLTRELER -->
+  <section class="filters">
+    <button class="active">Günlük</button>
+    <button>Haftalık</button>
+    <button>Aylık</button>
+    <button>Yıllık</button>
+  </section>
+
+  <!-- CEVAP LİSTESİ -->
+  <section class="answers">
+    <ul>
+      <li>1. Tavanda zıplıyor. <span class="votes">😂 24</span></li>
+      <li>2. Kedi kostümü giyer. <span class="votes">😂 18</span></li>
+      <li>3. Telefona gömülür. <span class="votes">😂 12</span></li>
+    </ul>
+  </section>
+
+  <!-- JavaScript bağlantısı -->
+  <script src="script.js"></script>
+</body>
+</html>
