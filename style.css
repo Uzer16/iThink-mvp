@@ -39,10 +39,13 @@ body {
   color: #4a4a4a;
   transition: color 0.2s;
 }
+/* ↑↑↑ Buraya kadar mevcut kodu KORUDUNUZ ↑↑↑ */
+
 .navbar .menu li a:hover,
 .navbar .menu li a:focus {
   color: #2f4f2f !important;
 }
+/* ↑↑↑ Sadece bu bloğu EKLEDİNİZ (EN ALTA) ↑↑↑ */
 
 /* ===== SORU KARTI ===== */
 .question-card {
@@ -218,10 +221,4 @@ body {
 }
 .info-section button:hover {
   background: #6b8fa2;
-}
-/* ↑↑↑ style.css’in en altında bu bloğu ekle ↑↑↑ */
-/* NAVBAR link hover/focus (EN ALTA EKLE) */
-.navbar .menu a:hover,
-.navbar .menu a:focus {
-  color: #2f4f2f !important;
 }
