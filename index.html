@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>IThink</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- NAVBAR -->
@@ -23,7 +23,7 @@
   <section class="question-card">
     <h1>GÜNÜN SORUSU</h1>
     <p>Patronunuz öğle arasında…?</p>
-    <div id="countdown">00:00:00</div>
+    <div id="countdown">23:59:12</div>
     <div class="actions">
       <button id="answer-btn">Yorum Yap</button>
       <button id="view-btn">Yorumları Gör</button>
@@ -38,68 +38,16 @@
     <button>Yıllık</button>
   </section>
 
-  <!-- CEVAPLAR -->
+  <!-- CEVAP LİSTESİ -->
   <section class="answers">
-    <ul id="answers-list">
-      <!-- Burayı JS dolduracak -->
-    </ul>
-  </section>
-
-  <!-- YORUM MODALİ -->
-  <div id="comment-modal" class="modal">
-    <div class="modal-content">
-      <span id="modal-close" class="modal-close">&times;</span>
-      <h2>Yeni Yorum</h2>
-      <textarea id="new-comment" placeholder="Cevabınızı yazın…" rows="4"></textarea>
-      <button id="submit-comment">Gönder</button>
-    </div>
-  </div>
-
-  <!-- ==== YENİ BÖLÜMLER BAŞI ==== -->
-  <!-- Kurallar Bölümü -->
-  <section id="kurallar" class="info-section">
-    <h2>Kurallar</h2>
-    <p>1. Günde en fazla 3 oy kullanabilirsiniz.<br>2. Hakaret içeren yorum yasaktır.</p>
-  </section>
-
-  <!-- Ödüller Bölümü -->
-  <section id="oduller" class="info-section">
-    <h2>Ödüller</h2>
     <ul>
-      <li>Günlük: 1 kazanan</li>
-      <li>Haftalık: 3 kazanan</li>
-      <li>Yıllık: 1 büyük ödül</li>
+      <li>1. Tavanda zıplıyor. <span class="votes">😂 24</span></li>
+      <li>2. Kedi kostümü giyer. <span class="votes">😂 18</span></li>
+      <li>3. Telefona gömülür. <span class="votes">😂 12</span></li>
     </ul>
   </section>
 
-  <!-- Sponsorlar Bölümü -->
-  <section id="sponsorlar" class="info-section">
-    <h2>Sponsorlar</h2>
-    <p>Bu projede katkısı olan markalar:</p>
-    <ul>
-      <li>Marka A</li>
-      <li>Marka B</li>
-    </ul>
-  </section>
-
-  <!-- Soru Öneriniz Bölümü -->
-  <section id="oneriler" class="info-section">
-    <h2>Soru Öneriniz ✎</h2>
-    <p>Yeni soru önerinizi aşağıdan gönderebilirsiniz:</p>
-    <textarea id="suggestion" placeholder="Sorunuzu yazın…" rows="3"></textarea>
-    <button id="send-suggestion">Gönder</button>
-  </section>
-
-  <!-- Giriş/Kayıt Bölümü -->
-  <section id="giris" class="info-section">
-    <h2>Giriş / Kayıt</h2>
-    <p>Henüz üye değilseniz hemen kayıt olun, mevcut üyeler ise giriş yapın.</p>
-    <button id="login-btn">Giriş Yap</button>
-    <button id="register-btn">Kayıt Ol</button>
-  </section>
-  <!-- ==== YENİ BÖLÜMLER SONU ==== -->
-
-  <!-- SCRIPT -->
+  <!-- JavaScript bağlantısı -->
   <script src="script.js"></script>
 </body>
 </html>
