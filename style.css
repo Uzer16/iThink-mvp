@@ -113,3 +113,13 @@ z-index: 10;
 html {
   scroll-behavior: smooth;
 }
+/* Nav link hover & focus */
+.menu a {
+  color: #4a4a4a;
+  text-decoration: none;
+  transition: color .2s;
+}
+.menu a:hover,
+.menu a:focus {
+  color: #2f4f2f;
+}
