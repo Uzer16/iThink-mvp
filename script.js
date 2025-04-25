@@ -1,31 +1,36 @@
-// 1) Başlangıç verisi
+// 1) Başlangıç verisi (4 periyot için)
 const answersData = [
-  { text: 'Tavanda zıplıyor.', votes: 24, period: 'Günlük' },
-  { text: 'Kedi kostümü giyer.', votes: 18, period: 'Haftalık' },
-  { text: 'Telefona gömülür.', votes: 12, period: 'Aylık' },
+  { text: 'Tavanda zıplıyor.',   daily: 24, weekly: 44, monthly: 70, yearly: 320 },
+  { text: 'Kedi kostümü giyer.',  daily: 18, weekly: 33, monthly: 60, yearly: 210 },
+  { text: 'Telefona gömülür.',    daily: 12, weekly: 26, monthly: 50, yearly: 118 }
 ];
-let currentFilter = 'Günlük';
+// başlangıç filtresi: daily
+let currentFilter = 'daily';
+
 
 // 2) Listeyi render et
 function renderAnswers() {
   const list = document.getElementById('answers-list');
   list.innerHTML = '';
-  answersData
-    .filter(a => a.period === currentFilter)
-    .forEach((a, i) => {
-      const li = document.createElement('li');
-      li.textContent = a.text;
-      const span = document.createElement('span');
-      span.className = 'votes';
-      span.textContent = `😂 ${a.votes}`;
-      span.addEventListener('click', () => {
-        answersData[i].votes++;
-        renderAnswers();
-      });
-      li.appendChild(span);
-      list.appendChild(li);
+  answersData.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item.text;
+
+    const span = document.createElement('span');
+    span.className = 'votes';
+    // currentFilter daily|weekly|monthly|yearly olacak
+    span.textContent = `😂 ${ item[currentFilter] }`;
+    // oy arttırmak istersen:
+    span.addEventListener('click', () => {
+      item[currentFilter]++;
+      renderAnswers();
     });
+
+    li.appendChild(span);
+    list.appendChild(li);
+  });
 }
+
 
 // 3) Geri sayım
 function startCountdown() {
@@ -47,15 +52,21 @@ function startCountdown() {
 // 4) Filtre butonları
 function setupFilters() {
   const buttons = document.querySelectorAll('.filters button');
-  buttons.forEach(btn =>
+  buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      currentFilter = btn.textContent;
+      // buton metninden anahtar çıkar
+      const txt = btn.textContent.trim();
+      if      (txt === 'Günlük')  currentFilter = 'daily';
+      else if (txt === 'Haftalık') currentFilter = 'weekly';
+      else if (txt === 'Aylık')    currentFilter = 'monthly';
+      else if (txt === 'Yıllık')   currentFilter = 'yearly';
       renderAnswers();
-    })
-  );
+    });
+  });
 }
+
 
 // 5) Modal mantığı
 function setupCommentModal() {
