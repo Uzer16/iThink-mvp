@@ -66,3 +66,42 @@ body { background:#f2e2c4; color:#4a4a4a; line-height:1.4; }
   padding:8px 16px; background:#f28b82; border:none; border-radius:4px; color:#fff; cursor:pointer;
 }
 #submit-comment:hover { background:#e57373; }
+
+/* ===== INFO SECTION STYLES ===== */
+.info-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 8px;
+}
+.info-section h2 {
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+.info-section p,
+.info-section ul,
+.info-section textarea {
+  margin-bottom: 12px;
+}
+.info-section ul {
+  padding-left: 20px;
+}
+.info-section textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.info-section button {
+  margin-right: 8px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background: #84a9c0;
+  color: white;
+  cursor: pointer;
+}
+.info-section button:hover {
+  background: #6b8fa2;
+}
