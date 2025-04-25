@@ -124,12 +124,13 @@ html {
   color: #2f4f2f;
 }
 /* — Nav link default & hover/focus — */
+/* — Tek Nav link hover/focus stili — */
 .navbar .menu a {
-  color: #4a4a4a;
+  color: #4a4a4a;             /* Normal gri */
   text-decoration: none;
   transition: color .2s;
 }
 .navbar .menu a:hover,
 .navbar .menu a:focus {
-  color: #2f4f2f;
+  color: #2f4f2f !important;  /* Hover’da koyu yeşil */
 }
