@@ -220,7 +220,8 @@ body {
   background: #6b8fa2;
 }
 /* ↑↑↑ style.css’in en altında bu bloğu ekle ↑↑↑ */
-.navbar .menu li a:hover,
-.navbar .menu li a:focus {
+/* NAVBAR link hover/focus (EN ALTA EKLE) */
+.navbar .menu a:hover,
+.navbar .menu a:focus {
   color: #2f4f2f !important;
 }
