@@ -123,33 +123,13 @@ html {
 .menu a:focus {
   color: #2f4f2f;
 }
-/* Nav link hover & focus */
-.menu a {
-  color: #4a4a4a;
-  text-decoration: none;
-  transition: color .2s;
-}
-.menu a:hover,
-.menu a:focus {
-  color: #2f4f2f;
-}
-/* Nav link default & hover/focus */
-.menu a {
-  color: #4a4a4a;            /* mevcut gri renk */
-  text-decoration: none;
-  transition: color .2s;
-}
-.menu a:hover,
-.menu a:focus {
-  color: #2f4f2f;            /* farenin üzerindeyken koyu yeşil */
-}
 /* — Nav link default & hover/focus — */
-.menu a {
+.navbar .menu a {
   color: #4a4a4a;
   text-decoration: none;
   transition: color .2s;
 }
-.menu a:hover,
-.menu a:focus {
+.navbar .menu a:hover,
+.navbar .menu a:focus {
   color: #2f4f2f;
 }
