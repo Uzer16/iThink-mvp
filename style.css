@@ -41,7 +41,7 @@ body {
 }
 .navbar .menu li a:hover,
 .navbar .menu li a:focus {
-  color: #2f4f2f !important;
+  color: #2f4f2f;
 }
 
 /* ===== SORU KARTI ===== */
