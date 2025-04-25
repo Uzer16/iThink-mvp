@@ -222,3 +222,16 @@ body {
 .info-section button:hover {
   background: #6b8fa2;
 }
+.back-home {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+.back-home a {
+  text-decoration: none;
+  color: #2f4f2f;
+  font-weight: bold;
+}
+.back-home a:hover {
+  text-decoration: underline;
+}
