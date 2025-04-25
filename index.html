@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>IThink</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- NAVBAR -->
-  <nav class="navbar"> … </nav>
+  <nav class="navbar">
+    <div class="logo">iThink</div>
+    <ul class="menu">
+      <li><a href="#kurallar">Kurallar</a></li>
+      <li><a href="#oduller">Ödüller</a></li>
+      <li><a href="#sponsorlar">Sponsorlar</a></li>
+      <li><a href="#oneriler">Soru Öneriniz ✎</a></li>
+      <li><a href="#giris">Giriş/Kayıt</a></li>
+    </ul>
+  </nav>
 
-  <!-- GÜNÜN SORUSU -->
-  <section class="question-card"> … </section>
+  <!-- GÜNÜN SORUSU KARTI -->
+  <section class="question-card">
+    <h1>GÜNÜN SORUSU</h1>
+    <p>Patronunuz öğle arasında…?</p>
+    <div id="countdown">00:00:00</div>
+    <div class="actions">
+      <button id="answer-btn">Yorum Yap</button>
+      <button id="view-btn">Yorumları Gör</button>
+    </div>
+  </section>
 
   <!-- FİLTRELER -->
-  <section class="filters"> … </section>
+  <section class="filters">
+    <button class="active">Günlük</button>
+    <button>Haftalık</button>
+    <button>Aylık</button>
+    <button>Yıllık</button>
+  </section>
 
   <!-- CEVAPLAR -->
   <section class="answers">
-    <ul id="answers-list"></ul>
+    <ul id="answers-list">
+      <!-- Burayı JS dolduracak -->
+    </ul>
   </section>
 
-  <!-- MODAL (en alta!) -->
+  <!-- YORUM MODALİ -->
   <div id="comment-modal" class="modal">
     <div class="modal-content">
       <span id="modal-close" class="modal-close">&times;</span>
@@ -31,7 +55,7 @@
     </div>
   </div>
 
-  <!-- JS -->
+  <!-- SCRIPT -->
   <script src="script.js"></script>
 </body>
 </html>
