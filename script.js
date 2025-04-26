@@ -4,7 +4,7 @@ const answersData = [
   { text: 'Kedi kostümü giyer.',  daily: 18, weekly: 33, monthly: 60, yearly: 210 },
   { text: 'Telefona gömülür.',    daily: 12, weekly: 26, monthly: 50, yearly: 118 }
 ];
-// başlangıç filtresi: daily
+// başlangıç filtresi
 let currentFilter = 'daily';
 
 
@@ -18,9 +18,9 @@ function renderAnswers() {
 
     const span = document.createElement('span');
     span.className = 'votes';
-    // currentFilter daily|weekly|monthly|yearly olacak
-    span.textContent = `😂 ${ item[currentFilter] }`;
-    // oy arttırmak istersen:
+    // currentFilter => daily|weekly|monthly|yearly
+    span.textContent = `😂 ${item[currentFilter]}`;
+    // oy arttırma
     span.addEventListener('click', () => {
       item[currentFilter]++;
       renderAnswers();
@@ -46,19 +46,21 @@ function startCountdown() {
     display.textContent = `${hrs}:${mins}:${secs}`;
   }
   update();
-  setInterval(update,1000);
+  setInterval(update, 1000);
 }
+
 
 // 4) Filtre butonları
 function setupFilters() {
   const buttons = document.querySelectorAll('.filters button');
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
+      // önce hepsinden active kaldır
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      // buton metninden anahtar çıkar
+      // buton metnini filtre anahtarına çevir
       const txt = btn.textContent.trim();
-      if      (txt === 'Günlük')  currentFilter = 'daily';
+      if      (txt === 'Günlük')   currentFilter = 'daily';
       else if (txt === 'Haftalık') currentFilter = 'weekly';
       else if (txt === 'Aylık')    currentFilter = 'monthly';
       else if (txt === 'Yıllık')   currentFilter = 'yearly';
@@ -68,13 +70,13 @@ function setupFilters() {
 }
 
 
-// 5) Modal mantığı
+// 5) Modal mantığı ve yeni yorum ekleme
 function setupCommentModal() {
-  const modal = document.getElementById('comment-modal');
-  const btnOpen = document.getElementById('answer-btn');
-  const btnClose = document.getElementById('modal-close');
+  const modal     = document.getElementById('comment-modal');
+  const btnOpen   = document.getElementById('answer-btn');
+  const btnClose  = document.getElementById('modal-close');
   const btnSubmit = document.getElementById('submit-comment');
-  const textarea = document.getElementById('new-comment');
+  const textarea  = document.getElementById('new-comment');
 
   btnOpen.addEventListener('click', () => {
     textarea.value = '';
@@ -87,11 +89,19 @@ function setupCommentModal() {
   btnSubmit.addEventListener('click', () => {
     const text = textarea.value.trim();
     if (!text) return alert('Lütfen bir yorum yazın!');
-    answersData.push({ text, votes: 0, period: currentFilter });
+    // yeni cevabı 0’dan başlat
+    answersData.push({
+      text: text,
+      daily:   0,
+      weekly:  0,
+      monthly: 0,
+      yearly:  0
+    });
     modal.style.display = 'none';
     renderAnswers();
   });
 }
+
 
 // 6) Her şeyi başlat
 document.addEventListener('DOMContentLoaded', () => {
