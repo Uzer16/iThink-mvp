@@ -7,7 +7,7 @@ import {
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-// Firebase konfigürasyon (index.html’dekilerle bire bir aynı olmalı)
+// Firebase konfigürasyon (index.html’dekilerle aynı olmalı)
 const firebaseConfig = {
   apiKey:            "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
   authDomain:        "ithink-mvp.firebaseapp.com",
@@ -17,15 +17,9 @@ const firebaseConfig = {
   appId:             "1:572530391954:web:1c183350174e2d9d6c9f4b",
   measurementId:     "G-2WLSCRDWQC"
 };
-
-// Uygulamayı başlat ve auth objesini al
 const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
-// Dinlemek istersen: kullanıcı durumu değiştiğinde log’lasın
-onAuthStateChanged(auth, user => {
-  console.log("Auth changed:", user);
-});
+onAuthStateChanged(auth, user => console.log("User state:", user));
 
 
 // ▶️ 1) Başlangıç verisi (4 periyot için)
@@ -44,18 +38,15 @@ function renderAnswers() {
   answersData.forEach(item => {
     const li = document.createElement('li');
     li.textContent = item.text;
-
     const span = document.createElement('span');
     span.className = 'votes';
     span.textContent = `😂 ${ item[currentFilter] }`;
-
     span.addEventListener('click', () => {
       item[currentFilter]++;
       renderAnswers();
     });
-
-    li.appendChild(span);
-    list.appendChild(li);
+    li.append(span);
+    list.append(li);
   });
 }
 
@@ -81,18 +72,16 @@ function startCountdown() {
 // ▶️ 4) Filtre butonları
 function setupFilters() {
   const buttons = document.querySelectorAll('.filters button');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const txt = btn.textContent.trim();
-      if      (txt === 'Günlük')   currentFilter = 'daily';
-      else if (txt === 'Haftalık') currentFilter = 'weekly';
-      else if (txt === 'Aylık')    currentFilter = 'monthly';
-      else if (txt === 'Yıllık')   currentFilter = 'yearly';
-      renderAnswers();
-    });
-  });
+  buttons.forEach(btn => btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const txt = btn.textContent.trim();
+    if      (txt==='Günlük')   currentFilter='daily';
+    else if (txt==='Haftalık') currentFilter='weekly';
+    else if (txt==='Aylık')    currentFilter='monthly';
+    else if (txt==='Yıllık')   currentFilter='yearly';
+    renderAnswers();
+  }));
 }
 
 
@@ -109,8 +98,7 @@ function setupCommentModal() {
     modal.style.display = 'flex';
   });
   btnClose.addEventListener('click', () => modal.style.display = 'none');
-  modal.addEventListener('click', e => { if (e.target===modal) modal.style.display='none'; });
-
+  modal.addEventListener('click', e => { if(e.target===modal) modal.style.display='none'; });
   btnSubmit.addEventListener('click', () => {
     const text = textarea.value.trim();
     if (!text) return alert('Lütfen bir yorum yazın!');
@@ -121,7 +109,22 @@ function setupCommentModal() {
 }
 
 
-// ▶️ 6) Giriş/Kayıt formu
+// ▶️ 6) Auth modal’i aç/kapa
+function setupAuthModal() {
+  const modal   = document.getElementById('auth-modal');
+  const openBtn = document.getElementById('nav-auth');
+  const closeX  = document.getElementById('auth-close');
+
+  openBtn.addEventListener('click', e => {
+    e.preventDefault();
+    modal.style.display = 'flex';
+  });
+  closeX.addEventListener('click', () => modal.style.display='none');
+  modal.addEventListener('click', e => { if(e.target===modal) modal.style.display='none'; });
+}
+
+
+// ▶️ 7) Giriş / Kayıt formu
 function setupAuthForm() {
   const emailIn  = document.getElementById('email');
   const passIn   = document.getElementById('password');
@@ -133,6 +136,7 @@ function setupAuthForm() {
     try {
       await signInWithEmailAndPassword(auth, emailIn.value, passIn.value);
       alert('Giriş başarılı!');
+      document.getElementById('auth-modal').style.display='none';
     } catch(err) {
       alert('Giriş hatası: ' + err.message);
     }
@@ -142,7 +146,7 @@ function setupAuthForm() {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, emailIn.value, passIn.value);
-      alert('Kayıt başarılı! Giriş yapabilirsiniz.');
+      alert('Kayıt başarılı! Şimdi giriş yapabilirsiniz.');
     } catch(err) {
       alert('Kayıt hatası: ' + err.message);
     }
@@ -150,11 +154,12 @@ function setupAuthForm() {
 }
 
 
-// ▶️ 7) Hepsini başlat
+// ▶️ 8) Hepsini başlat
 document.addEventListener('DOMContentLoaded', () => {
   startCountdown();
   setupFilters();
   renderAnswers();
   setupCommentModal();
-  setupAuthForm();
+  setupAuthModal();    // auth modal aç/kapa
+  setupAuthForm();     // formu dinle
 });
