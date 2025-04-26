@@ -1,3 +1,15 @@
+// ◀️ MODÜL İÇİNE EKLE: Firebase Auth fonksiyonları
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  onAuthStateChanged 
+} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+// ◀️ Eğer Firestore da kullanacaksan, öncesinde:
+// import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+// Aşağıda getFirestore(app) ile db’yi başlatabilirsin.
+
 // 1) Başlangıç verisi (4 periyot için)
 // — Auth referansını al (Firebase snippet içindeki app ve auth)
 // const auth = getAuth(app);  // zaten import ettiğin satır
