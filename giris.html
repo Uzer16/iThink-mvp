@@ -7,11 +7,20 @@
 </head>
 <body>
   <div class="back-home"><a href="index.html">← Anasayfaya Dön</a></div>
-  <section class="info-section">
-    <h2>Giriş / Kayıt</h2>
-    <p>Henüz üye değilseniz hemen kayıt olun, mevcut üyeler ise giriş yapın.</p>
-    <button id="login-btn">Giriş Yap</button>
-    <button id="register-btn">Kayıt Ol</button>
-  </section>
-</body>
-</html>
+  <section id="giris" class="info-section">
+  <h2>Giriş / Kayıt</h2>
+  <form id="auth-form">
+    <input type="email"
+           id="email"
+           placeholder="E-posta adresiniz"
+           required />
+    <input type="password"
+           id="password"
+           placeholder="Şifreniz"
+           required />
+    <div class="auth-buttons">
+      <button type="submit" id="login-btn">Giriş Yap</button>
+      <button type="button" id="register-btn">Kayıt Ol</button>
+    </div>
+  </form>
+</section>
