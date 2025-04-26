@@ -1,4 +1,7 @@
 // 1) Başlangıç verisi (4 periyot için)
+// — Auth referansını al (Firebase snippet içindeki app ve auth)
+// const auth = getAuth(app);  // zaten import ettiğin satır
+
 const answersData = [
   { text: 'Tavanda zıplıyor.',   daily: 24, weekly: 44, monthly: 70, yearly: 320 },
   { text: 'Kedi kostümü giyer.',  daily: 18, weekly: 33, monthly: 60, yearly: 210 },
@@ -109,4 +112,40 @@ document.addEventListener('DOMContentLoaded', () => {
   setupFilters();
   renderAnswers();
   setupCommentModal();
+  setupAuthForm();    // ← buraya ekle
+});
+
+  // 7) Giriş & Kayıt işlemleri
+function setupAuthForm() {
+  const form     = document.getElementById('auth-form');
+  const emailIn  = document.getElementById('email');
+  const passIn   = document.getElementById('password');
+  const loginBtn = document.getElementById('login-btn');
+  const regBtn   = document.getElementById('register-btn');
+
+  // Giriş
+  loginBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth,
+        emailIn.value, passIn.value);
+      alert('Giriş başarılı!');
+    } catch(err) {
+      alert('Giriş hatası: ' + err.message);
+    }
+  });
+
+  // Kayıt
+  regBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    try {
+      await createUserWithEmailAndPassword(auth,
+        emailIn.value, passIn.value);
+      alert('Kayıt başarılı! Şimdi giriş yapabilirsiniz.');
+    } catch(err) {
+      alert('Kayıt hatası: ' + err.message);
+    }
+  });
+}
+
 });
