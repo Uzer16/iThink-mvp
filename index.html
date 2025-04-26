@@ -12,17 +12,12 @@
   <nav class="navbar">
     <div class="logo">iThink</div>
     <ul class="menu">
-      
- <li><a href="kurallar.html">Kurallar</a></li>
-
- <li><a href="oduller.html">Ödüller</a></li>
-
- <li><a href="sponsorlar.html">Sponsorlar</a></li>
-
- <li><a href="oneriler.html">Soru Öneriniz ✎</a></li>
-
- <li><a href="giris.html">Giriş/Kayıt</a></li>
-
+      <li><a href="kurallar.html">Kurallar</a></li>
+      <li><a href="oduller.html">Ödüller</a></li>
+      <li><a href="sponsorlar.html">Sponsorlar</a></li>
+      <li><a href="oneriler.html">Soru Öneriniz ✎</a></li>
+      <!-- Giriş/Kayıt artık modal açacak -->
+      <li><a href="#" id="nav-auth">Giriş/Kayıt</a></li>
     </ul>
   </nav>
 
@@ -48,9 +43,7 @@
   <!-- CEVAP LİSTESİ -->
   <section class="answers">
     <ul id="answers-list">
-      <li>1. Tavanda zıplıyor. <span class="votes">😂 24</span></li>
-      <li>2. Kedi kostümü giyer. <span class="votes">😂 18</span></li>
-      <li>3. Telefona gömülür. <span class="votes">😂 12</span></li>
+      <!-- JS dolduracak -->
     </ul>
   </section>
 
@@ -64,32 +57,54 @@
     </div>
   </div>
 
-  
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  <!-- AUTH (Giriş / Kayıt) MODALİ -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span id="auth-close" class="modal-close">&times;</span>
+      <h2>Giriş / Kayıt</h2>
+      <form id="auth-form">
+        <input type="email" id="email" placeholder="E-posta adresiniz" required />
+        <input type="password" id="password" placeholder="Şifreniz" required />
+        <div class="auth-buttons">
+          <button type="button" id="register-btn">Kayıt Ol</button>
+          <button type="button" id="login-btn">Giriş Yap</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
-    authDomain: "ithink-mvp.firebaseapp.com",
-    projectId: "ithink-mvp",
-    storageBucket: "ithink-mvp.firebasestorage.app",
-    messagingSenderId: "572530391954",
-    appId: "1:572530391954:web:1c183350174e2d9d6c9f4b",
-    measurementId: "G-2WLSCRDWQC"
-  };
+  <!-- FIREBASE SDK & CONFIG -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAnalytics }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
+    import { getAuth }       from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-  <!-- SCRIPT -->
-<script type="module" src="script.js"></script>
+    // Firebase konfigürasyonun (kendi değerlerinle değiştir)
+    const firebaseConfig = {
+      apiKey:            "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
+      authDomain:        "ithink-mvp.firebaseapp.com",
+      projectId:         "ithink-mvp",
+      storageBucket:     "ithink-mvp.appspot.com",
+      messagingSenderId: "572530391954",
+      appId:             "1:572530391954:web:1c183350174e2d9d6c9f4b",
+      measurementId:     "G-2WLSCRDWQC"
+    };
 
+    // Firebase başlat
+    const app       = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth      = getAuth(app);
+    const db        = getFirestore(app);
+
+    // Auth durum değişikliğini dinleyebilirsin:
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    onAuthStateChanged(auth, user => {
+      console.log("Auth state:", user);
+    });
+  </script>
+
+  <!-- SENİN JS’İN -->
+  <script type="module" src="script.js"></script>
 </body>
 </html>
