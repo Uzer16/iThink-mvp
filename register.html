@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>iThink • Kayıt Ol</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* form arkaplanı ve iç boşlukları */
+    .register-form {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff9c4; /* açık sarı ton */
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .register-form label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      align-items: center;
+    }
+    .register-form label span {
+      flex: 1 0 120px;
+    }
+    .register-form input,
+    .register-form select,
+    .register-form textarea {
+      flex: 2 0 300px;
+      padding: 6px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .register-form textarea {
+      resize: vertical;
+    }
+    .register-form .dob-selects select {
+      margin-right: 4px;
+    }
+    .register-form .gender-options {
+      display: flex;
+      gap: 12px;
+      flex: 2 0 auto;
+    }
+    .register-form .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 2 0 auto;
+    }
+    .register-form .btn-area {
+      text-align: right;
+      margin-top: 16px;
+    }
+    .register-form button {
+      padding: 8px 16px;
+      background: #84a9c0;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+    }
+    .register-form button:hover {
+      background: #6b8fa2;
+    }
+  </style>
 </head>
 <body>
+
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">iThink</div>
@@ -22,104 +83,136 @@
   </nav>
 
   <!-- KAYIT FORMU -->
-  <section class="info-section">
-    <h2>Kayıt Ol</h2>
-    <form id="register-form">
-      <label>
-        Ad Soyad  
-        <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required />
-      </label>
+  <form id="register-form" class="register-form">
+    <h2>Kayıt Bilgileri</h2>
 
-      <label>
-        E-posta  
-        <input type="email" id="email" placeholder="E-posta adresiniz" required />
-      </label>
+    <label>
+      <span>Adı Soyadı:</span>
+      <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required />
+      <span style="color:red">*</span>
+    </label>
 
-      <label>
-        Şifre  
-        <input type="password" id="password" placeholder="Şifreniz" required />
-      </label>
+    <label>
+      <span>Kullanıcı Adı:</span>
+      <input type="text" id="username" placeholder="Kullanıcı adınız" required />
+      <span style="color:red">*</span>
+    </label>
 
-      <label>
-        TC Kimlik No  
-        <input type="text" id="tcNo" placeholder="11 haneli TC No" pattern="\d{11}" required />
-      </label>
+    <label>
+      <span>E-mail:</span>
+      <input type="email" id="email" placeholder="E-posta adresiniz" required />
+      <span style="color:red">*</span>
+    </label>
 
-      <label>
-        İletişim Numarası  
-        <input type="tel" id="phone" placeholder="+90 5xx xxx xx xx" required />
-      </label>
+    <label>
+      <span>E-mail’i Gizle:</span>
+      <div class="checkbox-group">
+        <input type="checkbox" id="hideEmail" />
+        <label for="hideEmail">E-postamı gizle</label>
+      </div>
+    </label>
 
-      <label>
-        Cinsiyet  
-        <select id="gender" required>
-          <option value="">Seçiniz</option>
-          <option value="female">Kadın</option>
-          <option value="male">Erkek</option>
-          <option value="other">Belirtmek İstemiyorum</option>
+    <label>
+      <span>Şifre:</span>
+      <input type="password" id="password" placeholder="Şifreniz" required />
+      <span style="color:red">*</span>
+    </label>
+
+    <label>
+      <span>Tekrar Şifre:</span>
+      <input type="password" id="confirmPassword" placeholder="Şifrenizi tekrar girin" required />
+      <span style="color:red">*</span>
+    </label>
+
+    <label>
+      <span>Cinsiyet:</span>
+      <div class="gender-options">
+        <label><input type="radio" name="gender" value="male" required/> Erkek</label>
+        <label><input type="radio" name="gender" value="female"/> Kadın</label>
+      </div>
+    </label>
+
+    <label>
+      <span>Doğum Tarihi:</span>
+      <div class="dob-selects">
+        <select id="birthDay" required>
+          <option value="">Gün</option>
+          <!-- <option>1</option> … 31 seçenek -->
         </select>
-      </label>
+        <select id="birthMonth" required>
+          <option value="">Ay</option>
+          <!-- <option>1</option> … 12 seçenek -->
+        </select>
+        <select id="birthYear" required>
+          <option value="">Yıl</option>
+          <!-- <option>2025</option> … aradaki yıllar -->
+        </select>
+      </div>
+      <span style="color:red">*</span>
+    </label>
 
-      <label>
-        Adres  
-        <textarea id="address" rows="3" placeholder="Adresinizi girin…" required></textarea>
-      </label>
+    <label>
+      <span>Adres:</span>
+      <textarea id="address" rows="3" placeholder="Adresinizi girin…" required></textarea>
+    </label>
 
-      <label>
-        <input type="checkbox" id="kvk" required />
-        KVKK (Kişisel Verilerin Korunması) onaylıyorum
-      </label>
+    <label>
+      <div class="checkbox-group">
+        <input type="checkbox" id="kvkk" required/>
+        <label for="kvkk">KVKK’yi okudum, onaylıyorum</label>
+      </div>
+    </label>
 
-      <label>
-        <input type="checkbox" id="terms" required />
-        Yasal mevzuatı okudum ve kabul ediyorum
-      </label>
+    <label>
+      <div class="checkbox-group">
+        <input type="checkbox" id="terms" required/>
+        <label for="terms">Yasal mevzuatı okudum, kabul ediyorum</label>
+      </div>
+    </label>
 
-      <button type="submit">Kayıt Ol</button>
-    </form>
+    <div class="btn-area">
+      <button type="submit">Kaydet</button>
+    </div>
 
     <div class="back-home">
       <a href="index.html">← Ana Sayfaya Dön</a>
     </div>
-  </section>
+  </form>
 
-  <!-- FIREBASE ve KAYIT İŞLEMLERİ -->
+  <!-- Firebase & Kayıt Logic (opsiyonel) -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-    const firebaseConfig = {
-      apiKey:            "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
-      authDomain:        "ithink-mvp.firebaseapp.com",
-      projectId:         "ithink-mvp",
-      storageBucket:     "ithink-mvp.appspot.com",
+    const config = {
+      apiKey: "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
+      authDomain: "ithink-mvp.firebaseapp.com",
+      projectId: "ithink-mvp",
+      storageBucket: "ithink-mvp.appspot.com",
       messagingSenderId: "572530391954",
-      appId:             "1:572530391954:web:1c183350174e2d9d6c9f4b",
-      measurementId:     "G-2WLSCRDWQC"
+      appId: "1:572530391954:web:1c183350174e2d9d6c9f4b",
+      measurementId: "G-2WLSCRDWQC"
     };
 
-    // Firebase’i başlat
-    const app  = initializeApp(firebaseConfig);
+    const app  = initializeApp(config);
     const auth = getAuth(app);
-
-    // Formu yakala
     const form = document.getElementById('register-form');
+
     form.addEventListener('submit', async e => {
       e.preventDefault();
-
-      // Basit doğrulama
-      const email = document.getElementById('email').value.trim();
-      const pass  = document.getElementById('password').value.trim();
-      if (!email || !pass) {
-        return alert('E-posta ve şifre zorunlu.');
+      // basit validasyon
+      const pw   = document.getElementById('password').value;
+      const cpw  = document.getElementById('confirmPassword').value;
+      if (pw !== cpw) {
+        return alert('Girilen şifreler uyuşmuyor.');
       }
+      const email = document.getElementById('email').value;
       try {
-        // Firebase ile kayıt
-        await createUserWithEmailAndPassword(auth, email, pass);
-        alert('Kayıt başarılı! Ana sayfaya yönlendiriliyorsunuz.');
+        await createUserWithEmailAndPassword(auth, email, pw);
+        alert('Kayıt tamamlandı!');
         window.location = 'index.html';
       } catch(err) {
-        alert('Kayıt hatası: ' + err.message);
+        alert('Hata: ' + err.message);
       }
     });
   </script>
