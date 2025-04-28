@@ -46,7 +46,7 @@
     </ul>
   </section>
 
-  <!-- YORUM MODALİ -->
+  <!-- YORUM MODALI -->
   <div id="comment-modal" class="modal">
     <div class="modal-content">
       <span id="modal-close" class="modal-close">&times;</span>
@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  <!-- AUTH (Giriş / Kayıt) MODALİ -->
+  <!-- AUTH (Giriş / Kayıt) MODALI -->
   <div id="auth-modal" class="modal">
     <div class="modal-content">
       <span id="auth-close" class="modal-close">&times;</span>
@@ -65,7 +65,8 @@
         <input type="email" id="email" placeholder="E-posta adresiniz" required />
         <input type="password" id="password" placeholder="Şifreniz" required />
         <div class="auth-buttons">
-          <button type="button" id="register-btn">Kayıt Ol</button>
+          <!-- Artık ayrı sayfada kayıt olacak -->
+          <a href="register.html" class="auth-link">Kayıt Ol</a>
           <button type="button" id="login-btn">Giriş Yap</button>
         </div>
       </form>
@@ -76,8 +77,7 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAnalytics }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
-    import { getAuth }       from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    // import { getFirestore }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey:            "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
@@ -89,18 +89,14 @@
       measurementId:     "G-2WLSCRDWQC"
     };
 
-    // Firebase’i başlat
     const app       = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth      = getAuth(app);
-    // const db = getFirestore(app);
 
-    // Auth durum değişimini izle
-    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     onAuthStateChanged(auth, user => console.log("Auth durum:", user));
   </script>
 
-  <!-- Uygulama mantığı (script.js) -->
+  <!-- Uygulama mantığı -->
   <script type="module" src="script.js"></script>
 </body>
 </html>
