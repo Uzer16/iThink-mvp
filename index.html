@@ -16,7 +16,7 @@
       <li><a href="oduller.html">Ödüller</a></li>
       <li><a href="sponsorlar.html">Sponsorlar</a></li>
       <li><a href="oneriler.html">Soru Öneriniz ✎</a></li>
-      <!-- Giriş/Kayıt artık modal açacak -->
+      <!-- artık modal açacak -->
       <li><a href="#" id="nav-auth">Giriş/Kayıt</a></li>
     </ul>
   </nav>
@@ -42,9 +42,7 @@
 
   <!-- CEVAP LİSTESİ -->
   <section class="answers">
-    <ul id="answers-list">
-      <!-- JS dolduracak -->
-    </ul>
+    <ul id="answers-list"><!-- script.js burada dolduracak --></ul>
   </section>
 
   <!-- YORUM MODALİ -->
@@ -63,8 +61,8 @@
       <span id="auth-close" class="modal-close">&times;</span>
       <h2>Giriş / Kayıt</h2>
       <form id="auth-form">
-        <input type="email" id="email" placeholder="E-posta adresiniz" required />
-        <input type="password" id="password" placeholder="Şifreniz" required />
+        <input type="email"   id="email"    placeholder="E-posta adresiniz" required />
+        <input type="password" id="password" placeholder="Şifreniz"           required />
         <div class="auth-buttons">
           <button type="button" id="register-btn">Kayıt Ol</button>
           <button type="button" id="login-btn">Giriş Yap</button>
@@ -75,12 +73,14 @@
 
   <!-- FIREBASE SDK & CONFIG -->
   <script type="module">
+    // Firebase temel modüller
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAnalytics }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
-    import { getAuth }       from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged }
+      from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    // Firebase konfigürasyonun (kendi değerlerinle değiştir)
+    // 🔑 Kendi Firebase config’inizi buraya yapıştırın
     const firebaseConfig = {
       apiKey:            "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
       authDomain:        "ithink-mvp.firebaseapp.com",
@@ -97,14 +97,11 @@
     const auth      = getAuth(app);
     const db        = getFirestore(app);
 
-    // Auth durum değişikliğini dinleyebilirsin:
-    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    onAuthStateChanged(auth, user => {
-      console.log("Auth state:", user);
-    });
+    // (opsiyonel) oturum durumunu izlemek için:
+    onAuthStateChanged(auth, user => console.log("Auth State:", user));
   </script>
 
-  <!-- SENİN JS’İN -->
+  <!-- SİZİN UYGULAMA KODUNUZ -->
   <script type="module" src="script.js"></script>
 </body>
 </html>
