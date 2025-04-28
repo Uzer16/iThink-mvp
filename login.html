@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Giriş Yap – iThink</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">iThink</div>
+    <ul class="menu">
+      <li><a href="index.html">Ana Sayfa</a></li>
+    </ul>
+  </nav>
 
+  <section class="info-section">
+    <h2>Giriş Yap</h2>
+    <form id="login-form">
+      <input type="email" id="login-email" placeholder="E-posta adresiniz" required />
+      <input type="password" id="login-password" placeholder="Şifreniz" required />
+      <button type="submit">Giriş Yap</button>
+    </form>
+    <p>Hesabınız yok mu? <a href="register.html">Kayıt Ol</a></p>
+  </section>
+
+  <script type="module">
+    import { initializeApp }        from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword }
+                                   from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey:            "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
+      authDomain:        "ithink-mvp.firebaseapp.com",
+      projectId:         "ithink-mvp",
+      storageBucket:     "ithink-mvp.appspot.com",
+      messagingSenderId: "572530391954",
+      appId:             "1:572530391954:web:1c183350174e2d9d6c9f4b",
+      measurementId:     "G-2WLSCRDWQC"
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const form = document.getElementById('login-form');
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const pass  = document.getElementById('login-password').value.trim();
+      if (!email || !pass) {
+        return alert('Lütfen e-posta ve şifre girin.');
+      }
+      try {
+        await signInWithEmailAndPassword(auth, email, pass);
+        alert('Giriş başarılı! Ana sayfaya yönlendiriliyorsunuz.');
+        window.location.href = 'index.html';
+      } catch(err) {
+        alert('Giriş hatası: ' + err.message);
+      }
+    });
+  </script>
+</body>
+</html>
