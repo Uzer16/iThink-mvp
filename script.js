@@ -1,6 +1,6 @@
 // script.js
 // ============================================
-// 0) Firebase Auth import & init
+// 0) Firebase Auth import & başlatma
 // ============================================
 import {
   getAuth,
@@ -9,19 +9,13 @@ import {
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-// Eğer Firestore da kullanmak istersen, yorum satırını kaldır:
-// import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
 const auth = getAuth();
-// const db = getFirestore(); // Firestore için
-
-// Dinleyerek kullanıcı durumunu konsola bas (isteğe bağlı)
 onAuthStateChanged(auth, user => {
-  console.log("Auth state:", user);
+  console.log("Auth durum:", user);
 });
 
 // ============================================
-// 1) Başlangıç verisi (4 periyot)
+// 1) Cevap verisi & filtre durumu
 // ============================================
 const answersData = [
   { text: 'Tavanda zıplıyor.',   daily: 24, weekly: 44, monthly: 70, yearly: 320 },
@@ -31,7 +25,7 @@ const answersData = [
 let currentFilter = 'daily';
 
 // ============================================
-// 2) Listeyi render et
+// 2) Cevap listesini render et
 // ============================================
 function renderAnswers() {
   const list = document.getElementById('answers-list');
@@ -92,7 +86,7 @@ function setupFilters() {
 }
 
 // ============================================
-// 5) Yorum modal’ı
+// 5) Yeni yorum modal’i
 // ============================================
 function setupCommentModal() {
   const modal     = document.getElementById('comment-modal');
@@ -119,13 +113,12 @@ function setupCommentModal() {
 }
 
 // ============================================
-// 6) Auth (Giriş / Kayıt) modal’ı
+// 6) Auth (Giriş / Kayıt) modal’i
 // ============================================
 function setupAuthForm() {
   const navAuth   = document.getElementById('nav-auth');
   const modal     = document.getElementById('auth-modal');
   const btnClose  = document.getElementById('auth-close');
-  const form      = document.getElementById('auth-form');
   const emailIn   = document.getElementById('email');
   const passIn    = document.getElementById('password');
   const regBtn    = document.getElementById('register-btn');
@@ -141,37 +134,37 @@ function setupAuthForm() {
     if (e.target === modal) modal.style.display = 'none';
   });
 
-  // Ortak validate fonksiyonu
+  // Girdi kontrolü
   function validateCredentials() {
     const email = emailIn.value.trim();
     const pass  = passIn.value.trim();
     if (!email || !pass) {
       alert('Lütfen e-posta ve şifre girin.');
-      return false;
+      return null;
     }
     const emailRegex = /^\S+@\S+\.\S+$/;
     if (!emailRegex.test(email)) {
       alert('Lütfen geçerli bir e-posta adresi girin.');
-      return false;
+      return null;
     }
     return { email, pass };
   }
 
-  // Kayıt ol
+  // Kayıt işlemi
   regBtn.addEventListener('click', async e => {
     e.preventDefault();
     const creds = validateCredentials();
     if (!creds) return;
     try {
       await createUserWithEmailAndPassword(auth, creds.email, creds.pass);
-      alert('Kayıt başarılı! Giriş yapabilirsiniz.');
+      alert('Kayıt başarılı! Şimdi giriş yapabilirsiniz.');
       modal.style.display = 'none';
     } catch(err) {
       alert('Kayıt hatası: ' + err.message);
     }
   });
 
-  // Giriş yap
+  // Giriş işlemi
   loginBtn.addEventListener('click', async e => {
     e.preventDefault();
     const creds = validateCredentials();
