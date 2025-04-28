@@ -5,6 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>iThink • Kayıt Ol</title>
   <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* sadece register-form stilı */
+    .register-form {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff9c4;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 12px 16px;
+      align-items: center;
+    }
+    .register-form h2 {
+      grid-column: 1 / -1;
+      margin-bottom: 12px;
+      font-size: 1.5em;
+    }
+    .register-form label {
+      display: contents;
+    }
+    .register-form label > span {
+      grid-column: 1;
+      justify-self: end;
+      padding-right: 8px;
+    }
+    .register-form input,
+    .register-form select,
+    .register-form textarea,
+    .register-form .checkbox-group,
+    .register-form .gender-options,
+    .register-form .dob-selects {
+      grid-column: 2;
+      width: 100%;
+    }
+    .register-form textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+    .checkbox-group,
+    .gender-options,
+    .dob-selects {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dob-selects select {
+      width: auto;
+      padding: 4px;
+    }
+    .gender-options label {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .required {
+      color: red;
+      grid-column: 2;
+      justify-self: start;
+    }
+    .btn-area {
+      grid-column: 2;
+      text-align: right;
+      margin-top: 16px;
+    }
+    .btn-area button {
+      padding: 8px 16px;
+      background: #84a9c0;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+    }
+    .btn-area button:hover {
+      background: #6b8fa2;
+    }
+    .back-home {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 16px;
+    }
+    .back-home a {
+      text-decoration: none;
+      color: #2f4f2f;
+      font-weight: bold;
+    }
+    .back-home a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
@@ -29,25 +120,25 @@
     <label>
       <span>Adı Soyadı:</span>
       <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required/>
-      <span class="required">*</span>
     </label>
+    <span class="required">*</span>
 
     <label>
       <span>Kullanıcı Adı:</span>
       <input type="text" id="username" placeholder="Kullanıcı adınız" required/>
-      <span class="required">*</span>
     </label>
+    <span class="required">*</span>
 
     <label>
       <span>E-mail:</span>
       <input type="email" id="email" placeholder="E-posta adresiniz" required/>
-      <span class="required">*</span>
     </label>
+    <span class="required">*</span>
 
     <label>
       <span>E-mail’i Gizle:</span>
       <div class="checkbox-group">
-        <input type="checkbox" id="hideEmail" />
+        <input type="checkbox" id="hideEmail"/>
         <label for="hideEmail">E-postamı gizle</label>
       </div>
     </label>
@@ -55,14 +146,14 @@
     <label>
       <span>Şifre:</span>
       <input type="password" id="password" placeholder="Şifreniz" required/>
-      <span class="required">*</span>
     </label>
+    <span class="required">*</span>
 
     <label>
       <span>Tekrar Şifre:</span>
       <input type="password" id="confirmPassword" placeholder="Şifrenizi tekrar girin" required/>
-      <span class="required">*</span>
     </label>
+    <span class="required">*</span>
 
     <label>
       <span>Cinsiyet:</span>
@@ -77,16 +168,19 @@
       <div class="dob-selects">
         <select id="birthDay" required>
           <option value="">Gün</option>
+          <!-- 1–31 seçenekleri JS ile doldurabilirsiniz -->
         </select>
         <select id="birthMonth" required>
           <option value="">Ay</option>
+          <!-- 1–12 -->
         </select>
         <select id="birthYear" required>
           <option value="">Yıl</option>
+          <!-- 1950–2025 -->
         </select>
       </div>
-      <span class="required">*</span>
     </label>
+    <span class="required">*</span>
 
     <label>
       <span>Adres:</span>
@@ -139,12 +233,14 @@
       e.preventDefault();
       const pw = document.getElementById('password').value;
       const cpw = document.getElementById('confirmPassword').value;
-      if (pw !== cpw) return alert('Şifreler uyuşmuyor.');
+      if (pw !== cpw) {
+        return alert('Şifreler uyuşmuyor.');
+      }
       const email = document.getElementById('email').value;
       try {
         await createUserWithEmailAndPassword(auth, email, pw);
         alert('Kayıt tamamlandı!');
-        window.location = 'index.html';
+        window.location.href = 'index.html';
       } catch(err) {
         alert('Hata: ' + err.message);
       }
