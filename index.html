@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>IThink</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">iThink</div>
     <ul class="menu">
-      <li><a href="kurallar.html">Kurallar</a></li>
-      <li><a href="oduller.html">Ödüller</a></li>
-      <li><a href="sponsorlar.html">Sponsorlar</a></li>
-      <li><a href="oneriler.html">Soru Öneriniz ✎</a></li>
+      <li><a href="#kurallar">Kurallar</a></li>
+      <li><a href="#oduller">Ödüller</a></li>
+      <li><a href="#sponsorlar">Sponsorlar</a></li>
+      <li><a href="#oneriler">Soru Öneriniz ✎</a></li>
       <!-- artık modal açacak -->
       <li><a href="#" id="nav-auth">Giriş/Kayıt</a></li>
     </ul>
@@ -42,7 +41,9 @@
 
   <!-- CEVAP LİSTESİ -->
   <section class="answers">
-    <ul id="answers-list"><!-- script.js burada dolduracak --></ul>
+    <ul id="answers-list">
+      <!-- JS dolduracak -->
+    </ul>
   </section>
 
   <!-- YORUM MODALİ -->
@@ -61,8 +62,8 @@
       <span id="auth-close" class="modal-close">&times;</span>
       <h2>Giriş / Kayıt</h2>
       <form id="auth-form">
-        <input type="email"   id="email"    placeholder="E-posta adresiniz" required />
-        <input type="password" id="password" placeholder="Şifreniz"           required />
+        <input type="email" id="email" placeholder="E-posta adresiniz" required/>
+        <input type="password" id="password" placeholder="Şifreniz" required/>
         <div class="auth-buttons">
           <button type="button" id="register-btn">Kayıt Ol</button>
           <button type="button" id="login-btn">Giriş Yap</button>
@@ -73,14 +74,12 @@
 
   <!-- FIREBASE SDK & CONFIG -->
   <script type="module">
-    // Firebase temel modüller
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAnalytics }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged }
-      from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    import { getFirestore }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getAuth }       from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    // Eğer Firestore kullanacaksan:
+    // import { getFirestore }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    // 🔑 Kendi Firebase config’inizi buraya yapıştırın
     const firebaseConfig = {
       apiKey:            "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
       authDomain:        "ithink-mvp.firebaseapp.com",
@@ -91,17 +90,18 @@
       measurementId:     "G-2WLSCRDWQC"
     };
 
-    // Firebase başlat
+    // Firebase’i başlat
     const app       = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth      = getAuth(app);
-    const db        = getFirestore(app);
+    // const db        = getFirestore(app); // Firestore’u açmak istersen
 
-    // (opsiyonel) oturum durumunu izlemek için:
-    onAuthStateChanged(auth, user => console.log("Auth State:", user));
+    // Auth durum değişimini izlemek istersen
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    onAuthStateChanged(auth, user => console.log("Auth durum:", user));
   </script>
 
-  <!-- SİZİN UYGULAMA KODUNUZ -->
+  <!-- SENİN JS’İN -->
   <script type="module" src="script.js"></script>
 </body>
 </html>
