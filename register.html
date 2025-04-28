@@ -6,7 +6,7 @@
   <title>iThink • Kayıt Ol</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    /* sadece register-form stilı */
+    /* ==== Register form düzeni ==== */
     .register-form {
       max-width: 600px;
       margin: 40px auto;
@@ -16,7 +16,8 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       display: grid;
       grid-template-columns: 140px 1fr;
-      gap: 12px 16px;
+      row-gap: 12px;
+      column-gap: 16px;
       align-items: center;
     }
     .register-form h2 {
@@ -27,44 +28,45 @@
     .register-form label {
       display: contents;
     }
-    .register-form label > span {
+    /* Başlık hücresi */
+    .register-form label > span.title {
       grid-column: 1;
       justify-self: end;
       padding-right: 8px;
     }
-    .register-form input,
-    .register-form select,
-    .register-form textarea,
-    .register-form .checkbox-group,
-    .register-form .gender-options,
-    .register-form .dob-selects {
+    /* Kontrol hücresi */
+    .register-form label > .control {
       grid-column: 2;
       width: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .register-form input,
+    .register-form select,
+    .register-form textarea {
+      flex: 1;
+      padding: 6px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
     .register-form textarea {
       resize: vertical;
       min-height: 60px;
     }
-    .checkbox-group,
-    .gender-options,
-    .dob-selects {
-      display: flex;
-      align-items: center;
+    .register-form .gender-options,
+    .register-form .dob-selects,
+    .register-form .checkbox-group {
       gap: 8px;
-    }
-    .dob-selects select {
-      width: auto;
-      padding: 4px;
-    }
-    .gender-options label {
       display: flex;
       align-items: center;
-      gap: 4px;
     }
-    .required {
+    .register-form .dob-selects select {
+      width: auto;
+    }
+    .register-form .required {
+      margin-left: 6px;
       color: red;
-      grid-column: 2;
-      justify-self: start;
+      font-weight: bold;
     }
     .btn-area {
       grid-column: 2;
@@ -118,84 +120,89 @@
     <h2>Kayıt Bilgileri</h2>
 
     <label>
-      <span>Adı Soyadı:</span>
-      <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required/>
+      <span class="title">Adı Soyadı:</span>
+      <div class="control">
+        <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required/>
+        <span class="required">*</span>
+      </div>
     </label>
-    <span class="required">*</span>
 
     <label>
-      <span>Kullanıcı Adı:</span>
-      <input type="text" id="username" placeholder="Kullanıcı adınız" required/>
+      <span class="title">Kullanıcı Adı:</span>
+      <div class="control">
+        <input type="text" id="username" placeholder="Kullanıcı adınız" required/>
+        <span class="required">*</span>
+      </div>
     </label>
-    <span class="required">*</span>
 
     <label>
-      <span>E-mail:</span>
-      <input type="email" id="email" placeholder="E-posta adresiniz" required/>
+      <span class="title">E-mail:</span>
+      <div class="control">
+        <input type="email" id="email" placeholder="E-posta adresiniz" required/>
+        <span class="required">*</span>
+      </div>
     </label>
-    <span class="required">*</span>
 
     <label>
-      <span>E-mail’i Gizle:</span>
-      <div class="checkbox-group">
+      <span class="title">E-mail’i Gizle:</span>
+      <div class="control checkbox-group">
         <input type="checkbox" id="hideEmail"/>
         <label for="hideEmail">E-postamı gizle</label>
       </div>
     </label>
 
     <label>
-      <span>Şifre:</span>
-      <input type="password" id="password" placeholder="Şifreniz" required/>
+      <span class="title">Şifre:</span>
+      <div class="control">
+        <input type="password" id="password" placeholder="Şifreniz" required/>
+        <span class="required">*</span>
+      </div>
     </label>
-    <span class="required">*</span>
 
     <label>
-      <span>Tekrar Şifre:</span>
-      <input type="password" id="confirmPassword" placeholder="Şifrenizi tekrar girin" required/>
+      <span class="title">Tekrar Şifre:</span>
+      <div class="control">
+        <input type="password" id="confirmPassword" placeholder="Şifrenizi tekrar girin" required/>
+        <span class="required">*</span>
+      </div>
     </label>
-    <span class="required">*</span>
 
     <label>
-      <span>Cinsiyet:</span>
-      <div class="gender-options">
+      <span class="title">Cinsiyet:</span>
+      <div class="control gender-options">
         <label><input type="radio" name="gender" value="male" required/> Erkek</label>
         <label><input type="radio" name="gender" value="female"/> Kadın</label>
       </div>
     </label>
 
     <label>
-      <span>Doğum Tarihi:</span>
-      <div class="dob-selects">
-        <select id="birthDay" required>
-          <option value="">Gün</option>
-          <!-- 1–31 seçenekleri JS ile doldurabilirsiniz -->
-        </select>
-        <select id="birthMonth" required>
-          <option value="">Ay</option>
-          <!-- 1–12 -->
-        </select>
-        <select id="birthYear" required>
-          <option value="">Yıl</option>
-          <!-- 1950–2025 -->
-        </select>
+      <span class="title">Doğum Tarihi:</span>
+      <div class="control dob-selects">
+        <select id="birthDay" required><option value="">Gün</option></select>
+        <select id="birthMonth" required><option value="">Ay</option></select>
+        <select id="birthYear" required><option value="">Yıl</option></select>
+        <span class="required">*</span>
       </div>
     </label>
-    <span class="required">*</span>
 
     <label>
-      <span>Adres:</span>
-      <textarea id="address" rows="3" placeholder="Adresinizi girin…" required></textarea>
+      <span class="title">Adres:</span>
+      <div class="control">
+        <textarea id="address" rows="3" placeholder="Adresinizi girin…" required></textarea>
+      </div>
     </label>
 
     <label>
-      <div class="checkbox-group">
+      <span class="title"></span>
+      <div class="control checkbox-group">
         <input type="checkbox" id="kvkk" required/>
         <label for="kvkk">KVKK’yi okudum, onaylıyorum</label>
       </div>
     </label>
 
     <label>
-      <div class="checkbox-group">
+      <span class="title"></span>
+      <div class="control checkbox-group">
         <input type="checkbox" id="terms" required/>
         <label for="terms">Yasal mevzuatı okudum, kabul ediyorum</label>
       </div>
@@ -233,13 +240,11 @@
       e.preventDefault();
       const pw = document.getElementById('password').value;
       const cpw = document.getElementById('confirmPassword').value;
-      if (pw !== cpw) {
-        return alert('Şifreler uyuşmuyor.');
-      }
+      if (pw !== cpw) return alert('Şifreler uyuşmuyor.');
       const email = document.getElementById('email').value;
       try {
         await createUserWithEmailAndPassword(auth, email, pw);
-        alert('Kayıt tamamlandı!');
+        alert('Kayıt tamamlandı!'); 
         window.location.href = 'index.html';
       } catch(err) {
         alert('Hata: ' + err.message);
