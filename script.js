@@ -1,5 +1,7 @@
 // script.js
-// Firebase Auth fonksiyonlarını import edin
+// ============================================
+// 0) Firebase Auth import & init
+// ============================================
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -7,10 +9,20 @@ import {
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-// Auth örneğini alın (index.html içinde initializeApp ile başlatılan app'i kullanır)
-const auth = getAuth();
+// Eğer Firestore da kullanmak istersen, yorum satırını kaldır:
+// import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-// 1) Başlangıç verisi (4 periyot için)
+const auth = getAuth();
+// const db = getFirestore(); // Firestore için
+
+// Dinleyerek kullanıcı durumunu konsola bas (isteğe bağlı)
+onAuthStateChanged(auth, user => {
+  console.log("Auth state:", user);
+});
+
+// ============================================
+// 1) Başlangıç verisi (4 periyot)
+// ============================================
 const answersData = [
   { text: 'Tavanda zıplıyor.',   daily: 24, weekly: 44, monthly: 70, yearly: 320 },
   { text: 'Kedi kostümü giyer.',  daily: 18, weekly: 33, monthly: 60, yearly: 210 },
@@ -18,7 +30,9 @@ const answersData = [
 ];
 let currentFilter = 'daily';
 
-// 2) Cevap listesini render et
+// ============================================
+// 2) Listeyi render et
+// ============================================
 function renderAnswers() {
   const list = document.getElementById('answers-list');
   list.innerHTML = '';
@@ -28,9 +42,8 @@ function renderAnswers() {
 
     const span = document.createElement('span');
     span.className = 'votes';
-    span.textContent = `😂 ${item[currentFilter]}`;
+    span.textContent = `😂 ${ item[currentFilter] }`;
     span.addEventListener('click', () => {
-      // oy artırma
       item[currentFilter]++;
       renderAnswers();
     });
@@ -40,7 +53,9 @@ function renderAnswers() {
   });
 }
 
-// 3) Geri sayım
+// ============================================
+// 3) Geri sayım (gün sonuna kadar)
+// ============================================
 function startCountdown() {
   const display = document.getElementById('countdown');
   function update() {
@@ -57,26 +72,28 @@ function startCountdown() {
   setInterval(update, 1000);
 }
 
+// ============================================
 // 4) Filtre butonları
+// ============================================
 function setupFilters() {
   const buttons = document.querySelectorAll('.filters button');
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
       const txt = btn.textContent.trim();
-      if      (txt === 'Günlük')  currentFilter = 'daily';
+      if      (txt === 'Günlük')   currentFilter = 'daily';
       else if (txt === 'Haftalık') currentFilter = 'weekly';
       else if (txt === 'Aylık')    currentFilter = 'monthly';
       else if (txt === 'Yıllık')   currentFilter = 'yearly';
-
       renderAnswers();
     });
   });
 }
 
-// 5) Yeni yorum modal’ı
+// ============================================
+// 5) Yorum modal’ı
+// ============================================
 function setupCommentModal() {
   const modal     = document.getElementById('comment-modal');
   const btnOpen   = document.getElementById('answer-btn');
@@ -95,74 +112,87 @@ function setupCommentModal() {
   btnSubmit.addEventListener('click', () => {
     const text = textarea.value.trim();
     if (!text) return alert('Lütfen bir yorum yazın!');
-    answersData.push({
-      text:    text,
-      daily:   0,
-      weekly:  0,
-      monthly: 0,
-      yearly:  0
-    });
+    answersData.push({ text, daily:0, weekly:0, monthly:0, yearly:0 });
     modal.style.display = 'none';
     renderAnswers();
   });
 }
 
-// 6) Auth modal’ı (Giriş/Kayıt)
-function setupAuthModal() {
+// ============================================
+// 6) Auth (Giriş / Kayıt) modal’ı
+// ============================================
+function setupAuthForm() {
   const navAuth   = document.getElementById('nav-auth');
-  const authModal = document.getElementById('auth-modal');
-  const authClose = document.getElementById('auth-close');
+  const modal     = document.getElementById('auth-modal');
+  const btnClose  = document.getElementById('auth-close');
+  const form      = document.getElementById('auth-form');
+  const emailIn   = document.getElementById('email');
+  const passIn    = document.getElementById('password');
+  const regBtn    = document.getElementById('register-btn');
+  const loginBtn  = document.getElementById('login-btn');
 
+  // Modal aç/kapa
   navAuth.addEventListener('click', e => {
     e.preventDefault();
-    authModal.style.display = 'flex';
+    modal.style.display = 'flex';
   });
-  authClose.addEventListener('click', () => authModal.style.display = 'none');
-  authModal.addEventListener('click', e => {
-    if (e.target === authModal) authModal.style.display = 'none';
+  btnClose.addEventListener('click', () => modal.style.display = 'none');
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.style.display = 'none';
   });
-}
 
-// 7) Giriş ve Kayıt işlemleri
-function setupAuthForm() {
-  const emailIn  = document.getElementById('email');
-  const passIn   = document.getElementById('password');
-  const loginBtn = document.getElementById('login-btn');
-  const regBtn   = document.getElementById('register-btn');
-
-  loginBtn.addEventListener('click', async e => {
-    e.preventDefault();
-    try {
-      await signInWithEmailAndPassword(auth, emailIn.value, passIn.value);
-      alert('Giriş başarılı!');
-      document.getElementById('auth-modal').style.display = 'none';
-    } catch(err) {
-      alert('Giriş hatası: ' + err.message);
+  // Ortak validate fonksiyonu
+  function validateCredentials() {
+    const email = emailIn.value.trim();
+    const pass  = passIn.value.trim();
+    if (!email || !pass) {
+      alert('Lütfen e-posta ve şifre girin.');
+      return false;
     }
-  });
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+      alert('Lütfen geçerli bir e-posta adresi girin.');
+      return false;
+    }
+    return { email, pass };
+  }
 
+  // Kayıt ol
   regBtn.addEventListener('click', async e => {
     e.preventDefault();
+    const creds = validateCredentials();
+    if (!creds) return;
     try {
-      await createUserWithEmailAndPassword(auth, emailIn.value, passIn.value);
-      alert('Kayıt başarılı! Şimdi giriş yapabilirsiniz.');
+      await createUserWithEmailAndPassword(auth, creds.email, creds.pass);
+      alert('Kayıt başarılı! Giriş yapabilirsiniz.');
+      modal.style.display = 'none';
     } catch(err) {
       alert('Kayıt hatası: ' + err.message);
     }
   });
 
-  // Opsiyonel: giriş durumu değiştiğinde konsola yazdır
-  onAuthStateChanged(auth, user => {
-    console.log('Auth durumu:', user);
+  // Giriş yap
+  loginBtn.addEventListener('click', async e => {
+    e.preventDefault();
+    const creds = validateCredentials();
+    if (!creds) return;
+    try {
+      await signInWithEmailAndPassword(auth, creds.email, creds.pass);
+      alert('Giriş başarılı!');
+      modal.style.display = 'none';
+    } catch(err) {
+      alert('Giriş hatası: ' + err.message);
+    }
   });
 }
 
-// 8) Sayfa hazır olduğunda hepsini başlat
+// ============================================
+// 7) Uygulamayı başlat
+// ============================================
 document.addEventListener('DOMContentLoaded', () => {
   startCountdown();
   setupFilters();
   renderAnswers();
   setupCommentModal();
-  setupAuthModal();
   setupAuthForm();
 });
