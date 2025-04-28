@@ -5,66 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>iThink • Kayıt Ol</title>
   <link rel="stylesheet" href="style.css"/>
-  <style>
-    /* form arkaplanı ve iç boşlukları */
-    .register-form {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      background: #fff9c4; /* açık sarı ton */
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .register-form label {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 12px;
-      align-items: center;
-    }
-    .register-form label span {
-      flex: 1 0 120px;
-    }
-    .register-form input,
-    .register-form select,
-    .register-form textarea {
-      flex: 2 0 300px;
-      padding: 6px 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .register-form textarea {
-      resize: vertical;
-    }
-    .register-form .dob-selects select {
-      margin-right: 4px;
-    }
-    .register-form .gender-options {
-      display: flex;
-      gap: 12px;
-      flex: 2 0 auto;
-    }
-    .register-form .checkbox-group {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex: 2 0 auto;
-    }
-    .register-form .btn-area {
-      text-align: right;
-      margin-top: 16px;
-    }
-    .register-form button {
-      padding: 8px 16px;
-      background: #84a9c0;
-      border: none;
-      border-radius: 4px;
-      color: white;
-      cursor: pointer;
-    }
-    .register-form button:hover {
-      background: #6b8fa2;
-    }
-  </style>
 </head>
 <body>
 
@@ -88,20 +28,20 @@
 
     <label>
       <span>Adı Soyadı:</span>
-      <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required />
-      <span style="color:red">*</span>
+      <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required/>
+      <span class="required">*</span>
     </label>
 
     <label>
       <span>Kullanıcı Adı:</span>
-      <input type="text" id="username" placeholder="Kullanıcı adınız" required />
-      <span style="color:red">*</span>
+      <input type="text" id="username" placeholder="Kullanıcı adınız" required/>
+      <span class="required">*</span>
     </label>
 
     <label>
       <span>E-mail:</span>
-      <input type="email" id="email" placeholder="E-posta adresiniz" required />
-      <span style="color:red">*</span>
+      <input type="email" id="email" placeholder="E-posta adresiniz" required/>
+      <span class="required">*</span>
     </label>
 
     <label>
@@ -114,14 +54,14 @@
 
     <label>
       <span>Şifre:</span>
-      <input type="password" id="password" placeholder="Şifreniz" required />
-      <span style="color:red">*</span>
+      <input type="password" id="password" placeholder="Şifreniz" required/>
+      <span class="required">*</span>
     </label>
 
     <label>
       <span>Tekrar Şifre:</span>
-      <input type="password" id="confirmPassword" placeholder="Şifrenizi tekrar girin" required />
-      <span style="color:red">*</span>
+      <input type="password" id="confirmPassword" placeholder="Şifrenizi tekrar girin" required/>
+      <span class="required">*</span>
     </label>
 
     <label>
@@ -137,18 +77,15 @@
       <div class="dob-selects">
         <select id="birthDay" required>
           <option value="">Gün</option>
-          <!-- <option>1</option> … 31 seçenek -->
         </select>
         <select id="birthMonth" required>
           <option value="">Ay</option>
-          <!-- <option>1</option> … 12 seçenek -->
         </select>
         <select id="birthYear" required>
           <option value="">Yıl</option>
-          <!-- <option>2025</option> … aradaki yıllar -->
         </select>
       </div>
-      <span style="color:red">*</span>
+      <span class="required">*</span>
     </label>
 
     <label>
@@ -179,7 +116,7 @@
     </div>
   </form>
 
-  <!-- Firebase & Kayıt Logic (opsiyonel) -->
+  <!-- Firebase & kayıt logic -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -194,18 +131,15 @@
       measurementId: "G-2WLSCRDWQC"
     };
 
-    const app  = initializeApp(config);
+    const app = initializeApp(config);
     const auth = getAuth(app);
     const form = document.getElementById('register-form');
 
     form.addEventListener('submit', async e => {
       e.preventDefault();
-      // basit validasyon
-      const pw   = document.getElementById('password').value;
-      const cpw  = document.getElementById('confirmPassword').value;
-      if (pw !== cpw) {
-        return alert('Girilen şifreler uyuşmuyor.');
-      }
+      const pw = document.getElementById('password').value;
+      const cpw = document.getElementById('confirmPassword').value;
+      if (pw !== cpw) return alert('Şifreler uyuşmuyor.');
       const email = document.getElementById('email').value;
       try {
         await createUserWithEmailAndPassword(auth, email, pw);
