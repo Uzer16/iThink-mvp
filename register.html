@@ -6,7 +6,7 @@
   <title>iThink • Kayıt Ol</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    /* ==== Register form düzeni ==== */
+    /* form arkaplanı ve iç boşlukları */
     .register-form {
       max-width: 600px;
       margin: 40px auto;
@@ -14,66 +14,55 @@
       background: #fff9c4;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      row-gap: 12px;
-      column-gap: 16px;
-      align-items: center;
     }
     .register-form h2 {
-      grid-column: 1 / -1;
-      margin-bottom: 12px;
-      font-size: 1.5em;
+      margin-bottom: 16px;
     }
     .register-form label {
-      display: contents;
-    }
-    /* Başlık hücresi */
-    .register-form label > span.title {
-      grid-column: 1;
-      justify-self: end;
-      padding-right: 8px;
-    }
-    /* Kontrol hücresi */
-    .register-form label > .control {
-      grid-column: 2;
-      width: 100%;
       display: flex;
       align-items: center;
+      margin-bottom: 12px;
+    }
+    .register-form label span.title {
+      flex: 1 0 130px;
+    }
+    .register-form .control {
+      flex: 2 0 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     .register-form input,
     .register-form select,
     .register-form textarea {
-      flex: 1;
+      flex: 2 0 0;
       padding: 6px 8px;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
     .register-form textarea {
       resize: vertical;
-      min-height: 60px;
-    }
-    .register-form .gender-options,
-    .register-form .dob-selects,
-    .register-form .checkbox-group {
-      gap: 8px;
-      display: flex;
-      align-items: center;
     }
     .register-form .dob-selects select {
-      width: auto;
+      flex: 1 0 auto;
+    }
+    .register-form .gender-options,
+    .register-form .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 2 0 0;
     }
     .register-form .required {
-      margin-left: 6px;
+      margin-left: 4px;
       color: red;
-      font-weight: bold;
+      flex: 0 0 auto;
     }
-    .btn-area {
-      grid-column: 2;
+    .register-form .btn-area {
       text-align: right;
       margin-top: 16px;
     }
-    .btn-area button {
+    .register-form button {
       padding: 8px 16px;
       background: #84a9c0;
       border: none;
@@ -81,18 +70,16 @@
       color: white;
       cursor: pointer;
     }
-    .btn-area button:hover {
+    .register-form button:hover {
       background: #6b8fa2;
     }
     .back-home {
-      grid-column: 1 / -1;
       text-align: center;
-      margin-top: 16px;
+      margin-top: 12px;
     }
     .back-home a {
       text-decoration: none;
       color: #2f4f2f;
-      font-weight: bold;
     }
     .back-home a:hover {
       text-decoration: underline;
@@ -121,55 +108,45 @@
 
     <label>
       <span class="title">Adı Soyadı:</span>
-      <div class="control">
-        <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required/>
-        <span class="required">*</span>
-      </div>
+      <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required/>
+      <span class="required">*</span>
     </label>
 
     <label>
       <span class="title">Kullanıcı Adı:</span>
-      <div class="control">
-        <input type="text" id="username" placeholder="Kullanıcı adınız" required/>
-        <span class="required">*</span>
-      </div>
+      <input type="text" id="username" placeholder="Kullanıcı adınız" required/>
+      <span class="required">*</span>
     </label>
 
     <label>
-      <span class="title">E-mail:</span>
-      <div class="control">
-        <input type="email" id="email" placeholder="E-posta adresiniz" required/>
-        <span class="required">*</span>
-      </div>
+      <span class="title">E-posta:</span>
+      <input type="email" id="email" placeholder="E-posta adresiniz" required/>
+      <span class="required">*</span>
     </label>
 
     <label>
-    <span class="title">E-postamı Gizle:</span>
-    <div class="control checkbox-group">
-      <input type="checkbox" id="hideEmail"/>
-      <label for="hideEmail">Onaylıyorum</label>
-    </div>
-  </label>
+      <span class="title">E-posta Adresimi Gizle:</span>
+      <div class="checkbox-group">
+        <input type="checkbox" id="hideEmail"/>
+        <label for="hideEmail">Onaylıyorum</label>
+      </div>
+    </label>
 
     <label>
       <span class="title">Şifre:</span>
-      <div class="control">
-        <input type="password" id="password" placeholder="Şifreniz" required/>
-        <span class="required">*</span>
-      </div>
+      <input type="password" id="password" placeholder="Şifreniz" required/>
+      <span class="required">*</span>
     </label>
 
     <label>
       <span class="title">Tekrar Şifre:</span>
-      <div class="control">
-        <input type="password" id="confirmPassword" placeholder="Şifrenizi tekrar girin" required/>
-        <span class="required">*</span>
-      </div>
+      <input type="password" id="confirmPassword" placeholder="Şifrenizi tekrar girin" required/>
+      <span class="required">*</span>
     </label>
 
     <label>
       <span class="title">Cinsiyet:</span>
-      <div class="control gender-options">
+      <div class="gender-options">
         <label><input type="radio" name="gender" value="male" required/> Erkek</label>
         <label><input type="radio" name="gender" value="female"/> Kadın</label>
       </div>
@@ -177,35 +154,33 @@
 
     <label>
       <span class="title">Doğum Tarihi:</span>
-      <div class="control dob-selects">
-        <select id="birthDay" required><option value="">Gün</option></select>
-        <select id="birthMonth" required><option value="">Ay</option></select>
-        <select id="birthYear" required><option value="">Yıl</option></select>
-        <span class="required">*</span>
+      <div class="dob-selects control">
+        <select id="birthDay" required></select>
+        <select id="birthMonth" required></select>
+        <select id="birthYear" required></select>
       </div>
+      <span class="required">*</span>
     </label>
 
     <label>
       <span class="title">Adres:</span>
-      <div class="control">
-        <textarea id="address" rows="3" placeholder="Adresinizi girin…" required></textarea>
-      </div>
+      <textarea id="address" rows="3" placeholder="Adresinizi girin…" required></textarea>
     </label>
 
     <label>
-      <span class="title"></span>
-      <div class="control checkbox-group">
+      <div class="checkbox-group">
         <input type="checkbox" id="kvkk" required/>
         <label for="kvkk">KVKK’yi okudum, onaylıyorum</label>
       </div>
+      <span class="required">*</span>
     </label>
 
     <label>
-      <span class="title"></span>
-      <div class="control checkbox-group">
+      <div class="checkbox-group">
         <input type="checkbox" id="terms" required/>
         <label for="terms">Yasal mevzuatı okudum, kabul ediyorum</label>
       </div>
+      <span class="required">*</span>
     </label>
 
     <div class="btn-area">
@@ -217,11 +192,26 @@
     </div>
   </form>
 
-  <!-- Firebase & kayıt logic -->
+  <!-- JS: dropdown doldurma & Firebase kayıt -->
   <script type="module">
+    // Gün/Ay/Yıl dropdown’larını doldur
+    const dayEl   = document.getElementById('birthDay');
+    const monthEl = document.getElementById('birthMonth');
+    const yearEl  = document.getElementById('birthYear');
+    for (let d=1; d<=31; d++) {
+      const o = new Option(d, d);
+      dayEl.add(o);
+    }
+    ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık']
+      .forEach((m,i) => monthEl.add(new Option(m, i+1)));
+    const thisYear = new Date().getFullYear();
+    for (let y=thisYear; y>=1900; y--) {
+      yearEl.add(new Option(y, y));
+    }
+
+    // Firebase kayıt logic
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
     const config = {
       apiKey: "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
       authDomain: "ithink-mvp.firebaseapp.com",
@@ -231,25 +221,24 @@
       appId: "1:572530391954:web:1c183350174e2d9d6c9f4b",
       measurementId: "G-2WLSCRDWQC"
     };
-
-    const app = initializeApp(config);
+    const app  = initializeApp(config);
     const auth = getAuth(app);
-    const form = document.getElementById('register-form');
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      const pw = document.getElementById('password').value;
-      const cpw = document.getElementById('confirmPassword').value;
-      if (pw !== cpw) return alert('Şifreler uyuşmuyor.');
-      const email = document.getElementById('email').value;
-      try {
-        await createUserWithEmailAndPassword(auth, email, pw);
-        alert('Kayıt tamamlandı!'); 
-        window.location.href = 'index.html';
-      } catch(err) {
-        alert('Hata: ' + err.message);
-      }
-    });
+    document.getElementById('register-form')
+      .addEventListener('submit', async e => {
+        e.preventDefault();
+        const pw  = document.getElementById('password').value;
+        const cpw = document.getElementById('confirmPassword').value;
+        if (pw !== cpw) return alert('Şifreler uyuşmuyor.');
+        const email = document.getElementById('email').value;
+        try {
+          await createUserWithEmailAndPassword(auth, email, pw);
+          alert('Kayıt tamamlandı!');
+          window.location = 'index.html';
+        } catch(err) {
+          alert('Hata: ' + err.message);
+        }
+      });
   </script>
+
 </body>
 </html>
