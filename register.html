@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Kayıt Ol – iThink</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- NAVBAR (isteğe göre burayı minimal de tutabilirsiniz) -->
+  <nav class="navbar">
+    <div class="logo">iThink</div>
+    <ul class="menu">
+      <li><a href="index.html">Ana Sayfa</a></li>
+    </ul>
+  </nav>
 
+  <section class="info-section">
+    <h2>Kayıt Ol</h2>
+    <form id="register-form">
+      <input type="email" id="reg-email" placeholder="E-posta adresiniz" required />
+      <input type="password" id="reg-password" placeholder="Şifreniz" required />
+      <button type="submit">Kayıt Ol</button>
+    </form>
+    <p>Zaten hesabınız var mı? <a href="login.html">Giriş Yap</a></p>
+  </section>
+
+  <!-- Firebase + Auth -->
+  <script type="module">
+    import { initializeApp }   from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword }
+                              from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey:            "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
+      authDomain:        "ithink-mvp.firebaseapp.com",
+      projectId:         "ithink-mvp",
+      storageBucket:     "ithink-mvp.appspot.com",
+      messagingSenderId: "572530391954",
+      appId:             "1:572530391954:web:1c183350174e2d9d6c9f4b",
+      measurementId:     "G-2WLSCRDWQC"
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Kayıt formunu yakala
+    const form = document.getElementById('register-form');
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const email = document.getElementById('reg-email').value.trim();
+      const pass  = document.getElementById('reg-password').value.trim();
+      if (!email || !pass) {
+        return alert('Lütfen e-posta ve şifre girin.');
+      }
+      const re = /^\S+@\S+\.\S+$/;
+      if (!re.test(email)) {
+        return alert('Lütfen geçerli bir e-posta adresi girin.');
+      }
+      try {
+        await createUserWithEmailAndPassword(auth, email, pass);
+        alert('Kayıt başarılı! Şimdi giriş sayfasına yönlendiriliyorsunuz.');
+        window.location.href = 'login.html';
+      } catch(err) {
+        alert('Kayıt hatası: ' + err.message);
+      }
+    });
+  </script>
+</body>
+</html>
