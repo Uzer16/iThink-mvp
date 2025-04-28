@@ -131,7 +131,7 @@ body {
   cursor: pointer;
 }
 
-/* ===== MODAL ===== */
+/* ===== MODALLAR ===== */
 .modal {
   display: none;
   position: fixed;
@@ -184,6 +184,10 @@ body {
 }
 
 /* ===== AUTH MODAL ===== */
+#auth-modal .modal-content form {
+  display: flex;
+  flex-direction: column;
+}
 #auth-form input {
   width: 100%;
   margin: 8px 0;
