@@ -131,7 +131,7 @@ body {
   cursor: pointer;
 }
 
-/* ===== MODALLAR ===== */
+/* ===== MODAL (ortak) ===== */
 .modal {
   display: none;
   position: fixed;
@@ -162,7 +162,7 @@ body {
   cursor: pointer;
 }
 
-/* Yeni yorum textarea */
+/* ===== YENİ YORUM MODAL’i ===== */
 #new-comment {
   width: 100%;
   margin: 12px 0;
@@ -183,11 +183,7 @@ body {
   background: #e57373;
 }
 
-/* ===== AUTH MODAL ===== */
-#auth-modal .modal-content form {
-  display: flex;
-  flex-direction: column;
-}
+/* ===== AUTH MODAL’i ===== */
 #auth-form input {
   width: 100%;
   margin: 8px 0;
@@ -214,7 +210,7 @@ body {
   background: #6b8fa2;
 }
 
-/* ===== INFO SECTION ===== */
+/* ===== INFO SECTION (sayfalar arası) ===== */
 .info-section {
   max-width: 600px;
   margin: 40px auto;
@@ -253,7 +249,7 @@ body {
   background: #6b8fa2;
 }
 
-/* ===== BACK HOME LINK ===== */
+/* ===== BACK HOME LINK (info sayfalarına) ===== */
 .back-home {
   max-width: 600px;
   margin: 20px auto;
