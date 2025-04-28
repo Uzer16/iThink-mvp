@@ -1,10 +1,8 @@
-// script.js
 // ============================================
 // 0) Firebase Auth import & başlatma
 // ============================================
 import {
   getAuth,
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -113,7 +111,7 @@ function setupCommentModal() {
 }
 
 // ============================================
-// 6) Auth (Giriş / Kayıt) modal’i
+// 6) Auth (Giriş) modal’i
 // ============================================
 function setupAuthForm() {
   const navAuth   = document.getElementById('nav-auth');
@@ -121,7 +119,6 @@ function setupAuthForm() {
   const btnClose  = document.getElementById('auth-close');
   const emailIn   = document.getElementById('email');
   const passIn    = document.getElementById('password');
-  const regBtn    = document.getElementById('register-btn');
   const loginBtn  = document.getElementById('login-btn');
 
   // Modal aç/kapa
@@ -134,43 +131,20 @@ function setupAuthForm() {
     if (e.target === modal) modal.style.display = 'none';
   });
 
-  // Girdi kontrolü
-  function validateCredentials() {
+  // Giriş yap
+  loginBtn.addEventListener('click', async e => {
+    e.preventDefault();
     const email = emailIn.value.trim();
     const pass  = passIn.value.trim();
     if (!email || !pass) {
-      alert('Lütfen e-posta ve şifre girin.');
-      return null;
+      return alert('Lütfen e-posta ve şifre girin.');
     }
-    const emailRegex = /^\S+@\S+\.\S+$/;
-    if (!emailRegex.test(email)) {
-      alert('Lütfen geçerli bir e-posta adresi girin.');
-      return null;
+    const re = /^\S+@\S+\.\S+$/;
+    if (!re.test(email)) {
+      return alert('Lütfen geçerli bir e-posta girin.');
     }
-    return { email, pass };
-  }
-
-  // Kayıt işlemi
-  regBtn.addEventListener('click', async e => {
-    e.preventDefault();
-    const creds = validateCredentials();
-    if (!creds) return;
     try {
-      await createUserWithEmailAndPassword(auth, creds.email, creds.pass);
-      alert('Kayıt başarılı! Şimdi giriş yapabilirsiniz.');
-      modal.style.display = 'none';
-    } catch(err) {
-      alert('Kayıt hatası: ' + err.message);
-    }
-  });
-
-  // Giriş işlemi
-  loginBtn.addEventListener('click', async e => {
-    e.preventDefault();
-    const creds = validateCredentials();
-    if (!creds) return;
-    try {
-      await signInWithEmailAndPassword(auth, creds.email, creds.pass);
+      await signInWithEmailAndPassword(auth, email, pass);
       alert('Giriş başarılı!');
       modal.style.display = 'none';
     } catch(err) {
