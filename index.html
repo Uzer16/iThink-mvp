@@ -11,12 +11,12 @@
   <nav class="navbar">
     <div class="logo">iThink</div>
     <ul class="menu">
-      <li><a href="#kurallar">Kurallar</a></li>
-      <li><a href="#oduller">Ödüller</a></li>
-      <li><a href="#sponsorlar">Sponsorlar</a></li>
-      <li><a href="#oneriler">Soru Öneriniz ✎</a></li>
-      <!-- artık modal açacak -->
-      <li><a href="#" id="nav-auth">Giriş/Kayıt</a></li>
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="kurallar.html">Kurallar</a></li>
+      <li><a href="oduller.html">Ödüller</a></li>
+      <li><a href="sponsorlar.html">Sponsorlar</a></li>
+      <li><a href="oneriler.html">Soru Öneriniz ✎</a></li>
+      <li><a href="#" id="nav-auth">Giriş / Kayıt</a></li>
     </ul>
   </nav>
 
@@ -62,8 +62,8 @@
       <span id="auth-close" class="modal-close">&times;</span>
       <h2>Giriş / Kayıt</h2>
       <form id="auth-form">
-        <input type="email" id="email" placeholder="E-posta adresiniz" required/>
-        <input type="password" id="password" placeholder="Şifreniz" required/>
+        <input type="email" id="email" placeholder="E-posta adresiniz" required />
+        <input type="password" id="password" placeholder="Şifreniz" required />
         <div class="auth-buttons">
           <button type="button" id="register-btn">Kayıt Ol</button>
           <button type="button" id="login-btn">Giriş Yap</button>
@@ -77,7 +77,6 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAnalytics }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
     import { getAuth }       from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-    // Eğer Firestore kullanacaksan:
     // import { getFirestore }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -94,14 +93,14 @@
     const app       = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth      = getAuth(app);
-    // const db        = getFirestore(app); // Firestore’u açmak istersen
+    // const db = getFirestore(app);
 
-    // Auth durum değişimini izlemek istersen
+    // Auth durum değişimini izle
     import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     onAuthStateChanged(auth, user => console.log("Auth durum:", user));
   </script>
 
-  <!-- SENİN JS’İN -->
+  <!-- Uygulama mantığı (script.js) -->
   <script type="module" src="script.js"></script>
 </body>
 </html>
