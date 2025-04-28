@@ -3,33 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Kayıt Ol – iThink</title>
+  <title>iThink • Kayıt Ol</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- NAVBAR (isteğe göre burayı minimal de tutabilirsiniz) -->
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">iThink</div>
     <ul class="menu">
       <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="kurallar.html">Kurallar</a></li>
+      <li><a href="oduller.html">Ödüller</a></li>
+      <li><a href="sponsorlar.html">Sponsorlar</a></li>
+      <li><a href="oneriler.html">Soru Öneriniz ✎</a></li>
+      <li><a href="register.html" class="active">Kayıt Ol</a></li>
+      <li><a href="#" id="nav-auth">Giriş Yap</a></li>
     </ul>
   </nav>
 
+  <!-- KAYIT FORMU -->
   <section class="info-section">
     <h2>Kayıt Ol</h2>
     <form id="register-form">
-      <input type="email" id="reg-email" placeholder="E-posta adresiniz" required />
-      <input type="password" id="reg-password" placeholder="Şifreniz" required />
+      <label>
+        Ad Soyad  
+        <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required />
+      </label>
+
+      <label>
+        E-posta  
+        <input type="email" id="email" placeholder="E-posta adresiniz" required />
+      </label>
+
+      <label>
+        Şifre  
+        <input type="password" id="password" placeholder="Şifreniz" required />
+      </label>
+
+      <label>
+        TC Kimlik No  
+        <input type="text" id="tcNo" placeholder="11 haneli TC No" pattern="\d{11}" required />
+      </label>
+
+      <label>
+        İletişim Numarası  
+        <input type="tel" id="phone" placeholder="+90 5xx xxx xx xx" required />
+      </label>
+
+      <label>
+        Cinsiyet  
+        <select id="gender" required>
+          <option value="">Seçiniz</option>
+          <option value="female">Kadın</option>
+          <option value="male">Erkek</option>
+          <option value="other">Belirtmek İstemiyorum</option>
+        </select>
+      </label>
+
+      <label>
+        Adres  
+        <textarea id="address" rows="3" placeholder="Adresinizi girin…" required></textarea>
+      </label>
+
+      <label>
+        <input type="checkbox" id="kvk" required />
+        KVKK (Kişisel Verilerin Korunması) onaylıyorum
+      </label>
+
+      <label>
+        <input type="checkbox" id="terms" required />
+        Yasal mevzuatı okudum ve kabul ediyorum
+      </label>
+
       <button type="submit">Kayıt Ol</button>
     </form>
-    <p>Zaten hesabınız var mı? <a href="login.html">Giriş Yap</a></p>
+
+    <div class="back-home">
+      <a href="index.html">← Ana Sayfaya Dön</a>
+    </div>
   </section>
 
-  <!-- Firebase + Auth -->
+  <!-- FIREBASE ve KAYIT İŞLEMLERİ -->
   <script type="module">
-    import { initializeApp }   from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword }
-                              from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey:            "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
@@ -40,26 +97,27 @@
       appId:             "1:572530391954:web:1c183350174e2d9d6c9f4b",
       measurementId:     "G-2WLSCRDWQC"
     };
-    const app = initializeApp(firebaseConfig);
+
+    // Firebase’i başlat
+    const app  = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // Kayıt formunu yakala
+    // Formu yakala
     const form = document.getElementById('register-form');
     form.addEventListener('submit', async e => {
       e.preventDefault();
-      const email = document.getElementById('reg-email').value.trim();
-      const pass  = document.getElementById('reg-password').value.trim();
+
+      // Basit doğrulama
+      const email = document.getElementById('email').value.trim();
+      const pass  = document.getElementById('password').value.trim();
       if (!email || !pass) {
-        return alert('Lütfen e-posta ve şifre girin.');
-      }
-      const re = /^\S+@\S+\.\S+$/;
-      if (!re.test(email)) {
-        return alert('Lütfen geçerli bir e-posta adresi girin.');
+        return alert('E-posta ve şifre zorunlu.');
       }
       try {
+        // Firebase ile kayıt
         await createUserWithEmailAndPassword(auth, email, pass);
-        alert('Kayıt başarılı! Şimdi giriş sayfasına yönlendiriliyorsunuz.');
-        window.location.href = 'login.html';
+        alert('Kayıt başarılı! Ana sayfaya yönlendiriliyorsunuz.');
+        window.location = 'index.html';
       } catch(err) {
         alert('Kayıt hatası: ' + err.message);
       }
