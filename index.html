@@ -9,7 +9,12 @@
 <body>
   <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="logo">ABZÜRT</div>
+    <div class="logo">
+      <!-- Logo olarak resim ekledik. Dosya yolunu kendinize göre ayarlayın. -->
+      <a href="index.html">
+        <img src="baykus-logo-son.png" alt="ABZÜRT Logo" class="logo-img" />
+      </a>
+    </div>
     <ul class="menu">
       <li><a href="index.html">Ana Sayfa</a></li>
       <li><a href="kurallar.html">Kurallar</a></li>
@@ -41,7 +46,9 @@
 
   <!-- CEVAP LİSTESİ -->
   <section class="answers">
-    <ul id="answers-list"></ul>
+    <ul id="answers-list">
+      <!-- JS dolduracak -->
+    </ul>
   </section>
 
   <!-- YORUM MODALI -->
@@ -54,7 +61,7 @@
     </div>
   </div>
 
-  <!-- AUTH MODALI -->
+  <!-- AUTH (Giriş / Kayıt) MODALI -->
   <div id="auth-modal" class="modal">
     <div class="modal-content">
       <span id="auth-close" class="modal-close">&times;</span>
@@ -85,9 +92,11 @@
       appId:             "1:572530391954:web:1c183350174e2d9d6c9f4b",
       measurementId:     "G-2WLSCRDWQC"
     };
+
     const app       = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth      = getAuth(app);
+
     onAuthStateChanged(auth, user => console.log("Auth durum:", user));
   </script>
 
