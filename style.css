@@ -4,16 +4,24 @@ html { scroll-behavior:smooth; }
 body { background:#f2e2c4; color:#4a4a4a; line-height:1.4; }
 
 /* Navbar */
-.navbar {
-  display:flex; justify-content:space-between; align-items:center;
-  position:sticky; top:0; z-index:10; padding:10px 20px;
-  background:rgba(166,196,138,0.8);
+/* ===== NAVBAR LOGO BADGE ===== */
+.navbar .logo-link {
+  display: flex;
+  align-items: center;
 }
-/* style.css’e ekleyin veya var olan bloğu bu şekilde güncelleyin */
-.navbar .logo img.logo-img {
-  height: 60px;   /* Logonun istediğiniz yüksekliği */
+
+/* Badge arka planı transparan ve dış çerçeve şimdilik kaldırıldı */
+.navbar .logo-badge {
+  background: transparent;
+  padding: 4px;              /* isterseniz ayarlayın */
+  display: inline-block;
+}
+
+/* Logoyu büyük gösterecek kısım */
+.navbar .logo-badge .logo-img {
+  height: 64px;              /* 64px yükseklik; isterseniz 72px de yapabilirsiniz */
   width: auto;
-  display: block; /* Daha sağlam hizalama için */
+  display: block;
 
 }
 .navbar .menu {
