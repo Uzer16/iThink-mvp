@@ -2,56 +2,45 @@
 * { box-sizing:border-box; margin:0; padding:0; font-family:sans-serif; }
 html { scroll-behavior:smooth; }
 body { background:#f2e2c4; color:#4a4a4a; line-height:1.4; }
-
-/* Navbar */
-/* ===== NAVBAR LOGO BADGE ===== */
-/* ===== NAVBAR ===== */
-.navbar .logo {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  background: rgba(255,255,255,0.8);
-  border-radius: 50%;
+/* NAVBAR */
+.navbar {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  background: rgba(166,196,138,0.8);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
+
+/* Logo kapsayıcısı: beyaz yuvarlak arka plan */
+.navbar .logo {
+  background: #fff;            /* beyaz arka plan */
+  border-radius: 50%;          /* tam yuvarlak */
+  padding: 8px;                /* iç boşluk */
+}
+
+/* Gerçek şeffaf PNG */
 .navbar .logo img.logo-img {
-  max-width: 70%;
-  max-height: 70%;
-}
-
-
-/* Badge’i şeffaf bırakıyoruz */
-.navbar .logo-badge {
-  background: transparent;
-}
-
-/* Logo boyutunu nav ile uyumlu küçültüyoruz */
-.navbar .logo-img {
-  height: 48px;  /* 48px yükseklik nav ile uyumlu */
-  width: auto;
   display: block;
-  margin-right: 12px; /* Menüden biraz uzaklaşsın */
-}
-
-
-/* Logoyu büyük gösterecek kısım */
-.navbar .logo-badge .logo-img {
-  height: 4px;              /* 64px yükseklik; isterseniz 72px de yapabilirsiniz */
+  height: 48px;                /* dilediğiniz büyüklük */
   width: auto;
-  display: block;
-
 }
+
+/* Menü linkleri */
 .navbar .menu {
-  display:flex; gap:15px; list-style:none;
+  display: flex;
+  gap: 15px;
+  list-style: none;
 }
 .navbar .menu li a {
-  color:#4a4a4a; text-decoration:none; transition:color .2s;
+  color: #4a4a4a;
+  text-decoration: none;
+  transition: color .2s;
 }
-.navbar .menu li a:hover,
-.navbar .menu li a:focus {
-  color:#2f4f2f !important;
+.navbar .menu li a:hover {
+  color: #2f4f2f;
 }
 
 /* Question Card */
