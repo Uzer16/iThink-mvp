@@ -5,16 +5,13 @@ body { background: #f2e2c4; color: #4a4a4a; line-height: 1.4; }
 
 /* ===== NAVBAR ===== */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex; justify-content: space-between; align-items: center;
   position: sticky; top: 0; z-index: 10;
   padding: 10px 20px;
   background: rgba(166, 196, 138, 0.8);
 }
-.navbar .logo img.logo-img {
-  height: 40px;         /* Logo yüksekliğini ayarlayın */
-  width: auto;
+.navbar .logo-img {
+  height: 40px; width: auto; display: block;
 }
 .navbar .menu {
   display: flex; gap: 15px; list-style: none;
@@ -79,7 +76,7 @@ body { background: #f2e2c4; color: #4a4a4a; line-height: 1.4; }
   position: absolute; top:8px; right:12px; font-size:24px; cursor:pointer;
 }
 
-/* ===== YENİ YORUM MODALİ ===== */
+/* ===== YENİ YORUM ===== */
 #new-comment {
   width:100%; margin:12px 0; padding:8px; border:1px solid #ccc; border-radius:4px; resize:vertical;
 }
@@ -88,7 +85,7 @@ body { background: #f2e2c4; color: #4a4a4a; line-height: 1.4; }
 }
 #submit-comment:hover { background:#e57373; }
 
-/* ===== AUTH MODALİ ===== */
+/* ===== AUTH ===== */
 #auth-form input {
   width:100%; margin:8px 0; padding:8px; border:1px solid #ccc; border-radius:4px;
 }
@@ -122,7 +119,7 @@ body { background: #f2e2c4; color: #4a4a4a; line-height: 1.4; }
 }
 .info-section button:hover { background:#6b8fa2; }
 
-/* ===== BACK HOME LINK ===== */
+/* ===== BACK HOME ===== */
 .back-home {
   max-width:600px; margin:20px auto; padding:0 20px; text-align:center;
 }
