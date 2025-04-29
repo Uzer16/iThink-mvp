@@ -10,9 +10,11 @@ body { background: #f2e2c4; color: #4a4a4a; line-height: 1.4; }
   padding: 10px 20px;
   background: rgba(166, 196, 138, 0.8);
 }
-.navbar .logo-img {
-  height: 40px; width: auto; display: block;
+.navbar .logo img.logo-img {
+  height: 40px;
+  width: auto;
 }
+
 .navbar .menu {
   display: flex; gap: 15px; list-style: none;
 }
