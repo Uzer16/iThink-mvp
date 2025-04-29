@@ -6,19 +6,21 @@ body { background:#f2e2c4; color:#4a4a4a; line-height:1.4; }
 /* Navbar */
 /* ===== NAVBAR LOGO BADGE ===== */
 /* ===== NAVBAR ===== */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;  /* Dikey ortalama */
-  padding: 8px 20px;    /* biraz daha ince yaptım */
-  background: rgba(166,196,138,0.8);
-}
-
-/* Logo bölümüne müdahale */
-.navbar .logo-link {
+.navbar .logo {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
+.navbar .logo img.logo-img {
+  max-width: 70%;
+  max-height: 70%;
+}
+
 
 /* Badge’i şeffaf bırakıyoruz */
 .navbar .logo-badge {
