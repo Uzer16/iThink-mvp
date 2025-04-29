@@ -5,17 +5,34 @@ body { background:#f2e2c4; color:#4a4a4a; line-height:1.4; }
 
 /* Navbar */
 /* ===== NAVBAR LOGO BADGE ===== */
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  /* Dikey ortalama */
+  padding: 8px 20px;    /* biraz daha ince yaptım */
+  background: rgba(166,196,138,0.8);
+}
+
+/* Logo bölümüne müdahale */
 .navbar .logo-link {
   display: flex;
   align-items: center;
 }
 
-/* Badge arka planı transparan ve dış çerçeve şimdilik kaldırıldı */
+/* Badge’i şeffaf bırakıyoruz */
 .navbar .logo-badge {
   background: transparent;
-  padding: 4px;              /* isterseniz ayarlayın */
-  display: inline-block;
 }
+
+/* Logo boyutunu nav ile uyumlu küçültüyoruz */
+.navbar .logo-img {
+  height: 48px;  /* 48px yükseklik nav ile uyumlu */
+  width: auto;
+  display: block;
+  margin-right: 12px; /* Menüden biraz uzaklaşsın */
+}
+
 
 /* Logoyu büyük gösterecek kısım */
 .navbar .logo-badge .logo-img {
