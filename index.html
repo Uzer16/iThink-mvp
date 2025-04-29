@@ -10,9 +10,9 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">
-      <!-- Logo olarak resim ekledik. Dosya yolunu kendinize göre ayarlayın. -->
+      <!-- Göreli yol: assets klasöründeki logoyu göster -->
       <a href="index.html">
-        <img src="C:\Users\fatih.uzer\Desktop\KIZÇEM\abzürt\baykuş-logo-son.png" alt="ABZÜRT Logo" class="logo-img" />
+        <img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo" class="logo-img" />
       </a>
     </div>
     <ul class="menu">
@@ -46,9 +46,7 @@
 
   <!-- CEVAP LİSTESİ -->
   <section class="answers">
-    <ul id="answers-list">
-      <!-- JS dolduracak -->
-    </ul>
+    <ul id="answers-list"></ul>
   </section>
 
   <!-- YORUM MODALI -->
@@ -79,9 +77,10 @@
 
   <!-- FIREBASE SDK & CONFIG -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAnalytics }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { initializeApp }        from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAnalytics }         from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
+    import { getAuth, onAuthStateChanged }
+      from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey:            "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
@@ -92,11 +91,9 @@
       appId:             "1:572530391954:web:1c183350174e2d9d6c9f4b",
       measurementId:     "G-2WLSCRDWQC"
     };
-
     const app       = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth      = getAuth(app);
-
     onAuthStateChanged(auth, user => console.log("Auth durum:", user));
   </script>
 
