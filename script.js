@@ -1,5 +1,5 @@
 // ============================================
-// 0) Firebase Auth import & başlatma
+// 0) Firebase Auth import & init
 // ============================================
 import {
   getAuth,
@@ -13,7 +13,7 @@ onAuthStateChanged(auth, user => {
 });
 
 // ============================================
-// 1) Cevap verisi & filtre durumu
+// 1) Başlangıç verisi & filtre durumu
 // ============================================
 const answersData = [
   { text: 'Tavanda zıplıyor.',   daily: 24, weekly: 44, monthly: 70, yearly: 320 },
@@ -31,22 +31,20 @@ function renderAnswers() {
   answersData.forEach(item => {
     const li = document.createElement('li');
     li.textContent = item.text;
-
     const span = document.createElement('span');
     span.className = 'votes';
-    span.textContent = `😂 ${ item[currentFilter] }`;
+    span.textContent = `😂 ${item[currentFilter]}`;
     span.addEventListener('click', () => {
       item[currentFilter]++;
       renderAnswers();
     });
-
     li.appendChild(span);
     list.appendChild(li);
   });
 }
 
 // ============================================
-// 3) Geri sayım (gün sonuna kadar)
+// 3) Geri sayım
 // ============================================
 function startCountdown() {
   const display = document.getElementById('countdown');
@@ -68,16 +66,16 @@ function startCountdown() {
 // 4) Filtre butonları
 // ============================================
 function setupFilters() {
-  const buttons = document.querySelectorAll('.filters button');
-  buttons.forEach(btn => {
+  document.querySelectorAll('.filters button').forEach(btn => {
     btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const txt = btn.textContent.trim();
-      if      (txt === 'Günlük')   currentFilter = 'daily';
-      else if (txt === 'Haftalık') currentFilter = 'weekly';
-      else if (txt === 'Aylık')    currentFilter = 'monthly';
-      else if (txt === 'Yıllık')   currentFilter = 'yearly';
+      currentFilter =
+        txt === 'Günlük'  ? 'daily'   :
+        txt === 'Haftalık' ? 'weekly'  :
+        txt === 'Aylık'    ? 'monthly' :
+        'yearly';
       renderAnswers();
     });
   });
@@ -93,56 +91,38 @@ function setupCommentModal() {
   const btnSubmit = document.getElementById('submit-comment');
   const textarea  = document.getElementById('new-comment');
 
-  btnOpen.addEventListener('click', () => {
-    textarea.value = '';
-    modal.style.display = 'flex';
-  });
-  btnClose.addEventListener('click', () => modal.style.display = 'none');
-  modal.addEventListener('click', e => {
-    if (e.target === modal) modal.style.display = 'none';
-  });
-  btnSubmit.addEventListener('click', () => {
+  btnOpen.onclick = () => { textarea.value = ''; modal.style.display = 'flex'; };
+  btnClose.onclick = () => modal.style.display = 'none';
+  modal.onclick    = e => { if (e.target === modal) modal.style.display = 'none'; };
+  btnSubmit.onclick = () => {
     const text = textarea.value.trim();
     if (!text) return alert('Lütfen bir yorum yazın!');
     answersData.push({ text, daily:0, weekly:0, monthly:0, yearly:0 });
     modal.style.display = 'none';
     renderAnswers();
-  });
+  };
 }
 
 // ============================================
-// 6) Auth (Giriş) modal’i
+// 6) Auth modal’ı (login)
 // ============================================
 function setupAuthForm() {
-  const navAuth   = document.getElementById('nav-auth');
-  const modal     = document.getElementById('auth-modal');
-  const btnClose  = document.getElementById('auth-close');
-  const emailIn   = document.getElementById('email');
-  const passIn    = document.getElementById('password');
-  const loginBtn  = document.getElementById('login-btn');
+  const navAuth  = document.getElementById('nav-auth');
+  const modal    = document.getElementById('auth-modal');
+  const btnClose = document.getElementById('auth-close');
+  const emailIn  = document.getElementById('email');
+  const passIn   = document.getElementById('password');
+  const loginBtn = document.getElementById('login-btn');
 
-  // Modal aç/kapa
-  navAuth.addEventListener('click', e => {
-    e.preventDefault();
-    modal.style.display = 'flex';
-  });
-  btnClose.addEventListener('click', () => modal.style.display = 'none');
-  modal.addEventListener('click', e => {
-    if (e.target === modal) modal.style.display = 'none';
-  });
+  navAuth.onclick = e => { e.preventDefault(); modal.style.display = 'flex'; };
+  btnClose.onclick = () => modal.style.display = 'none';
+  modal.onclick    = e => { if (e.target === modal) modal.style.display = 'none'; };
 
-  // Giriş yap
-  loginBtn.addEventListener('click', async e => {
+  loginBtn.onclick = async e => {
     e.preventDefault();
     const email = emailIn.value.trim();
     const pass  = passIn.value.trim();
-    if (!email || !pass) {
-      return alert('Lütfen e-posta ve şifre girin.');
-    }
-    const re = /^\S+@\S+\.\S+$/;
-    if (!re.test(email)) {
-      return alert('Lütfen geçerli bir e-posta girin.');
-    }
+    if (!email || !pass) return alert('Lütfen e-posta ve şifre girin.');
     try {
       await signInWithEmailAndPassword(auth, email, pass);
       alert('Giriş başarılı!');
@@ -150,7 +130,7 @@ function setupAuthForm() {
     } catch(err) {
       alert('Giriş hatası: ' + err.message);
     }
-  });
+  };
 }
 
 // ============================================
