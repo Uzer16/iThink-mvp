@@ -19,7 +19,7 @@ body { background:#f2e2c4; color:#4a4a4a; line-height:1.4; }
 
 /* Logoyu büyük gösterecek kısım */
 .navbar .logo-badge .logo-img {
-  height: 24px;              /* 64px yükseklik; isterseniz 72px de yapabilirsiniz */
+  height: 4px;              /* 64px yükseklik; isterseniz 72px de yapabilirsiniz */
   width: auto;
   display: block;
 
