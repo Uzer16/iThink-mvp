@@ -33,7 +33,7 @@ body {
   border-bottom: 4px solid var(--border);
 }
 .navbar .logo img {
-  height: 64px; width: auto;
+  height: 85px; width: auto;
 }
 .navbar .menu {
   display: flex; gap: 15px; list-style: none;
