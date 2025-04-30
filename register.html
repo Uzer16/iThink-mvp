@@ -6,85 +6,68 @@
   <title>iThink • Kayıt Ol</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    /* form arkaplanı ve iç boşlukları */
-    .register-form {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      background: #fff9c4;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .register-form h2 {
-      margin-bottom: 16px;
-    }
-    .register-form label {
-      display: flex;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-    .register-form label span.title {
-      flex: 1 0 130px;
-    }
-    .register-form .control {
-      flex: 2 0 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .register-form input,
-    .register-form select,
-    .register-form textarea {
-      flex: 2 0 0;
-      padding: 6px 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .register-form textarea {
-      resize: vertical;
-    }
-    .register-form .dob-selects select {
-      flex: 1 0 auto;
-    }
-    .register-form .gender-options,
-    .register-form .checkbox-group {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex: 2 0 0;
-    }
-    .register-form .required {
-      margin-left: 4px;
-      color: red;
-      flex: 0 0 auto;
-    }
-    .register-form .btn-area {
-      text-align: right;
-      margin-top: 16px;
-    }
-    .register-form button {
-      padding: 8px 16px;
-      background: #84a9c0;
-      border: none;
-      border-radius: 4px;
-      color: white;
-      cursor: pointer;
-    }
-    .register-form button:hover {
-      background: #6b8fa2;
-    }
-    .back-home {
-      text-align: center;
-      margin-top: 12px;
-    }
-    .back-home a {
-      text-decoration: none;
-      color: #2f4f2f;
-    }
-    .back-home a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  /* form arkaplanı ve iç boşlukları */
+  .register-form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #4CAF50; /* canlı yeşil */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .register-form label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    align-items: center;
+  }
+  .register-form label span {
+    flex: 1 0 120px;
+    color: #fff;           /* beyaz metin */
+  }
+  .register-form input,
+  .register-form select,
+  .register-form textarea {
+    flex: 2 0 300px;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .register-form textarea {
+    resize: vertical;
+  }
+  .register-form .dob-selects select {
+    margin-right: 4px;
+  }
+  .register-form .gender-options {
+    display: flex;
+    gap: 12px;
+    flex: 2 0 auto;
+  }
+  .register-form .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 2 0 auto;
+  }
+  .register-form .btn-area {
+    text-align: right;
+    margin-top: 16px;
+  }
+  .register-form button {
+    padding: 8px 16px;
+    background: #84a9c0;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+  }
+  .register-form button:hover {
+    background: #6b8fa2;
+  }
+  .required { color: #fff; } /* yıldızları da beyaz yaptık */
+</style>
+
 </head>
 <body>
 
