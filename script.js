@@ -1,3 +1,5 @@
+// script.js
+
 // 1) Başlangıç verisi & filtre durumu
 const answersData = [
   { text: 'Tavanda zıplıyor.',   daily:24, weekly:44, monthly:70, yearly:320 },
@@ -15,94 +17,80 @@ function renderAnswers() {
     li.textContent = item.text;
     const span = document.createElement('span');
     span.className = 'votes';
-    span.textContent = `😂 ${ item[currentFilter] }`;
+    span.textContent = `😂 ${item[currentFilter]}`;
     span.onclick = () => {
-      item[currentFilter]++;
-      renderAnswers();
+      item[currentFilter]++; renderAnswers();
     };
-    li.append(span);
-    ul.append(li);
+    li.append(span); ul.append(li);
   });
 }
 
 // 3) Geri sayım (gün sonuna kadar)
 function startCountdown() {
-  const display = document.getElementById('countdown');
-  function update() {
-    const now = new Date();
-    const midnight = new Date(now);
-    midnight.setHours(24,0,0,0);
-    const diff = midnight - now;
-    const hrs  = String(Math.floor(diff/3600000)).padStart(2,'0');
-    const mins = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-    const secs = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
-    display.textContent = `${hrs}:${mins}:${secs}`;
+  const d = document.getElementById('countdown');
+  function u() {
+    const n = new Date(), m = new Date(n);
+    m.setHours(24,0,0,0);
+    const diff = m-n;
+    const h = String(Math.floor(diff/3600000)).padStart(2,'0'),
+          mm = String(Math.floor((diff%3600000)/60000)).padStart(2,'0'),
+          s = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+    d.textContent = `${h}:${mm}:${s}`;
   }
-  update();
-  setInterval(update,1000);
+  u(); setInterval(u,1000);
 }
 
 // 4) Filtre butonları
 function setupFilters() {
   document.querySelectorAll('.filters button').forEach(btn => {
     btn.onclick = () => {
-      document.querySelectorAll('.filters button')
-        .forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
-      const txt = btn.textContent.trim();
-      currentFilter =
-           txt==='Günlük'  ? 'daily'
-         : txt==='Haftalık'? 'weekly'
-         : txt==='Aylık'   ? 'monthly'
-         : 'yearly';
+      const t=btn.textContent.trim();
+      currentFilter = t==='Günlük'?'daily':t==='Haftalık'?'weekly':t==='Aylık'?'monthly':'yearly';
       renderAnswers();
     };
   });
 }
 
-// 5) Yeni yorum modal’i
+// 5) Yorum modal’i
 function setupCommentModal() {
-  const modal    = document.getElementById('comment-modal');
-  const btnOpen  = document.getElementById('answer-btn');
-  const btnClose = document.getElementById('modal-close');
-  const btnSend  = document.getElementById('submit-comment');
-  const ta       = document.getElementById('new-comment');
-
-  btnOpen.onclick  = () => { ta.value=''; modal.style.display='flex'; };
-  btnClose.onclick = () => modal.style.display='none';
-  modal.onclick    = e => { if(e.target===modal) modal.style.display='none'; };
-  btnSend.onclick  = () => {
-    const txt = ta.value.trim();
-    if(!txt) return alert('Lütfen bir yorum yazın!');
-    answersData.push({ text:txt, daily:0, weekly:0, monthly:0, yearly:0 });
-    modal.style.display='none';
-    renderAnswers();
+  const modal = document.getElementById('comment-modal');
+  const o = document.getElementById('answer-btn'),
+        c = document.getElementById('modal-close'),
+        s = document.getElementById('submit-comment'),
+        ta= document.getElementById('new-comment');
+  o.onclick  = ()=>{ta.value='';modal.style.display='flex';};
+  c.onclick  = ()=>modal.style.display='none';
+  modal.onclick = e=>{if(e.target===modal)modal.style.display='none';};
+  s.onclick  = ()=>{
+    const t=ta.value.trim();
+    if(!t) return alert('Lütfen bir yorum yazın!');
+    answersData.push({ text:t, daily:0, weekly:0, monthly:0, yearly:0 });
+    modal.style.display='none'; renderAnswers();
   };
 }
 
-// 6) Auth modal’i
+// 6) Auth modal’i (login simülasyonu)
 function setupAuthForm() {
-  const navAuth  = document.getElementById('nav-auth');
-  const modal    = document.getElementById('auth-modal');
-  const btnClose = document.getElementById('auth-close');
-  const emailIn  = document.getElementById('email');
-  const passIn   = document.getElementById('password');
-  const loginBtn = document.getElementById('login-btn');
-
-  navAuth.onclick  = e => { e.preventDefault(); modal.style.display='flex'; };
-  btnClose.onclick = () => modal.style.display='none';
-  modal.onclick    = e => { if(e.target===modal) modal.style.display='none'; };
-  loginBtn.onclick = e => {
-    e.preventDefault();
-    if(!emailIn.value||!passIn.value) {
-      return alert('Lütfen e-posta ve şifre girin.');
-    }
-    alert('Giriş simülasyonu! (Buraya Firebase ekleyin.)');
+  const nav = document.getElementById('nav-auth'),
+        modal = document.getElementById('auth-modal'),
+        c = document.getElementById('auth-close'),
+        e = document.getElementById('email'),
+        p = document.getElementById('password'),
+        l = document.getElementById('login-btn');
+  nav.onclick = ev=>{ ev.preventDefault(); modal.style.display='flex'; };
+  c.onclick   = ()=>modal.style.display='none';
+  modal.onclick = ev=>{ if(ev.target===modal)modal.style.display='none'; };
+  l.onclick   = ev=>{
+    ev.preventDefault();
+    if(!e.value||!p.value) return alert('Lütfen e-posta ve şifre girin.');
+    alert('Giriş simülasyonu başarılı!');
     modal.style.display='none';
   };
 }
 
-// 7) Uygulamayı başlat
+// 7) Başlat
 document.addEventListener('DOMContentLoaded', ()=>{
   startCountdown();
   setupFilters();
