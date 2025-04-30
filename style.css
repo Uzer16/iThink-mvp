@@ -296,3 +296,20 @@ body.register-page {
   text-align: center;
   margin-top: 24px;
 }
+/* ==== ONAY KUTULARININ DİKEYDE ORTALANMASI ==== */
+.register-form .checkbox-group {
+  display: flex;
+  align-items: center;   /* Checkbox’ı metinle ortala */
+  gap: 8px;
+  margin-bottom: 16px;    /* Aradaki boşluk */
+}
+
+.register-form .checkbox-group input[type="checkbox"] {
+  margin: 0;              /* Üst boşluğu kaldır */
+  flex-shrink: 0;
+}
+
+.register-form .checkbox-group span {
+  flex: 1;                /* Metin bloğunu satır genişliğine yay */
+  line-height: 1.4;
+}
