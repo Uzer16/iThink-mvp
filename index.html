@@ -1,81 +1,102 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>ABZÜRT</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo">
-      <a href="index.html">
-        <!-- Şeffaf PNG’nizi mutlaka Photopea veya remove.bg ile arkaplanı kaldırarak oluşturun -->
-        <img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo" class="logo-img"/>
-      </a>
-    </div>
-    <ul class="menu">
-      <li><a href="index.html">Ana Sayfa</a></li>
-      <li><a href="kurallar.html">Kurallar</a></li>
-      <li><a href="oduller.html">Ödüller</a></li>
-      <li><a href="sponsorlar.html">Sponsorlar</a></li>
-      <li><a href="oneriler.html">Soru Öneriniz ✎</a></li>
-      <li><a href="#" id="nav-auth">Giriş / Kayıt</a></li>
-    </ul>
-  </nav>
+/* ===== RESET & TEMEL ===== */
+* { box-sizing:border-box; margin:0; padding:0; font-family:sans-serif; }
+html { scroll-behavior:smooth; }
+body { background:#f2e2c4; color:#4a4a4a; line-height:1.4; }
 
-  <!-- GÜNÜN SORUSU KARTI -->
-  <section class="question-card">
-    <h1>GÜNÜN SORUSU</h1>
-    <p>Patronunuz öğle arasında…?</p>
-    <div id="countdown">00:00:00</div>
-    <div class="actions">
-      <button id="answer-btn">Yorum Yap</button>
-      <button id="view-btn">Yorumları Gör</button>
-    </div>
-  </section>
+/* ===== NAVBAR ===== */
+.navbar {
+  display:flex; justify-content:space-between; align-items:center;
+  background:rgba(166,196,138,0.8); padding:10px 20px; position:sticky; top:0; z-index:100;
+}
+.navbar .logo {
+  background:#fff; border-radius:50%; padding:6px;
+}
+.navbar .logo img.logo-img {
+  display:block; height:56px; width:auto;
+}
+.navbar .menu {
+  display:flex; gap:15px; list-style:none;
+}
+.navbar .menu li a {
+  color:#4a4a4a; text-decoration:none; transition:color .2s;
+}
+.navbar .menu li a:hover,
+.navbar .menu li a:focus {
+  color:#2f4f2f;
+}
 
-  <!-- FİLTRELER -->
-  <section class="filters">
-    <button class="active">Günlük</button>
-    <button>Haftalık</button>
-    <button>Aylık</button>
-    <button>Yıllık</button>
-  </section>
+/* ===== SORU KARTI ===== */
+.question-card {
+  max-width:600px; margin:40px auto; padding:20px;
+  background:rgba(132,169,192,0.8); border-radius:12px; text-align:center;
+}
+.question-card h1 { font-size:32px; margin-bottom:10px; }
+.question-card p  { font-size:20px; margin-bottom:15px; }
+#countdown { font-size:28px; font-weight:bold; margin-bottom:15px; }
+.actions { margin-top:10px; }
+.actions button {
+  margin:0 10px; padding:10px 20px; border:none; border-radius:8px; cursor:pointer;
+}
+#answer-btn { background:#f28b82; color:#fff; }
+#view-btn   { background:transparent; border:2px solid #f9bc60; }
 
-  <!-- CEVAP LİSTESİ -->
-  <section class="answers">
-    <ul id="answers-list"></ul>
-  </section>
+/* ===== FİLTRELER ===== */
+.filters {
+  display:flex; justify-content:center; margin:20px 0; gap:10px;
+}
+.filters button {
+  padding:8px 16px; border:2px dashed #4a4a4a; border-radius:8px;
+  background:#fff; cursor:pointer;
+}
+.filters .active {
+  background:#84a9c0; color:#fff; border-style:solid;
+}
 
-  <!-- YORUM MODALİ -->
-  <div id="comment-modal" class="modal">
-    <div class="modal-content">
-      <span id="modal-close" class="modal-close">&times;</span>
-      <h2>Yeni Yorum</h2>
-      <textarea id="new-comment" placeholder="Cevabınızı yazın…" rows="4"></textarea>
-      <button id="submit-comment">Gönder</button>
-    </div>
-  </div>
+/* ===== CEVAP LİSTESİ ===== */
+.answers { max-width:600px; margin:auto; }
+.answers ul { list-style:none; }
+.answers li {
+  background:#fff; margin-bottom:12px; padding:12px 16px;
+  border-radius:8px; display:flex; justify-content:space-between; align-items:center;
+}
+.votes {
+  background:#f28b82; color:#fff; padding:4px 8px; border-radius:12px;
+  font-size:14px; cursor:pointer;
+}
 
-  <!-- AUTH MODALİ -->
-  <div id="auth-modal" class="modal">
-    <div class="modal-content">
-      <span id="auth-close" class="modal-close">&times;</span>
-      <h2>Giriş / Kayıt</h2>
-      <form id="auth-form">
-        <input type="email" id="email" placeholder="E-posta adresiniz" required />
-        <input type="password" id="password" placeholder="Şifreniz" required />
-        <div class="auth-buttons">
-          <a href="register.html" class="auth-link">Kayıt Ol</a>
-          <button type="button" id="login-btn">Giriş Yap</button>
-        </div>
-      </form>
-    </div>
-  </div>
+/* ===== MODAL ===== */
+.modal {
+  display:none; position:fixed; left:0; top:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:1000;
+}
+.modal-content {
+  background:#fff; padding:20px; border-radius:8px; width:90%; max-width:400px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.3); position:relative; text-align:center;
+}
+.modal-close {
+  position:absolute; top:8px; right:12px; font-size:24px; cursor:pointer;
+}
 
-  <!-- FIREBASE & APP LOGIC -->
-  <script type="module" src="script.js"></script>
-</body>
-</html>
+/* ===== YENİ YORUM ===== */
+#new-comment {
+  width:100%; margin:12px 0; padding:8px; border:1px solid #ccc; border-radius:4px; resize:vertical;
+}
+#submit-comment {
+  padding:8px 16px; background:#f28b82; border:none; border-radius:4px; color:#fff; cursor:pointer;
+}
+#submit-comment:hover { background:#e57373; }
+
+/* ===== AUTH MODALİ ===== */
+#auth-form input {
+  width:100%; margin:8px 0; padding:8px; border:1px solid #ccc; border-radius:4px;
+}
+.auth-buttons {
+  display:flex; justify-content:space-between; margin-top:12px;
+}
+.auth-buttons .auth-link,
+.auth-buttons button {
+  flex:1; margin:0 4px; padding:8px; text-align:center; text-decoration:none;
+  border:none; border-radius:4px; background:#84a9c0; color:#fff; cursor:pointer;
+}
+.auth-buttons .auth-link:hover,
+.auth-buttons button:hover { background:#6b8fa2; }
