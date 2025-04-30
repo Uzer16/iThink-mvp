@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>ABZÜRT • Kayıt Ol</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="register-page">
+
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">
@@ -30,72 +32,63 @@
 
     <label>
       <span>Adı Soyadı <em>*</em></span>
-      <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required/>
+      <input type="text" placeholder="Adınız ve Soyadınız" required/>
     </label>
 
     <label>
       <span>Kullanıcı Adı <em>*</em></span>
-      <input type="text" id="username" placeholder="Kullanıcı adınız" required/>
+      <input type="text" placeholder="Kullanıcı adınız" required/>
     </label>
 
     <label>
       <span>E-posta <em>*</em></span>
-      <input type="email" id="email" placeholder="E-posta adresiniz" required/>
+      <input type="email" placeholder="E-posta adresiniz" required/>
     </label>
 
     <label class="checkbox-group">
-      <input type="checkbox" id="hideEmail" />
+      <input type="checkbox"/>
       <span>E-posta adresimi gizle</span>
     </label>
 
     <label>
       <span>Şifre <em>*</em></span>
-      <input type="password" id="password" placeholder="Şifreniz" required/>
+      <input type="password" placeholder="Şifreniz" required/>
     </label>
 
     <label>
       <span>Tekrar Şifre <em>*</em></span>
-      <input type="password" id="confirmPassword" placeholder="Şifrenizi tekrar girin" required/>
+      <input type="password" placeholder="Şifrenizi tekrar girin" required/>
     </label>
 
     <fieldset>
       <legend>Cinsiyet <em>*</em></legend>
       <div class="gender-options">
-        <label><input type="radio" name="gender" value="male" required/> Erkek</label>
-        <label><input type="radio" name="gender" value="female"/> Kadın</label>
+        <label><input type="radio" name="gender" required/> Erkek</label>
+        <label><input type="radio" name="gender"/> Kadın</label>
       </div>
     </fieldset>
 
     <label>
       <span>Doğum Tarihi <em>*</em></span>
       <div class="dob-selects">
-        <select id="birthDay" required>
-          <option value="">Gün</option>
-          <!-- günleri doldurun -->
-        </select>
-        <select id="birthMonth" required>
-          <option value="">Ay</option>
-          <!-- ayları doldurun -->
-        </select>
-        <select id="birthYear" required>
-          <option value="">Yıl</option>
-          <!-- yılları doldurun -->
-        </select>
+        <select required><option>Gün</option><!--...--></select>
+        <select required><option>Ay</option><!--...--></select>
+        <select required><option>Yıl</option><!--...--></select>
       </div>
     </label>
 
     <label>
       <span>Adres <em>*</em></span>
-      <textarea id="address" rows="3" placeholder="Adresinizi girin…" required></textarea>
+      <textarea rows="3" placeholder="Adresinizi girin…" required></textarea>
     </label>
 
     <label class="checkbox-group">
-      <input type="checkbox" id="kvkk" required/>
+      <input type="checkbox" required/>
       <span>KVKK’yi okudum, onaylıyorum <em>*</em></span>
     </label>
 
     <label class="checkbox-group">
-      <input type="checkbox" id="terms" required/>
+      <input type="checkbox" required/>
       <span>Yasal mevzuatı okudum, kabul ediyorum <em>*</em></span>
     </label>
 
