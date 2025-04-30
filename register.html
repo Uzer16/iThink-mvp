@@ -5,68 +5,262 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>iThink • Kayıt Ol</title>
   <link rel="stylesheet" href="style.css"/>
+ <!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ABZÜRT • Kayıt Ol</title>
+  <link rel="stylesheet" href="style.css"/>
   <style>
-  /* form arkaplanı ve iç boşlukları */
-  .register-form {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #4CAF50; /* canlı yeşil */
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  .register-form label {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    align-items: center;
-  }
-  .register-form label span {
-    flex: 1 0 120px;
-    color: #fff;           /* beyaz metin */
-  }
-  .register-form input,
-  .register-form select,
-  .register-form textarea {
-    flex: 2 0 300px;
-    padding: 6px 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  .register-form textarea {
-    resize: vertical;
-  }
-  .register-form .dob-selects select {
-    margin-right: 4px;
-  }
-  .register-form .gender-options {
-    display: flex;
-    gap: 12px;
-    flex: 2 0 auto;
-  }
-  .register-form .checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex: 2 0 auto;
-  }
-  .register-form .btn-area {
-    text-align: right;
-    margin-top: 16px;
-  }
-  .register-form button {
-    padding: 8px 16px;
-    background: #84a9c0;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-  }
-  .register-form button:hover {
-    background: #6b8fa2;
-  }
-  .required { color: #fff; } /* yıldızları da beyaz yaptık */
-</style>
+    body {
+      background: #FF9800; /* portakal turuncusu sayfa arkaplanı */
+      margin: 0;
+      font-family: sans-serif;
+    }
+    .navbar {
+      background: #2196F3; /* canlı mavi navbar */
+      padding: 10px 20px;
+    }
+    .navbar .menu li a {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* FORM WRAPPER */
+    .form-container {
+      display: flex;
+      justify-content: center;
+      padding: 40px 0;
+    }
+
+    /* KAYIT FORMU */
+    .register-form {
+      width: 90%;
+      max-width: 600px;
+      background: #4CAF50; /* canlı yeşil */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      color: #fff;
+    }
+    .register-form h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+    .register-form label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .register-form label span {
+      flex: 1 0 140px;
+    }
+    .register-form input,
+    .register-form select,
+    .register-form textarea {
+      flex: 2 0 0;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    /* Cinsiyet */
+    .gender-options {
+      flex: 2 0 0;
+      display: flex;
+      gap: 20px;
+    }
+    .gender-options label {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Doğum Tarihi */
+    .dob-selects {
+      flex: 2 0 0;
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Checkbox Grupları */
+    .checkbox-group {
+      flex: 2 0 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .checkbox-group label {
+      color: #fff;
+      margin: 0;
+    }
+
+    /* Buton Alanı */
+    .btn-area {
+      text-align: right;
+      margin-top: 20px;
+    }
+    .register-form button {
+      padding: 10px 20px;
+      background: #2196F3;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .register-form button:hover {
+      background: #1976D2;
+    }
+
+    /* Ana Sayfaya Dön Butonu */
+    .back-home {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .back-home a {
+      display: inline-block;
+      background: #fff;
+      color: #4CAF50;
+      padding: 10px 20px;
+      border: 2px solid #4CAF50;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .back-home a:hover {
+      background: #4CAF50;
+      color: #fff;
+    }
+
+    .required {
+      color: #FFD700;
+      margin-left: 4px;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo" height="40"></a>
+    </div>
+    <ul class="menu">
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="kurallar.html">Kurallar</a></li>
+      <li><a href="oduller.html">Ödüller</a></li>
+      <li><a href="sponsorlar.html">Sponsorlar</a></li>
+      <li><a href="oneriler.html">Soru Öneriniz ✎</a></li>
+      <li><a href="#" id="nav-auth">Giriş Yap</a></li>
+    </ul>
+  </nav>
+
+  <!-- KAYIT FORMU -->
+  <div class="form-container">
+    <form id="register-form" class="register-form">
+      <h2>Kayıt Ol</h2>
+
+      <label>
+        <span>Adı Soyadı:</span>
+        <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required />
+        <span class="required">*</span>
+      </label>
+
+      <label>
+        <span>Kullanıcı Adı:</span>
+        <input type="text" id="username" placeholder="Kullanıcı adınız" required />
+        <span class="required">*</span>
+      </label>
+
+      <label>
+        <span>E-posta:</span>
+        <input type="email" id="email" placeholder="E-posta adresiniz" required />
+        <span class="required">*</span>
+      </label>
+
+      <label>
+        <span>E-posta Adresimi Gizle:</span>
+        <div class="checkbox-group">
+          <input type="checkbox" id="hideEmail" />
+          <label for="hideEmail">Onaylıyorum</label>
+        </div>
+      </label>
+
+      <label>
+        <span>Şifre:</span>
+        <input type="password" id="password" placeholder="Şifreniz" required />
+        <span class="required">*</span>
+      </label>
+
+      <label>
+        <span>Tekrar Şifre:</span>
+        <input type="password" id="confirmPassword" placeholder="Şifrenizi tekrar girin" required />
+        <span class="required">*</span>
+      </label>
+
+      <label>
+        <span>Cinsiyet:</span>
+        <div class="gender-options">
+          <label><input type="radio" name="gender" value="male" required/> Erkek</label>
+          <label><input type="radio" name="gender" value="female"/> Kadın</label>
+        </div>
+      </label>
+
+      <label>
+        <span>Doğum Tarihi:</span>
+        <div class="dob-selects">
+          <select id="birthDay" required>
+            <option value="">Gün</option>
+            <!-- 1–31 -->
+          </select>
+          <select id="birthMonth" required>
+            <option value="">Ay</option>
+            <!-- 1–12 -->
+          </select>
+          <select id="birthYear" required>
+            <option value="">Yıl</option>
+            <!-- 1900–2025 -->
+          </select>
+        </div>
+        <span class="required">*</span>
+      </label>
+
+      <label>
+        <span>Adres:</span>
+        <textarea id="address" rows="3" placeholder="Adresinizi girin…" required></textarea>
+      </label>
+
+      <label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="kvkk" required/>
+          <label for="kvkk">KVKK’yi okudum, onaylıyorum</label>
+          <span class="required">*</span>
+        </div>
+      </label>
+
+      <label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" required/>
+          <label for="terms">Yasal mevzuatı okudum, kabul ediyorum</label>
+          <span class="required">*</span>
+        </div>
+      </label>
+
+      <div class="btn-area">
+        <button type="submit">Kaydet</button>
+      </div>
+
+      <div class="back-home">
+        <a href="index.html">← Ana Sayfaya Dön</a>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
 
 </head>
 <body>
