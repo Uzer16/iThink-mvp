@@ -240,3 +240,59 @@ body.register-page {
 .register-form {
   max-width: 500px;
 }
+/* ==== REGISTER SAYFASI HİZALAMA DÜZELTMELERİ ==== */
+.register-form fieldset {
+  border: none;           /* Cinsiyet çerçevesini kaldır */
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.register-form legend {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.register-form .gender-options {
+  display: flex;          /* Tek satırda yanyana */
+  align-items: center;    /* Dikey ortala */
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.register-form .gender-options label {
+  margin: 0;
+}
+
+.register-form .gender-options input {
+  margin: 0;
+  vertical-align: middle;
+}
+
+/* Checkbox gruplarını hizala */
+.register-form .checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.register-form .checkbox-group input {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.register-form .checkbox-group span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* “Kaydet” butonunu sağa yasla */
+.register-form .btn-area {
+  text-align: right;
+}
+
+/* “Ana Sayfaya Dön” butonuna biraz üst boşluk */
+.back-home {
+  text-align: center;
+  margin-top: 24px;
+}
