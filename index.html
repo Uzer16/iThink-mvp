@@ -9,18 +9,22 @@
 <body>
   <!-- NAVBAR -->
   <nav class="navbar">
-  <div class="logo">
-    <a href="index.html">
-      <img src="assets/baykus-logo-son.png" 
-           alt="ABZÜRT Logo" 
-           class="logo-img"/>
-    </a>
-  </div>
-  <ul class="menu">
-    <li><a href="index.html">Ana Sayfa</a></li>
-    <!-- diğer linkler -->
-  </ul>
-</nav>
+    <div class="logo">
+      <a href="index.html">
+        <!-- Şeffaf PNG’nizi mutlaka Photopea veya remove.bg ile arkaplanı kaldırarak oluşturun -->
+        <img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo" class="logo-img"/>
+      </a>
+    </div>
+    <ul class="menu">
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="kurallar.html">Kurallar</a></li>
+      <li><a href="oduller.html">Ödüller</a></li>
+      <li><a href="sponsorlar.html">Sponsorlar</a></li>
+      <li><a href="oneriler.html">Soru Öneriniz ✎</a></li>
+      <li><a href="#" id="nav-auth">Giriş / Kayıt</a></li>
+    </ul>
+  </nav>
+
   <!-- GÜNÜN SORUSU KARTI -->
   <section class="question-card">
     <h1>GÜNÜN SORUSU</h1>
@@ -45,7 +49,7 @@
     <ul id="answers-list"></ul>
   </section>
 
-  <!-- YORUM MODALI -->
+  <!-- YORUM MODALİ -->
   <div id="comment-modal" class="modal">
     <div class="modal-content">
       <span id="modal-close" class="modal-close">&times;</span>
@@ -55,7 +59,7 @@
     </div>
   </div>
 
-  <!-- AUTH MODALI -->
+  <!-- AUTH MODALİ -->
   <div id="auth-modal" class="modal">
     <div class="modal-content">
       <span id="auth-close" class="modal-close">&times;</span>
@@ -71,28 +75,7 @@
     </div>
   </div>
 
-  <!-- FIREBASE & APP -->
-  <script type="module">
-    import { initializeApp }        from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAnalytics }         from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
-    import { getAuth, onAuthStateChanged }
-      from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey:            "AIzaSyAiwaQDqCi3lo5eeLIz7DdRk1Mdbcdpolw",
-      authDomain:        "ithink-mvp.firebaseapp.com",
-      projectId:         "ithink-mvp",
-      storageBucket:     "ithink-mvp.appspot.com",
-      messagingSenderId: "572530391954",
-      appId:             "1:572530391954:web:1c183350174e2d9d6c9f4b",
-      measurementId:     "G-2WLSCRDWQC"
-    };
-    const app       = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const auth      = getAuth(app);
-    onAuthStateChanged(auth, user => console.log("Auth durum:", user));
-  </script>
-
+  <!-- FIREBASE & APP LOGIC -->
   <script type="module" src="script.js"></script>
 </body>
 </html>
