@@ -193,3 +193,50 @@ body.register-page {
 
 /* ===== BACK HOME LINK (GENEL) ===== */
 .back-home a { /* … önceki gibi */ }
+/* ==== REGISTER SAYFASI EKLEMELERİ ==== */
+.register-form fieldset {
+  border: none;           /* Çerçeveyi kaldır */
+  margin-bottom: 16px;
+  padding: 0;
+}
+
+.register-form legend {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.register-form .gender-options {
+  display: inline-flex;   /* tek satırda */
+  gap: 20px;              /* aradaki boşluk */
+  margin-top: 6px;
+}
+
+/* Onay kutularını satır hizasına al */
+.register-form .checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* Yasal bildirim kutuları için ekstra boşluk */
+.register-form .checkbox-group:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Label içindeki metinleri hizala */
+.register-form label span,
+.register-form .checkbox-group span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Kaydet butonunu sağa yasla */
+.btn-area {
+  text-align: right;
+}
+
+/* Form genişliği çok uzuyorsa biraz kısıtla */
+.register-form {
+  max-width: 500px;
+}
