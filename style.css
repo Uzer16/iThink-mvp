@@ -270,3 +270,93 @@ body {
   background: var(--btn-bg);
   color: #fff;
 }
+/* ===== KAYIT FORMU (register.html) ===== */
+.register-form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff9c4;            /* Açık sarı ton */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Her bir satırı flex ile hizalayıp label/textarea/select/input arası boşluk veriyoruz */
+.register-form label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+/* Başlık <span>’lerini sabit genişlik verelim */
+.register-form label span {
+  flex: 0 0 140px;
+  font-weight: 500;
+}
+
+/* Input, select, textarea’lar esnek büyüsün */
+.register-form input,
+.register-form select,
+.register-form textarea {
+  flex: 1;
+}
+
+/* Radyo butonlarını yan yana dizelim */
+.register-form .gender-options {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+}
+
+/* E-posta gizle onay kutusunu label’la birlikte hizala */
+.register-form .checkbox-group {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 6px;
+}
+
+/* “Ana Sayfaya Dön” bağlantısını buton benzeri gösterip kontrast verelim */
+.back-home {
+  text-align: center;
+  margin-top: 20px;
+}
+.back-home a {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #6b8fa2;            /* Kontrast renk */
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.back-home a:hover {
+  background: #517a8a;
+}
+
+/* Önemli (*), star işaretlerini input’un sağında hizalamak için */
+.required {
+  color: red;
+  margin-left: 4px;
+}
+
+/* -------------------------------------- */
+/* Eğer “E-posta Gizle” checkbox’ını da kendi label’ı ile hizalamak istersen: */
+.register-form .hide-email-label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* -------------------------------------- */
+/* Örnek HTML düzenlemesi (label içinde): */
+/*
+<label>
+  <span>E-posta Adresimi Gizle:</span>
+  <div class="hide-email-label">
+    <input type="checkbox" id="hideEmail" />
+    <label for="hideEmail">E-postamı gizle</label>
+  </div>
+</label>
+*/
