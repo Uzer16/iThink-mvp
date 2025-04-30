@@ -6,7 +6,7 @@
   <title>ABZÜRT • Kayıt Ol</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="register-page">
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">
@@ -29,101 +29,85 @@
     <h2>Kayıt Bilgileri</h2>
 
     <label>
-      <span>Adı Soyadı:</span>
-      <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required />
-      <span class="required">*</span>
+      <span>Adı Soyadı <em>*</em></span>
+      <input type="text" id="fullName" placeholder="Adınız ve Soyadınız" required/>
     </label>
 
     <label>
-      <span>Kullanıcı Adı:</span>
-      <input type="text" id="username" placeholder="Kullanıcı adınız" required />
-      <span class="required">*</span>
+      <span>Kullanıcı Adı <em>*</em></span>
+      <input type="text" id="username" placeholder="Kullanıcı adınız" required/>
     </label>
 
     <label>
-      <span>E-posta:</span>
-      <input type="email" id="email" placeholder="E-posta adresiniz" required />
-      <span class="required">*</span>
+      <span>E-posta <em>*</em></span>
+      <input type="email" id="email" placeholder="E-posta adresiniz" required/>
+    </label>
+
+    <label class="checkbox-group">
+      <input type="checkbox" id="hideEmail" />
+      <span>E-posta adresimi gizle</span>
     </label>
 
     <label>
-      <span>E-posta Adresimi Gizle:</span>
-      <div class="checkbox-group">
-        <input type="checkbox" id="hideEmail" />
-        <label for="hideEmail">E-postamı gizle</label>
-      </div>
+      <span>Şifre <em>*</em></span>
+      <input type="password" id="password" placeholder="Şifreniz" required/>
     </label>
 
     <label>
-      <span>Şifre:</span>
-      <input type="password" id="password" placeholder="Şifreniz" required />
-      <span class="required">*</span>
+      <span>Tekrar Şifre <em>*</em></span>
+      <input type="password" id="confirmPassword" placeholder="Şifrenizi tekrar girin" required/>
     </label>
 
-    <label>
-      <span>Tekrar Şifre:</span>
-      <input type="password" id="confirmPassword" placeholder="Şifrenizi tekrar girin" required />
-      <span class="required">*</span>
-    </label>
-
-    <label>
-      <span>Cinsiyet:</span>
+    <fieldset>
+      <legend>Cinsiyet <em>*</em></legend>
       <div class="gender-options">
         <label><input type="radio" name="gender" value="male" required/> Erkek</label>
         <label><input type="radio" name="gender" value="female"/> Kadın</label>
       </div>
-    </label>
+    </fieldset>
 
     <label>
-      <span>Doğum Tarihi:</span>
+      <span>Doğum Tarihi <em>*</em></span>
       <div class="dob-selects">
         <select id="birthDay" required>
           <option value="">Gün</option>
-          <!-- … -->
+          <!-- günleri doldurun -->
         </select>
         <select id="birthMonth" required>
           <option value="">Ay</option>
-          <!-- … -->
+          <!-- ayları doldurun -->
         </select>
         <select id="birthYear" required>
           <option value="">Yıl</option>
-          <!-- … -->
+          <!-- yılları doldurun -->
         </select>
       </div>
-      <span class="required">*</span>
     </label>
 
     <label>
-      <span>Adres:</span>
+      <span>Adres <em>*</em></span>
       <textarea id="address" rows="3" placeholder="Adresinizi girin…" required></textarea>
     </label>
 
-    <label>
-      <div class="checkbox-group">
-        <input type="checkbox" id="kvkk" required/>
-        <label for="kvkk">KVKK’yi okudum, onaylıyorum</label>
-        <span class="required">*</span>
-      </div>
+    <label class="checkbox-group">
+      <input type="checkbox" id="kvkk" required/>
+      <span>KVKK’yi okudum, onaylıyorum <em>*</em></span>
     </label>
 
-    <label>
-      <div class="checkbox-group">
-        <input type="checkbox" id="terms" required/>
-        <label for="terms">Yasal mevzuatı okudum, kabul ediyorum</label>
-        <span class="required">*</span>
-      </div>
+    <label class="checkbox-group">
+      <input type="checkbox" id="terms" required/>
+      <span>Yasal mevzuatı okudum, kabul ediyorum <em>*</em></span>
     </label>
 
     <div class="btn-area">
-      <button type="submit">Kaydet</button>
+      <button type="submit" class="btn-primary">Kaydet</button>
     </div>
 
     <div class="back-home">
-      <a href="index.html">← Ana Sayfaya Dön</a>
+      <a href="index.html" class="btn-secondary">← Ana Sayfaya Dön</a>
     </div>
   </form>
 
-  <!-- TEK JS: Modal, Validasyon, Firebase vs. -->
   <script src="script.js"></script>
 </body>
 </html>
