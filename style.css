@@ -32,8 +32,21 @@ body {
   padding: 10px 20px; position: sticky; top: 0; z-index: 100;
   border-bottom: 4px solid var(--border);
 }
+/* Sabit navbar yüksekliği ve dikey ortalama */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 95px;      /* burada istediğiniz sabit yükseklik */
+  padding: 0 20px;   /* üst-alt boşluğu sıfırladık, sadece yan boşluk */
+  background: var(--nav-bg);
+  border-bottom: 4px solid var(--border);
+}
+
+/* Logo maksimum yüksekliği navbar’a sığsın */
 .navbar .logo img {
-  height: 85px; width: auto;
+  max-height: 100%;  /* navbar yüksekliğinin tamamını kullanır */
+  width: auto;       /* orantıyı korumak için */
 }
 .navbar .menu {
   display: flex; gap: 15px; list-style: none;
