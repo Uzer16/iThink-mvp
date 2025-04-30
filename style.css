@@ -179,8 +179,8 @@ body.register-page {
 .register-form .checkbox-group {
   display: flex;           /* yatayda yan yana */
   align-items: center;     /* dikey ortala */
-  gap: 8px;                /* kutu ↔ metin mesafesi */
-  margin-bottom: 16px;
+  gap: 4px;                /* kutu ↔ metin mesafesi */
+  margin-bottom: 8px;
 }
 .register-form .checkbox-group input[type="checkbox"] {
   margin: 0;               /* ekstra boşluğu kaldır */
