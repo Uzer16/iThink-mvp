@@ -220,3 +220,20 @@ body.register-page {
 
 /* ===== INFO SECTION vs. diğerleri ===== */
 /* istediğiniz başka sayfalardaki .info-section vb. aynı kalabilir */
+/* burada style.css’in en altına ekleyin */
+
+/* —————— Onay kutularını sade bir “inline” satıra çekiyoruz —————— */
+.register-form .checkbox-group {
+  display: block;            /* her grup kendi satırında */
+  margin-bottom: 16px;       /* alt boşluk */
+}
+
+.register-form .checkbox-group input[type="checkbox"] {
+  vertical-align: middle;    /* dikey ortala */
+  margin-right: 8px;         /* metinle arası */
+}
+
+.register-form .checkbox-group span {
+  vertical-align: middle;    /* dikey ortala */
+  white-space: normal;       /* metin satır içinde kalsın */
+}
