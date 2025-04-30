@@ -154,15 +154,14 @@ body.register-page {
   background: #FFA500; /* portakal turuncusu */
 }
 .register-form {
-  max-width: 600px; margin: 40px auto; padding: 30px;
+  max-width: 500px; margin: 40px auto; padding: 30px;
   background: #4CAF50; /* canlı yeşil */ color: #fff;
   border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 .register-form h2 {
   margin-bottom: 20px; font-size: 28px; text-align: center;
 }
-.register-form label,
-.register-form fieldset {
+.register-form label {
   display: block; margin-bottom: 16px;
 }
 .register-form input,
@@ -171,145 +170,64 @@ body.register-page {
   width: 100%; padding: 8px 10px; margin-top: 6px;
   border: none; border-radius: 4px; font-size: 1rem;
 }
-.register-form .checkbox-group,
-.register-form .gender-options {
-  display: flex; align-items: center; gap: 10px;
-}
-.register-form em { color: #FFEB3B; font-style: normal; margin-left: 4px; }
-.btn-area .btn-primary {
-  background: #0288D1; color: #fff; padding: 10px 24px;
-  border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;
-}
-.btn-area .btn-primary:hover { background: #0277BD; }
-.back-home { text-align: center; margin-top: 20px; }
-.back-home .btn-secondary {
-  background: #fff; color: #4CAF50; padding: 10px 24px;
-  border: 2px solid #fff; border-radius: 6px; font-size: 1rem;
-}
-.back-home .btn-secondary:hover { background: #E8F5E9; }
-
-/* ===== INFO SECTION ===== */
-.info-section { /* … önceki gibi */ }
-
-/* ===== BACK HOME LINK (GENEL) ===== */
-.back-home a { /* … önceki gibi */ }
-/* ==== REGISTER SAYFASI EKLEMELERİ ==== */
 .register-form fieldset {
-  border: none;           /* Çerçeveyi kaldır */
-  margin-bottom: 16px;
-  padding: 0;
+  border: none; margin-bottom: 16px; padding: 0;
 }
-
 .register-form legend {
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-weight: bold; margin-bottom: 8px;
 }
-
 .register-form .gender-options {
-  display: inline-flex;   /* tek satırda */
-  gap: 20px;              /* aradaki boşluk */
-  margin-top: 6px;
+  display: flex; align-items: center; gap: 16px; margin-top: 6px;
+}
+.register-form .gender-options input {
+  margin: 0; vertical-align: middle;
 }
 
-/* Onay kutularını satır hizasına al */
-.register-form .checkbox-group {
+/* ==== ONAY KUTULARINI DİKEYDE ORTALA ==== */
+body.register-page .register-form .checkbox-group {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
+  align-items: center;   /* Checkbox’ı metinle dikey ortala */
+  gap: 8px;               /* Checkbox ↔ metin arası boşluk */
+  margin-bottom: 16px;    /* Grup altına boşluk */
+}
+body.register-page .register-form .checkbox-group input[type="checkbox"] {
+  margin: 0;              /* Üst boşluğu kaldır */
+  flex-shrink: 0;         /* Checkbox küçülmesin */
+}
+body.register-page .register-form .checkbox-group span {
+  flex: 1;                /* Metin bloğunu tam satır genişliğine yay */
+  line-height: 1.4;       /* Checkbox ortasındaki hizalama */
 }
 
-/* Yasal bildirim kutuları için ekstra boşluk */
-.register-form .checkbox-group:last-of-type {
-  margin-bottom: 0;
-}
-
-/* Label içindeki metinleri hizala */
-.register-form label span,
-.register-form .checkbox-group span {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-/* Kaydet butonunu sağa yasla */
+/* ==== buton alanları ==== */
 .btn-area {
   text-align: right;
 }
-
-/* Form genişliği çok uzuyorsa biraz kısıtla */
-.register-form {
-  max-width: 500px;
+.btn-area .btn-primary {
+  background: #0288D1; color: #fff;
+  padding: 10px 24px; border: none;
+  border-radius: 6px; font-size: 1rem;
+  cursor: pointer;
 }
-/* ==== REGISTER SAYFASI HİZALAMA DÜZELTMELERİ ==== */
-.register-form fieldset {
-  border: none;           /* Cinsiyet çerçevesini kaldır */
-  margin: 0 0 16px;
-  padding: 0;
+.btn-area .btn-primary:hover {
+  background: #0277BD;
 }
 
-.register-form legend {
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.register-form .gender-options {
-  display: flex;          /* Tek satırda yanyana */
-  align-items: center;    /* Dikey ortala */
-  gap: 16px;
-  margin-top: 6px;
-}
-
-.register-form .gender-options label {
-  margin: 0;
-}
-
-.register-form .gender-options input {
-  margin: 0;
-  vertical-align: middle;
-}
-
-/* Checkbox gruplarını hizala */
-.register-form .checkbox-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.register-form .checkbox-group input {
-  margin: 0;
-  vertical-align: middle;
-}
-
-.register-form .checkbox-group span {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-/* “Kaydet” butonunu sağa yasla */
-.register-form .btn-area {
-  text-align: right;
-}
-
-/* “Ana Sayfaya Dön” butonuna biraz üst boşluk */
+/* ==== Ana Sayfaya Dön butonu ==== */
 .back-home {
-  text-align: center;
-  margin-top: 24px;
+  text-align: center; margin-top: 24px;
 }
-/* ==== ONAY KUTULARININ DİKEYDE ORTALANMASI ==== */
-.register-form .checkbox-group {
-  display: flex;
-  align-items: center;   /* Checkbox’ı metinle ortala */
-  gap: 8px;
-  margin-bottom: 16px;    /* Aradaki boşluk */
+.back-home .btn-secondary {
+  background: #fff; color: #4CAF50;
+  padding: 10px 24px; border: 2px solid #fff;
+  border-radius: 6px; font-size: 1rem;
 }
-
-.register-form .checkbox-group input[type="checkbox"] {
-  margin: 0;              /* Üst boşluğu kaldır */
-  flex-shrink: 0;
+.back-home .btn-secondary:hover {
+  background: #E8F5E9;
 }
 
-.register-form .checkbox-group span {
-  flex: 1;                /* Metin bloğunu satır genişliğine yay */
-  line-height: 1.4;
-}
+/* ===== INFO SECTION (diğer sayfalarda) ===== */
+/* ...varsa önceki ayarlarının aynısı burada kalacak */
+
+/* ===== GENEL “Ana Sayfa” link stilleri ===== */
+/* ...varsa daha önceki back-home a:hover gibi stiller burada kalacak */
