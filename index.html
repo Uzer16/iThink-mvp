@@ -1,12 +1,16 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>ABZÜRT</title>
+  <!-- Comic Neue (comic tarzı font) -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">
@@ -24,10 +28,12 @@
     </ul>
   </nav>
 
-  <!-- GÜNÜN SORUSU KARTI -->
+  <!-- GÜNÜN SORUSU KARTI (konuşma balonu) -->
   <section class="question-card">
-    <h1>GÜNÜN SORUSU</h1>
-    <p>Patronunuz öğle arasında…?</p>
+    <div class="speech-bubble">
+      <h1>GÜNÜN SORUSU</h1>
+      <p>Patronunuz öğle arasında…?</p>
+    </div>
     <div id="countdown">00:00:00</div>
     <div class="actions">
       <button id="answer-btn">Yorum Yap</button>
@@ -74,7 +80,6 @@
     </div>
   </div>
 
-  <!-- TEK JS: MODAL, GERİ SAYIM, FİLTRELER, YORUM, AUTH -->
   <script src="script.js"></script>
 </body>
 </html>
