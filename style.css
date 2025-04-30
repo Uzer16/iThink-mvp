@@ -15,7 +15,6 @@
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 html { scroll-behavior: smooth; }
-
 body {
   background:
     radial-gradient(circle, var(--bg-color) 10%, transparent 11%) 0 0,
@@ -61,13 +60,11 @@ body {
 }
 .speech-bubble::after {
   content: ''; position: absolute; bottom: -20px; left: 30px;
-  border: 20px solid transparent;
-  border-top-color: var(--card-bg);
+  border: 20px solid transparent; border-top-color: var(--card-bg);
 }
 .speech-bubble::before {
   content: ''; position: absolute; bottom: -24px; left: 26px;
-  border: 24px solid transparent;
-  border-top-color: var(--border);
+  border: 24px solid transparent; border-top-color: var(--border);
 }
 .speech-bubble h1 { font-size: 28px; margin-bottom: 8px; }
 .speech-bubble p  { font-size: 20px; }
@@ -99,12 +96,8 @@ body {
 }
 
 /* ===== CEVAP LİSTESİ ===== */
-.answers {
-  max-width: 600px; margin: auto;
-}
-.answers ul {
-  list-style: none; padding: 0;
-}
+.answers { max-width: 600px; margin: auto; }
+.answers ul { list-style: none; padding: 0; }
 .answers li {
   display: flex; justify-content: space-between; align-items: center;
   background: var(--card-bg); margin: 8px 0; padding: 12px;
@@ -115,7 +108,7 @@ body {
 .modal {
   display: none; position: fixed; inset: 0;
   background: rgba(0,0,0,0.5);
-  display: flex; justify-content: center; align-items: center;
+  justify-content: center; align-items: center; z-index: 1000;
 }
 .modal-content {
   background: var(--card-bg); padding: 20px;
@@ -137,10 +130,10 @@ body {
 #submit-comment,
 .auth-buttons button,
 .auth-buttons .auth-link {
-  margin-top: 8px; padding: 8px 16px;
+  display: inline-block; margin-top: 8px; padding: 8px 16px;
   background: var(--accent); color: #fff;
   border: 4px solid var(--border); border-radius: 4px;
-  text-decoration: none; display: inline-block;
+  text-decoration: none;
 }
 .auth-buttons {
   display: flex; gap: 8px; justify-content: center;
@@ -182,37 +175,38 @@ body.register-page {
   margin: 0; vertical-align: middle;
 }
 
-/* Onay kutuları */
+/* Onay kutuları sıralaması ve hizalama */
 .register-form .checkbox-group {
-  display: flex;           /* satır içi flex */
+  display: flex;           /* yatayda yan yana */
   align-items: center;     /* dikey ortala */
-  gap: 8px;                /* aradaki mesafe */
+  gap: 8px;                /* kutu ↔ metin mesafesi */
   margin-bottom: 16px;
 }
 .register-form .checkbox-group input[type="checkbox"] {
-  margin: 0;               /* boşluk kaldır */
+  margin: 0;               /* ekstra boşluğu kaldır */
   flex-shrink: 0;          /* küçülmesin */
 }
 .register-form .checkbox-group span {
-  /* metin kutunun hemen yanında, hem satır içinde kalsın */
-  flex: 1;
-  line-height: 1.4;
-  word-break: break-word;  /* satır kaydırma */
+  display: inline-block;
+  vertical-align: middle;
+  /* gerekirse satır sığmazsa kır */
+  word-wrap: break-word;
 }
 
-/* Kaydet butonu */
+/* “Kaydet” butonu */
 .btn-area {
   text-align: right;
 }
 .btn-area .btn-primary {
   background: #0288D1; color: #fff;
   padding: 10px 24px; border: none; border-radius: 6px;
+  font-size: 1rem; cursor: pointer;
 }
 .btn-area .btn-primary:hover {
   background: #0277BD;
 }
 
-/* Ana Sayfaya Dön */
+/* “Ana Sayfaya Dön” butonu */
 .back-home {
   text-align: center; margin-top: 24px;
 }
@@ -223,3 +217,6 @@ body.register-page {
 .back-home .btn-secondary:hover {
   background: #E8F5E9;
 }
+
+/* ===== INFO SECTION vs. diğerleri ===== */
+/* istediğiniz başka sayfalardaki .info-section vb. aynı kalabilir */
