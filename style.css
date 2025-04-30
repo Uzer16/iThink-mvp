@@ -1,8 +1,8 @@
 /* style.css */
 /* ===== DEĞİŞKENLER ===== */
 :root {
-  --bg-color: #f2e2c4;                   /* Halftone arkaplan ana tonu */
-  --nav-bg: rgba(132,169,192,0.9);       /* Navbar mavi-tonu */
+  --bg-color: #FFA500;                   /* Turuncu arkaplan */
+  --nav-bg: #2196F3;                     /* Canlı mavi navbar */
   --card-bg: rgba(255,255,255,0.9);      /* Kartlar ve bölümler için açık zemin */
   --accent: #f28b82;                     /* Vurgu rengi (butonlar, oy ikonları) */
   --btn-bg: #84a9c0;                     /* Filtre & auth buton rengi */
@@ -40,12 +40,11 @@ body {
   border-bottom: 4px solid var(--border);
 }
 .navbar .logo {
-  background: transparent;
-  border-radius: 50%;
   padding: 4px;
+  border-radius: 50%;
+  background: transparent;
 }
 .navbar .logo img {
-  display: block;
   height: 64px;
   width: auto;
 }
@@ -55,17 +54,17 @@ body {
   list-style: none;
 }
 .navbar .menu a {
-  color: #4a4a4a;
+  color: #fff;
   text-decoration: none;
   font-weight: bold;
-  text-shadow: 1px 1px #fff;
+  text-shadow: 1px 1px rgba(0,0,0,0.3);
   padding: 4px 8px;
   border: 2px solid transparent;
   transition: color .2s, border .2s;
 }
 .navbar .menu a:hover,
 .navbar .menu a:focus {
-  color: #2f4f2f;
+  color: #000;
   border: 2px solid var(--border);
 }
 
