@@ -37,7 +37,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 5px;      /* burada istediğiniz sabit yükseklik */
+  height: 80px;      /* burada istediğiniz sabit yükseklik */
   padding: 0 20px;   /* üst-alt boşluğu sıfırladık, sadece yan boşluk */
   background: var(--nav-bg);
   border-bottom: 4px solid var(--border);
