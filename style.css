@@ -33,21 +33,29 @@ body {
   border-bottom: 4px solid var(--border);
 }
 /* Sabit navbar yüksekliği ve dikey ortalama */
+/* ===== NAVBAR ===== */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;      /* burada istediğiniz sabit yükseklik */
-  padding: 0 20px;   /* üst-alt boşluğu sıfırladık, sadece yan boşluk */
+  height: 80px;           /* Sabit navbar yüksekliği */
+  padding: 0 20px;        /* Sadece sağ-sol boşluk */
   background: var(--nav-bg);
   border-bottom: 4px solid var(--border);
 }
 
-/* Logo maksimum yüksekliği navbar’a sığsın */
-.navbar .logo img {
-  max-height: 10%;  /* navbar yüksekliğinin tamamını kullanır */
-  width: auto;       /* orantıyı korumak için */
+/* ===== LOGO ===== */
+.navbar .logo {
+  /* artan boşluk yok, transparan da kalacak */
+  background: transparent;
+  padding: 0;
 }
+.navbar .logo img {
+  display: block;
+  max-height: 100%;       /* navbar yüksekliğinin tamamını kullanır */
+  width: auto;            /* en-boy oranı bozulmaz */
+}
+
 .navbar .menu {
   display: flex; gap: 15px; list-style: none;
 }
