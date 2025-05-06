@@ -19,15 +19,16 @@
     </div>
     <ul class="menu">
       <li><a href="index.html">Ana Sayfa</a></li>
-      <li class="has-dropdown">
-        <a href="#" id="nav-categories">Kategoriler</a>
-        <ul class="dropdown-menu">
-          <li><a href="#" class="category" data-cat="Aşk">Aşk</a></li>
-          <li><a href="#" class="category" data-cat="Cinevizyon">Cinevizyon</a></li>
-          <li><a href="#" class="category" data-cat="Siyaset">Siyaset</a></li>
-          <li><a href="#" class="category" data-cat="Spor">Spor</a></li>
-          <li><a href="#" class="category" data-cat="Tarih">Tarih</a></li>
-          <li><a href="#" class="category" data-cat="Teknoloji">Teknoloji</a></li>
+      <li class="dropdown">
+        <a href="#" id="nav-categories">Kategoriler ▾</a>
+        <ul class="dropdown-menu" id="category-list">
+          <li><button data-cat="Aşk">Aşk</button></li>
+          <li><button data-cat="Cinevizyon">Cinevizyon</button></li>
+          <li><button data-cat="Siyaset">Siyaset</button></li>
+          <li><button data-cat="Spor">Spor</button></li>
+          <li><button data-cat="Tarih">Tarih</button></li>
+          <li><button data-cat="Teknoloji">Teknoloji</button></li>
+          <li><button data-cat="Genel">Genel</button></li>
         </ul>
       </li>
       <li><a href="#">ABZÜRT Ürünler</a></li>
@@ -40,7 +41,7 @@
   <section class="question-card">
     <div class="speech-bubble">
       <h1>GÜNÜN SORUSU</h1>
-      <p id="question-text"></p>
+      <p id="question-text">Patronunuz öğle arasında…?</p>
     </div>
     <div id="countdown">00:00:00</div>
     <div class="actions">
