@@ -205,3 +205,22 @@ body {
   max-height: 95px;
   width: auto;        /* en-boy oranı korunsun */
 }
+/* ===== HERO BÖLÜMÜ ===== */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+  padding: 0 20px;
+  /* isterseniz: min-height: 300px; gibi bir yükseklik verebilirsiniz */
+}
+
+.hero img {
+  max-width: 100%;
+  width: 600px;      /* veya tasarımınıza göre başka bir max-width */
+  height: auto;
+  border: 4px solid var(--border);  /* çizgi-roman hissi için çerçeve */
+  border-radius: 8px;
+  background: var(--card-bg);
+  box-shadow: 4px 4px #888;
+}
