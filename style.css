@@ -347,6 +347,6 @@ body.register-page {
 .navbar .logo img {
   /* Kapsayıcının %100’ünü aşmasın (80px),
      biraz iç boşluk kalması için 70px yapalım: */
-  max-height: 80px;
+  max-height: 100px;
   width: auto;        /* en-boy oranı korunsun */
 }
