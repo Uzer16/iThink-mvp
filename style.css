@@ -33,7 +33,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;            /* Sabit navbar yüksekliği */
+  height: 60px;            /* Sabit navbar yüksekliği */
   padding: 0 20px;         /* Sadece sağ-sol boşluk */
   background: var(--nav-bg);
   border-bottom: 4px solid var(--border);
