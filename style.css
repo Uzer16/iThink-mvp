@@ -334,3 +334,19 @@ body.register-page {
 
 /* ===== INFO SECTION vs. diğerleri ===== */
 /* Diğer sayfalardaki .info-section vb. zaten önceki ayarlarınızda kalabilir. */
+/* —— LOGO BOYUT SINIRLAMASI —— */
+.navbar .logo {
+  /* Navbar’ın yüksekliği zaten 80px,
+     logo kapsayıcısına da aynı yüksekliği veriyoruz: */
+  height: 80px;
+  display: flex;
+  align-items: center; /* logoyu dikey ortala */
+  padding: 0;          /* ekstra boşluk yok */
+}
+
+.navbar .logo img {
+  /* Kapsayıcının %100’ünü aşmasın (80px),
+     biraz iç boşluk kalması için 70px yapalım: */
+  max-height: 70px;
+  width: auto;        /* en-boy oranı korunsun */
+}
