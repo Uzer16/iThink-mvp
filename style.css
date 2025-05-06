@@ -47,7 +47,7 @@ body {
 }
 .navbar .logo img {
   display: block;
-  max-height: 100%;        /* Navbar yüksekliğinin tamamını kullanır */
+  max-height: 60%;        /* Navbar yüksekliğinin tamamını kullanır */
   width: auto;
 }
 .navbar .menu {
