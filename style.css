@@ -36,7 +36,7 @@ body {
   padding: 0; background: transparent;
 }
 .navbar .logo img {
-  max-height: 10%; width: auto;
+  max-height: 100%; width: auto;
 }
 .navbar .menu {
   display: flex; gap: 15px; list-style: none;
@@ -177,6 +177,6 @@ body {
 .navbar .logo img {
   /* Kapsayıcının %100’ünü aşmasın (80px),
      biraz iç boşluk kalması için 70px yapalım: */
-  max-height: 70px;
+  max-height: 95px;
   width: auto;        /* en-boy oranı korunsun */
 }
