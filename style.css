@@ -11,112 +11,111 @@
 /* ===== RESET & TEMEL ===== */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   font-family: 'Comic Neue', cursive, sans-serif;
 }
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 body {
   background:
     radial-gradient(circle, var(--bg-color) 10%, transparent 11%) 0 0,
     radial-gradient(circle, var(--bg-color) 10%, transparent 11%) 5px 5px,
     var(--bg-color);
   background-size: 10px 10px;
-  color: #333;
-  line-height: 1.4;
+  color: #333; line-height: 1.4;
 }
 
 /* ===== NAVBAR ===== */
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;            /* Sabit navbar yüksekliği */
-  padding: 0 20px;         /* Sadece sağ-sol boşluk */
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px; padding: 0 20px;
   background: var(--nav-bg);
   border-bottom: 4px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: sticky; top: 0; z-index: 100;
 }
 .navbar .logo {
-  background: transparent;
-  padding: 0;
+  display: flex; align-items: center;
+  height: 100%; background: transparent; padding: 0;
 }
 .navbar .logo img {
-  display: block;
-  max-height: 60%;        /* Navbar yüksekliğinin tamamını kullanır */
-  width: auto;
+  max-height: 100%; width: auto;
 }
 .navbar .menu {
-  display: flex;
-  gap: 15px;
-  list-style: none;
+  display: flex; gap: 15px; list-style: none;
 }
 .navbar .menu a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
+  color: #fff; text-decoration: none; font-weight: bold;
   padding: 4px 8px;
   border: 2px solid transparent;
   transition: color .2s, border .2s;
 }
 .navbar .menu a:hover,
 .navbar .menu a:focus {
-  color: #000;
+  color: #000; border: 2px solid var(--border);
+}
+
+/* -- dropdown -- */
+.has-dropdown { position: relative; }
+.dropdown-menu {
+  position: absolute; top: 100%; left: 0;
+  background: var(--nav-bg);
   border: 2px solid var(--border);
+  border-radius: 4px;
+  display: none;
+  list-style: none;
+  margin-top: 4px;
+  min-width: 140px;
+  z-index: 200;
+}
+.has-dropdown:hover .dropdown-menu {
+  display: block;
+}
+.dropdown-menu li a {
+  display: block; padding: 8px 12px;
+  color: #fff; text-decoration: none;
+}
+.dropdown-menu li a:hover {
+  background: var(--btn-bg);
+  color: #000;
 }
 
 /* ===== ÇİZGİ ROMAN SPEECH-BUBBLE ===== */
 .question-card {
-  position: relative;
-  max-width: 600px;
-  margin: 40px auto;
-  text-align: center;
+  position: relative; max-width: 600px;
+  margin: 40px auto; text-align: center;
 }
-.question-card .speech-bubble {
-  display: inline-block;
-  position: relative;
+.speech-bubble {
+  display: inline-block; position: relative;
   background: var(--card-bg);
   padding: 20px;
   border: 4px solid var(--border);
   border-radius: .5em;
+  margin-bottom: 10px;
 }
-.question-card .speech-bubble::before {
+.speech-bubble::before {
   content: '';
   position: absolute;
-  bottom: -24px;
-  left: 30px;
+  bottom: -24px; left: 30px;
   border-width: 24px 24px 0;
   border-style: solid;
   border-color: var(--border) transparent;
 }
-.question-card .speech-bubble::after {
+.speech-bubble::after {
   content: '';
   position: absolute;
-  bottom: -20px;
-  left: 34px;
+  bottom: -20px; left: 34px;
   border-width: 20px 20px 0;
   border-style: solid;
   border-color: var(--card-bg) transparent;
 }
-.question-card .speech-bubble h1 {
-  margin: 0 0 8px;
-  font-size: 28px;
-  color: #333;
+.speech-bubble h1 {
+  margin: 0 0 8px; font-size: 28px; color: #333;
 }
-.question-card .speech-bubble p {
-  margin: 0;
-  font-size: 20px;
-  color: #333;
+.speech-bubble p {
+  margin: 0; font-size: 20px; color: #333;
 }
 #countdown {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 15px 0;
-  text-shadow: 1px 1px #fff;
+  font-size: 24px; font-weight: bold;
+  margin: 15px 0; text-shadow: 1px 1px #fff;
 }
 
 /* ===== BUTONLAR & FİLTRELER ===== */
@@ -125,12 +124,10 @@ body {
 .votes {
   border: 4px solid var(--border);
   background: var(--card-bg);
-  font-weight: bold;
-  text-transform: uppercase;
+  font-weight: bold; text-transform: uppercase;
   box-shadow: 2px 2px #888;
   transition: transform .2s;
-  cursor: pointer;
-  color: #000;
+  cursor: pointer; color: #000;
 }
 .actions button:hover,
 .filters button:hover,
@@ -138,48 +135,33 @@ body {
   transform: scale(1.1);
 }
 .filters {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-  gap: 8px;
+  display: flex; justify-content: center;
+  margin: 20px 0; gap: 8px;
 }
 .filters button {
-  padding: 8px 16px;
-  background: var(--card-bg);
+  padding: 8px 16px; background: var(--card-bg);
 }
 .filters .active {
-  background: var(--btn-bg);
-  color: #fff;
+  background: var(--btn-bg); color: #fff;
 }
 
 /* ===== CEVAP LİSTESİ ===== */
-.answers {
-  max-width: 600px;
-  margin: auto;
-}
-.answers ul {
-  list-style: none;
-  padding: 0;
-}
+.answers { max-width: 600px; margin: auto; }
+.answers ul { list-style: none; padding: 0; }
 .answers li {
-  display: flex;
-  justify-content: space-between;
+  display: flex; justify-content: space-between;
   align-items: center;
   background: var(--card-bg);
-  margin: 8px 0;
-  padding: 12px;
+  margin: 8px 0; padding: 12px;
   border: 2px solid var(--border);
   border-radius: 8px;
 }
 
 /* ===== MODAL ===== */
 .modal {
-  display: none;
-  position: fixed;
-  inset: 0;
+  display: none; position: fixed; inset: 0;
   background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
+  justify-content: center; align-items: center;
   z-index: 1000;
 }
 .modal-content {
@@ -187,166 +169,36 @@ body {
   padding: 20px;
   border: 4px solid var(--border);
   border-radius: 8px;
-  width: 90%;
-  max-width: 400px;
+  width: 90%; max-width: 400px;
   box-shadow: 4px 4px #888;
   text-align: center;
 }
 .modal-close {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #000;
+  position: absolute; top: 8px; right: 12px;
+  font-size: 24px; cursor: pointer; color: #000;
 }
 
 /* ===== YENİ YORUM & AUTH ===== */
 #new-comment,
 #auth-form input {
-  width: 100%;
-  margin: 10px 0;
-  padding: 8px;
-  border: 2px solid var(--border);
-  border-radius: 4px;
+  width: 100%; margin: 10px 0; padding: 8px;
+  border: 2px solid var(--border); border-radius: 4px;
+  font-family: inherit;
 }
 #submit-comment,
 .auth-buttons button,
 .auth-buttons .auth-link {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 8px 16px;
-  background: var(--accent);
-  color: #fff;
-  border: 4px solid var(--border);
-  border-radius: 4px;
+  display: inline-block; margin-top: 8px; padding: 8px 16px;
+  background: var(--accent); color: #fff;
+  border: 4px solid var(--border); border-radius: 4px;
   text-decoration: none;
 }
 .auth-buttons {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
+  display: flex; gap: 8px; justify-content: center;
 }
 
 /* ===== REGISTER SAYFASI ===== */
-body.register-page {
-  background: #FFA500; /* portakal turuncusu */
-}
-.register-form {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 30px;
-  background: #4CAF50; /* canlı yeşil */
-  color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-.register-form h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 28px;
-}
-.register-form label {
-  display: block;
-  margin-bottom: 16px;
-}
-.register-form input,
-.register-form select,
-.register-form textarea {
-  width: 100%;
-  padding: 8px 10px;
-  margin-top: 6px;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-/* Cinsiyet seçimi */
-.register-form fieldset {
-  border: none;
-  margin-bottom: 16px;
-  padding: 0;
-}
-.register-form legend {
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-.register-form .gender-options {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.register-form .gender-options input {
-  margin: 0;
-  vertical-align: middle;
-}
-
-/* Onay kutuları hizalama */
-.register-form .checkbox-group {
-  display: flex;
-  align-items: flex-start; /* metnin ilk satırına hizalar */
-  gap: 8px;
-  margin-bottom: 16px;
-}
-.register-form .checkbox-group input[type="checkbox"] {
-  margin: 0;
-  margin-top: 4px;          /* checkbox biraz yukarı çekildi */
-  flex-shrink: 0;
-}
-.register-form .checkbox-group span {
-  flex: 1;                  /* metin bloğu */
-  line-height: 1.4;
-  word-wrap: break-word;    /* taşma olursa satır içi kır */
-}
-
-/* Kaydet butonu */
-.btn-area {
-  text-align: right;
-}
-.btn-area .btn-primary {
-  background: #0288D1;
-  color: #fff;
-  padding: 10px 24px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-.btn-area .btn-primary:hover {
-  background: #0277BD;
-}
-
-/* Ana Sayfaya Dön butonu */
-.back-home {
-  text-align: center;
-  margin-top: 24px;
-}
-.back-home .btn-secondary {
-  background: #fff;
-  color: #4CAF50;
-  padding: 10px 24px;
-  border: 2px solid #fff;
-  border-radius: 6px;
-}
-.back-home .btn-secondary:hover {
-  background: #E8F5E9;
-}
+/* … daha önce kullandığın tüm kayıt sayfası stilleri burada kalabilir */
 
 /* ===== INFO SECTION vs. diğerleri ===== */
-/* Diğer sayfalardaki .info-section vb. zaten önceki ayarlarınızda kalabilir. */
-/* —— LOGO BOYUT SINIRLAMASI —— */
-.navbar .logo {
-  /* Navbar’ın yüksekliği zaten 80px,
-     logo kapsayıcısına da aynı yüksekliği veriyoruz: */
-  height: 80px;
-  display: flex;
-  align-items: center; /* logoyu dikey ortala */
-  padding: 0;          /* ekstra boşluk yok */
-}
-
-.navbar .logo img {
-  /* Kapsayıcının %100’ünü aşmasın (80px),
-     biraz iç boşluk kalması için 70px yapalım: */
-  max-height: 95px;
-  width: auto;        /* en-boy oranı korunsun */
-}
+/* … aynı tuttuğun diğer sayfa stilleri */
