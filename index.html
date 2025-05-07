@@ -19,19 +19,9 @@
     </div>
     <ul class="menu">
       <li><a href="index.html">Ana Sayfa</a></li>
-      <li class="dropdown">
-        <a href="#">Kategoriler</a>
-        <ul class="dropdown-content">
-          <li><a href="#" data-category="Aşk">Aşk</a></li>
-          <li><a href="#" data-category="Cinevizyon">Cinevizyon</a></li>
-          <li><a href="#" data-category="Siyaset">Siyaset</a></li>
-          <li><a href="#" data-category="Spor">Spor</a></li>
-          <li><a href="#" data-category="Tarih">Tarih</a></li>
-          <li><a href="#" data-category="Teknoloji">Teknoloji</a></li>
-        </ul>
-      </li>
-      <li><a href="#" id="products-link">ABZÜRT Ürünler</a></li>
-      <li><a href="#" id="oscars-link">ABZÜRT Oscarları</a></li>
+      <li><a href="#" id="nav-categories">Kategoriler</a></li>
+      <li><a href="#">ABZÜRT Ürünler</a></li>
+      <li><a href="#">ABZÜRT Oscarları</a></li>
       <li><a href="kurallar.html">Kurallar</a></li>
       <li><a href="oduller.html">Ödüller</a></li>
       <li><a href="sponsorlar.html">Sponsorlar</a></li>
@@ -40,43 +30,14 @@
     </ul>
   </nav>
 
-  <!-- GÜNÜN SORUSU KARTI -->
-  <section class="question-card">
-    <div class="speech-bubble">
-      <h1>GÜNÜN SORUSU</h1>
-      <p>Patronunuz öğle arasında…?</p>
-    </div>
-    <div id="countdown">00:00:00</div>
-    <div class="actions">
-      <button id="answer-btn">Yorum Yap</button>
-      <button id="view-btn">Yorumları Gör</button>
-    </div>
-  </section>
+  <!-- HERO BÖLÜMÜ -->
+  <main>
+    <section class="hero">
+      <img src="assets/hero.png" alt="ABZÜRT Hikâyesi Hero Görseli">
+    </section>
+  </main>
 
-  <!-- FİLTRELER -->
-  <section class="filters">
-    <button class="active">Günlük</button>
-    <button>Haftalık</button>
-    <button>Aylık</button>
-    <button>Yıllık</button>
-  </section>
-
-  <!-- CEVAP LİSTESİ -->
-  <section class="answers">
-    <ul id="answers-list"></ul>
-  </section>
-
-  <!-- YORUM MODALİ -->
-  <div id="comment-modal" class="modal">
-    <div class="modal-content">
-      <span id="modal-close" class="modal-close">&times;</span>
-      <h2>Yeni Yorum</h2>
-      <textarea id="new-comment" placeholder="Cevabınızı yazın…" rows="4"></textarea>
-      <button id="submit-comment">Gönder</button>
-    </div>
-  </div>
-
-  <!-- AUTH MODALİ -->
+  <!-- AUTH MODALİ (Korunuyor, eğer kullanıyorsanız) -->
   <div id="auth-modal" class="modal">
     <div class="modal-content">
       <span id="auth-close" class="modal-close">&times;</span>
