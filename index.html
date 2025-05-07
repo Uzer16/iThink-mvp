@@ -13,14 +13,24 @@
   <nav class="navbar">
     <div class="logo">
       <a href="index.html">
-        <img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo"/>
+        <img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo" class="logo-img"/>
       </a>
     </div>
     <ul class="menu">
-      <li><a href="index.html">Ana Sayfa</a></li>
-      <li><a href="#" id="nav-categories">Kategoriler</a></li>
-      <li><a href="#" id="nav-products">ABZÜRT Ürünler</a></li>
-      <li><a href="#" id="nav-oscars">ABZÜRT Oscarları</a></li>
+      <li><a href="#" id="home-link">Ana Sayfa</a></li>
+      <li class="dropdown">
+        <a href="#">Kategoriler</a>
+        <ul class="dropdown-menu">
+          <li><a href="#" class="category" data-category="ask">Aşk</a></li>
+          <li><a href="#" class="category" data-category="cinevizyon">Cinevizyon</a></li>
+          <li><a href="#" class="category" data-category="siyaset">Siyaset</a></li>
+          <li><a href="#" class="category" data-category="spor">Spor</a></li>
+          <li><a href="#" class="category" data-category="tarih">Tarih</a></li>
+          <li><a href="#" class="category" data-category="teknoloji">Teknoloji</a></li>
+        </ul>
+      </li>
+      <li><a href="#">ABZÜRT Ürünler</a></li>
+      <li><a href="#">ABZÜRT Oscarları</a></li>
       <li><a href="kurallar.html">Kurallar</a></li>
       <li><a href="oduller.html">Ödüller</a></li>
       <li><a href="sponsorlar.html">Sponsorlar</a></li>
@@ -29,35 +39,18 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO GÖRSELİ -->
   <div id="hero-container">
-    <img src="assets/hero.png" alt="ABZÜRT Hero Görseli" id="hero-img"/>
+    <img src="assets/hero.png" alt="ABZÜRT Hero" id="hero-image" />
   </div>
 
-  <!-- KATEGORİ MODALİ -->
-  <div id="category-modal" class="modal">
-    <div class="modal-content">
-      <span id="category-close" class="modal-close">&times;</span>
-      <h2>Kategori Seçin</h2>
-      <ul id="category-list">
-        <li><button data-cat="Aşk">Aşk</button></li>
-        <li><button data-cat="Cinevizyon">Cinevizyon</button></li>
-        <li><button data-cat="Siyaset">Siyaset</button></li>
-        <li><button data-cat="Spor">Spor</button></li>
-        <li><button data-cat="Tarih">Tarih</button></li>
-        <li><button data-cat="Teknoloji">Teknoloji</button></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ANA İÇERİK (ilk etapta gizli) -->
-  <div id="main-content" class="hidden">
-
+  <!-- POLL (default gizli) -->
+  <div id="poll-container" class="hidden">
     <!-- GÜNÜN SORUSU KARTI -->
     <section class="question-card">
       <div class="speech-bubble">
-        <h1 id="qc-title">GÜNÜN SORUSU</h1>
-        <p id="qc-text">—</p>
+        <h1>GÜNÜN SORUSU</h1>
+        <p id="question-text"></p>
       </div>
       <div id="countdown">00:00:00</div>
       <div class="actions">
@@ -78,7 +71,6 @@
     <section class="answers">
       <ul id="answers-list"></ul>
     </section>
-
   </div>
 
   <!-- YORUM MODALİ -->
