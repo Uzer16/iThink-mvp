@@ -25,7 +25,7 @@ body {
   position: sticky; top:0; z-index:100; border-bottom:4px solid var(--border);
 }
 .navbar .logo img {
-  height: 40px;  /* istediğiniz boyut */
+  height: 95px;  /* istediğiniz boyut */
   width: auto;
 }
 .navbar .menu { display:flex; gap:15px; list-style:none; }
@@ -41,7 +41,7 @@ body {
   margin: 60px auto;
 }
 #hero-container img {
-  max-width: 90%;
+  max-width: 50%;
   height: auto;
   border:4px solid var(--border);
   border-radius:8px;
