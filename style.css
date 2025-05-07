@@ -21,34 +21,54 @@ body { background:
 
 /* ===== NAVBAR ===== */
 .navbar {
-  display: flex; align-items: center; justify-content: space-between;
-  height: 60px; padding: 0 20px;
-  background: var(--nav-bg); border-bottom: 4px solid var(--border);
-  position: sticky; top: 0; z-index: 100;
+  display: flex;
+  align-items: center;         /* Dikeyde ortala */
+  justify-content: space-between;
+  height: 80px;                /* Sabit yükseklik */
+  padding: 0 20px;             /* Yalnızca sağ–sol iç boşluk */
+  background: var(--nav-bg);
+  border-bottom: 4px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-.navbar .logo { display: flex; align-items: center; height: 100%; }
-.navbar .logo img { max-height: 100%; width: auto; }
+
+/* ===== LOGO ===== */
+.navbar .logo {
+  height: 100%;                /* Navbar yüksekliğinin tamamı */
+  display: flex;
+  align-items: center;         /* Dikey ortala */
+  padding: 0;
+}
+
+.navbar .logo img {
+  max-height: 60px;            /* İstediğiniz pikselde sınırlandırın */
+  width: auto;
+  display: block;
+}
+
+/* ===== MENÜ ===== */
 .navbar .menu {
-  display: flex; gap: 15px; list-style: none;
+  display: flex;
+  gap: 15px;
+  list-style: none;
 }
-.navbar .menu li { position: relative; }
+
 .navbar .menu a {
-  color: #fff; text-decoration: none; font-weight: bold;
-  padding: 4px 8px; border: 2px solid transparent;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1;              /* Metni kendi yüksekliğinde tut */
+  padding: 8px 12px;           /* Yatay-dikey iç boşluk */
+  border: 2px solid transparent;
   transition: color .2s, border .2s;
 }
-.navbar .menu a:hover { color: #000; border: 2px solid var(--border); }
 
-/* Dropdown */
-.navbar .dropdown-menu {
-  display: none;
-  position: absolute; top: 100%; left: 0;
-  background: var(--nav-bg); border: 2px solid var(--border);
-  list-style: none; padding: 8px 0; min-width: 120px;
+.navbar .menu a:hover,
+.navbar .menu a:focus {
+  color: #000;
+  border: 2px solid var(--border);
 }
-.navbar .dropdown-menu li + li { margin-top: 4px; }
-.navbar .dropdown-menu a { display: block; padding: 4px 12px; }
-.navbar .dropdown:hover .dropdown-menu { display: block; }
 
 /* ===== HERO ===== */
 #hero-container {
