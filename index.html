@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>ABZÜRT</title>
-  <!-- Comic Neue fontu -->
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -14,7 +13,7 @@
   <nav class="navbar">
     <div class="logo">
       <a href="index.html">
-        <img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo" class="logo-img"/>
+        <img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo"/>
       </a>
     </div>
     <ul class="menu">
@@ -30,14 +29,69 @@
     </ul>
   </nav>
 
-  <!-- HERO GÖRSELİ -->
-  <div class="hero-container">
-    <img src="assets/hero.png" alt="ABZÜRT Kategoriyi Siz Belirleyin" class="hero-img">
+  <!-- HERO -->
+  <div id="hero-container">
+    <img src="assets/hero.png" alt="ABZÜRT Hero Görseli" id="hero-img"/>
   </div>
 
-  <!-- (Ana sayfa artık sadece hero.png içeriyor, diğer bölümler tamamen kaldırıldı.) -->
+  <!-- KATEGORİ MODALİ -->
+  <div id="category-modal" class="modal">
+    <div class="modal-content">
+      <span id="category-close" class="modal-close">&times;</span>
+      <h2>Kategori Seçin</h2>
+      <ul id="category-list">
+        <li><button data-cat="Aşk">Aşk</button></li>
+        <li><button data-cat="Cinevizyon">Cinevizyon</button></li>
+        <li><button data-cat="Siyaset">Siyaset</button></li>
+        <li><button data-cat="Spor">Spor</button></li>
+        <li><button data-cat="Tarih">Tarih</button></li>
+        <li><button data-cat="Teknoloji">Teknoloji</button></li>
+      </ul>
+    </div>
+  </div>
 
-  <!-- AUTH MODALİ (login simülasyonu) -->
+  <!-- ANA İÇERİK (ilk etapta gizli) -->
+  <div id="main-content" class="hidden">
+
+    <!-- GÜNÜN SORUSU KARTI -->
+    <section class="question-card">
+      <div class="speech-bubble">
+        <h1 id="qc-title">GÜNÜN SORUSU</h1>
+        <p id="qc-text">—</p>
+      </div>
+      <div id="countdown">00:00:00</div>
+      <div class="actions">
+        <button id="answer-btn">Yorum Yap</button>
+        <button id="view-btn">Yorumları Gör</button>
+      </div>
+    </section>
+
+    <!-- FİLTRELER -->
+    <section class="filters">
+      <button class="active">Günlük</button>
+      <button>Haftalık</button>
+      <button>Aylık</button>
+      <button>Yıllık</button>
+    </section>
+
+    <!-- CEVAP LİSTESİ -->
+    <section class="answers">
+      <ul id="answers-list"></ul>
+    </section>
+
+  </div>
+
+  <!-- YORUM MODALİ -->
+  <div id="comment-modal" class="modal">
+    <div class="modal-content">
+      <span id="modal-close" class="modal-close">&times;</span>
+      <h2>Yeni Yorum</h2>
+      <textarea id="new-comment" placeholder="Cevabınızı yazın…" rows="4"></textarea>
+      <button id="submit-comment">Gönder</button>
+    </div>
+  </div>
+
+  <!-- AUTH MODALİ -->
   <div id="auth-modal" class="modal">
     <div class="modal-content">
       <span id="auth-close" class="modal-close">&times;</span>
