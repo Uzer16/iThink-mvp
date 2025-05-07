@@ -2,14 +2,14 @@
 :root {
   --bg-color: #FFA500;                   /* Turuncu arka plan */
   --nav-bg: #2196F3;                     /* Canlı mavi navbar */
+  --accent: #f28b82;                     /* Buton vurgu rengi */
   --border: #000;                        /* Kalın çerçeve */
 }
 
 /* ===== RESET & TEMEL ===== */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 html { scroll-behavior: smooth; }
@@ -28,8 +28,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
-  padding: 0 20px;
+  height: 60px;            /* Sabit navbar yüksekliği */
+  padding: 0 20px;         /* Yan boşluk */
   background: var(--nav-bg);
   border-bottom: 4px solid var(--border);
   position: sticky;
@@ -37,12 +37,12 @@ body {
   z-index: 100;
 }
 .navbar .logo {
-  height: 100%;
   display: flex;
   align-items: center;
+  height: 100%;
 }
 .navbar .logo img {
-  max-height: 50px; /* İstediğiniz değeri buradan ayarlayın */
+  max-height: 100%;
   width: auto;
 }
 .navbar .menu {
@@ -64,24 +64,21 @@ body {
   border: 2px solid var(--border);
 }
 
-/* ===== HERO BÖLÜMÜ ===== */
-.hero {
+/* ===== HERO BÖLÜM ===== */
+.hero-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Navbar yüksekliğini çıkardık: */
-  height: calc(100vh - 60px);
-  padding: 20px;
+  padding: 60px 20px;
 }
-.hero img {
-  max-width: 100%;
+.hero-img {
+  max-width: 90%;
   height: auto;
-  box-shadow: 4px 4px rgba(0,0,0,0.3);
   border: 4px solid var(--border);
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
-/* ===== MODAL ===== (Eğer kullanıyorsanız Auth Modal için) ===== */
+/* ===== MODAL (AUTH) ===== */
 .modal {
   display: none;
   position: fixed;
@@ -98,16 +95,16 @@ body {
   border-radius: 8px;
   width: 90%;
   max-width: 400px;
-  box-shadow: 4px 4px #888;
   text-align: center;
 }
 .modal-close {
   position: absolute;
-  top: 8px;
-  right: 12px;
+  top: 8px; right: 12px;
   font-size: 24px;
   cursor: pointer;
 }
+
+/* ===== AUTH FORM ===== */
 #auth-form input {
   width: 100%;
   margin: 10px 0;
@@ -119,20 +116,19 @@ body {
   display: flex;
   gap: 8px;
   justify-content: center;
-  margin-top: 12px;
+  margin-top: 8px;
 }
 .auth-buttons .auth-link,
 .auth-buttons button {
-  flex: 1;
-  padding: 8px;
-  background: #84a4c0;
+  padding: 8px 16px;
+  background: var(--accent);
   color: #fff;
-  text-decoration: none;
-  border: none;
+  border: 4px solid var(--border);
   border-radius: 4px;
+  text-decoration: none;
   cursor: pointer;
 }
 .auth-buttons .auth-link:hover,
 .auth-buttons button:hover {
-  background: #6b8fa2;
+  opacity: 0.9;
 }
