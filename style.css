@@ -38,7 +38,7 @@ body {
 
 /* Logo resmini navbar içindeki ortalama yüksekliğe göre ayarla */
 .navbar .logo img {
-  max-height: 40px;       /* ihtiyacınıza göre ayarlayın */
+  max-height: 100px;       /* ihtiyacınıza göre ayarlayın */
   width: auto;            /* en-boy oranı korunur */
   display: block;
 }
