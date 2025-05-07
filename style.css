@@ -26,7 +26,7 @@ body {
 }
 .navbar .logo img {
   height: 85px;  /* istediğiniz boyut */
-  width: center;
+  width: auto;
 }
 .navbar .menu { display:flex; gap:15px; list-style:none; }
 .navbar .menu a {
