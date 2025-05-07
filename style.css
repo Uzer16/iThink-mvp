@@ -19,14 +19,28 @@ body {
 }
 
 /* ===== NAVBAR ===== */
+/* Navbar zaten flex, öğeleri dikey ortalamak için align-items: center; */
 .navbar {
-  display: flex; align-items: center; justify-content: space-between;
-  background: var(--nav-bg); height:60px; padding:0 20px;
-  position: sticky; top:0; z-index:100; border-bottom:4px solid var(--border);
+  display: flex;
+  align-items: center;    /* öğeleri dikey ortala */
+  justify-content: space-between;
+  height: 60px;           /* mevcut yüksekliğinizi koruyun */
+  padding: 0 20px;
 }
+
+/* Logo kapsayıcısını da flex konteyner yapıp ortala */
+.navbar .logo {
+  display: flex;
+  align-items: center;    /* logoyu dikey ortala */
+  height: 100%;           /* navbar yüksekliğinin tamamı */
+  padding: 0;
+}
+
+/* Logo resmini navbar içindeki ortalama yüksekliğe göre ayarla */
 .navbar .logo img {
-  height: 85px;  /* istediğiniz boyut */
-  width: auto;
+  max-height: 40px;       /* ihtiyacınıza göre ayarlayın */
+  width: auto;            /* en-boy oranı korunur */
+  display: block;
 }
 .navbar .menu { display:flex; gap:15px; list-style:none; }
 .navbar .menu a {
