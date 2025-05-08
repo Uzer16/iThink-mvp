@@ -1,36 +1,77 @@
-// 0) Sayfa tipini kontrol et
-document.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  const cat = params.get('cat');               // ?cat=ask vs. ana sayfa
-  const hero = document.getElementById('hero');
-  const main = document.getElementById('main-content');
+// 0) Kategoriler ve sorular verisi
+const categories = [
+  { key:'ask',     label:'Aşk',
+    question:'Romantik bir buluşmada…?',
+    answers:['Gül dalında uyudu.','Kalbe mum yakardı.','Kalpten kalbe şalter atardı.']
+  },
+  { key:'siyaset', label:'Siyaset',
+    question:'Siyasetçi muhalifine…?',
+    answers:['Atkı fırlattı.','Projeyi tweetledi.','Kabineyi çay partisine davet etti.']
+  },
+  { key:'spor',    label:'Spor',
+    question:'Futbol takımın maçında…?',
+    answers:['Kramponunu uçurdu.','Takımı soyunma odasına kitletti.','Tribünleri disco yaptı.']
+  },
+  // istediğiniz diğer kategorileri de buraya ekleyin
+];
 
-  if (cat) {
-    hero.style.display = 'none';
-    main.style.display = 'block';
-    // isteğe bağlı: kategoriye göre soru metni
-    const qtext = {
-      ask: 'Sevdiğin kişiye nasıl süpriz yaparsın?',
-      cine: 'En komik film sahnesi hangisidir?',
-      siyaset: 'Politikacıların en ABZÜRT repliği nedir?',
-      spor: 'Maçta en absürd gol nasıl olur?',
-      tarih: 'Tarihteki en tuhaf icat hangisidir?',
-      tech: 'Gelecekte hangi çılgın teknoloji olur?'
-    }[cat] || 'Patronunuz öğle arasında…?';
-    document.getElementById('question-text').textContent = qtext;
-  } else {
-    hero.style.display = 'block';
-    main.style.display = 'none';
-  }
+// 1) Kategori listesini doldur
+function setupCategories() {
+  const ul = document.getElementById('category-list');
+  categories.forEach(cat=>{
+    const li = document.createElement('li');
+    const a  = document.createElement('a');
+    a.href = '#';
+    a.textContent = cat.label;
+    a.onclick = e=>{
+      e.preventDefault();
+      selectCategory(cat.key);
+    };
+    li.append(a);
+    ul.append(li);
+  });
+}
 
-  if (cat) {
-    startCountdown();
-    setupFilters();
-    renderAnswers();
-    setupCommentModal();
-  }
+// 2) Kategori seçildiğinde
+function selectCategory(key) {
+  // 2.a) Hero görseli gizle
+  document.getElementById('category-select').style.display = 'none';
+
+  // 2.b) Günün sorusunu ve cevapları göster
+  const cat = categories.find(c=>c.key===key);
+  document.getElementById('question-text').textContent = cat.question;
+  // Varsayılan başlık
+  document.getElementById('question-title').textContent = `“${cat.label.toUpperCase()}” SORUSU`;
+
+  // Mevcut cevaplarData’yı resetle
+  answersData.length = 0;
+  cat.answers.forEach(txt=>{
+    answersData.push({ text:txt, daily:0, weekly:0, monthly:0, yearly:0 });
+  });
+  renderAnswers();
+
+  // tüm bölümleri görünür yap
+  ['question-card','filters','answers-list','answers'].forEach(id=>{
+    const el = document.getElementById(id) || document.querySelector(`.${id}`);
+    if(el) el.style.display = '';
+  });
+}
+
+// 3) Sayfa yüklendiğinde
+document.addEventListener('DOMContentLoaded', ()=>{
+  setupCategories();
+  // başlangıçta hero’yu göster, diğerlerini gizle
+  document.getElementById('category-select').style.display = '';
+  ['question-card','filters', 'answers', 'actions'].forEach(sel=>{
+    document.querySelector(sel).style.display = 'none';
+  });
+
+  // önceki setup’lar
+  setupFilters();
+  setupCommentModal();
   setupAuthForm();
 });
+
 
 // 1) Başlangıç verisi & filtre durumu
 const answersData = [
