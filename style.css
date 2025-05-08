@@ -69,6 +69,63 @@ body { background:
   color: #000;
   border: 2px solid var(--border);
 }
+/* ===== NAVBAR ===== */
+.navbar .menu li {
+  position: relative; /* submenu’yi absolute konumlandırmak için */
+}
+.navbar .menu li a {
+  display: block;
+  line-height: 60px;   /* navbar yüksekliğiyle aynı */
+}
+
+/* ===== SUBMENU ===== */
+.navbar .menu .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;            /* menünün hemen altı */
+  left: 0;
+  background: var(--nav-bg);
+  padding: 8px 0;
+  list-style: none;
+  min-width: 150px;
+  border: 2px solid var(--border);
+}
+.navbar .menu .submenu li {
+  margin: 0;
+}
+.navbar .menu .submenu li a {
+  padding: 6px 16px;
+  color: #fff;
+}
+.navbar .menu .submenu li a:hover {
+  background: var(--btn-bg);
+  color: #000;
+}
+
+/* hover’layınca aç */
+.navbar .menu li.has-submenu:hover > .submenu {
+  display: block;
+}
+
+/* Menü link’lerinin dikey ortalanması */
+.navbar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  /* diğer stilleriniz... */
+}
+.navbar .menu a {
+  padding: 0 12px;
+}
+
+/* İsteğe bağlı: submenu’yi fade ile açmak isterseniz */
+.navbar .menu .submenu {
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+.navbar .menu li.has-submenu:hover > .submenu {
+  opacity: 1;
+}
 
 /* ===== HERO ===== */
 #hero-container {
