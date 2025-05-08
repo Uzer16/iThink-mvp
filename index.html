@@ -2,8 +2,9 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ABZÜRT</title>
+  <!-- Comic Neue fontu -->
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -12,20 +13,16 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">
-      <a href="index.html">
-        <img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo" class="logo-img"/>
-      </a>
+      <a href="index.html"><img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo"></a>
     </div>
     <ul class="menu">
-      <li><a href="#" data-page="home">Ana Sayfa</a></li>
+      <li><a href="index.html">Ana Sayfa</a></li>
       <li class="has-dropdown">
-        <a href="#" id="nav-categories">Kategoriler ▼</a>
-        <ul class="dropdown" id="category-list">
-          <!-- JS ile doldurulacak -->
-        </ul>
+        <a href="#">Kategoriler</a>
+        <ul class="dropdown" id="category-list"></ul>
       </li>
-      <li><a href="#" data-page="products">ABZÜRT Ürünler</a></li>
-      <li><a href="#" data-page="oscars">ABZÜRT Oscarları</a></li>
+      <li><a href="urunler.html">ABZÜRT Ürünler</a></li>
+      <li><a href="oscars.html">ABZÜRT Oscarları</a></li>
       <li><a href="kurallar.html">Kurallar</a></li>
       <li><a href="oduller.html">Ödüller</a></li>
       <li><a href="sponsorlar.html">Sponsorlar</a></li>
@@ -34,13 +31,13 @@
     </ul>
   </nav>
 
-  <!-- KATEGORİ SEÇİMİ -->
-  <section id="category-select" class="hero-container" style="display:none;">
-    <img src="assets/hero.png" alt="ABZÜRT Kahoot" class="hero-img" />
-  </section>
+  <!-- HERO (kategori seçimi ekrani) -->
+  <div id="category-select" class="hero-container">
+    <img src="assets/hero.png" alt="ABZÜRT Challenge" class="hero-img">
+  </div>
 
   <!-- GÜNÜN SORUSU KARTI -->
-  <section class="question-card" id="question-card">
+  <section id="question-card" class="question-card">
     <div class="speech-bubble">
       <h1 id="question-title">GÜNÜN SORUSU</h1>
       <p id="question-text">Patronunuz öğle arasında…?</p>
@@ -53,7 +50,7 @@
   </section>
 
   <!-- FİLTRELER -->
-  <section class="filters">
+  <section class="filters" id="filters">
     <button class="active">Günlük</button>
     <button>Haftalık</button>
     <button>Aylık</button>
@@ -61,22 +58,35 @@
   </section>
 
   <!-- CEVAP LİSTESİ -->
-  <section class="answers">
+  <section class="answers" id="answers">
     <ul id="answers-list"></ul>
   </section>
 
-  <!-- MODALLAR VE SCRIPT ////////// -->
-  <!-- … önceki kodlar (yorum modal, auth modal vs.) … -->
-  <script src="script.js"></script>
-</body>
-</html>
+  <!-- YORUM MODALİ -->
+  <div id="comment-modal" class="modal">
+    <div class="modal-content">
+      <span id="modal-close" class="modal-close">&times;</span>
+      <h2>Yeni Yorum</h2>
+      <textarea id="new-comment" placeholder="Cevabınızı yazın…" rows="4"></textarea>
+      <button id="submit-comment">Gönder</button>
+    </div>
+  </div>
 
-  <!-- HERO GÖRSELİ -->
-  <main>
-    <section class="hero">
-      <img src="assets/hero.png" alt="Hazır mısın? Ödül kazanmak için ABZÜRT cevabı sun!" class="hero-img">
-    </section>
-  </main>
+  <!-- AUTH MODALİ -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span id="auth-close" class="modal-close">&times;</span>
+      <h2>Giriş / Kayıt</h2>
+      <form id="auth-form">
+        <input type="email" id="email" placeholder="E-posta adresiniz" required />
+        <input type="password" id="password" placeholder="Şifreniz" required />
+        <div class="auth-buttons">
+          <a href="register.html" class="auth-link">Kayıt Ol</a>
+          <button type="button" id="login-btn">Giriş Yap</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
