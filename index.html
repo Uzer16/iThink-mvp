@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>ABZÜRT</title>
-  <!-- Comic Neue fontu -->
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -13,24 +12,25 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">
-      <a href="index.html"><img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo"/></a>
+      <a href="index.html">
+        <img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo" />
+      </a>
     </div>
     <ul class="menu">
       <li><a href="index.html">Ana Sayfa</a></li>
-
-      <!-- KATEGORİLER -->
       <li class="dropdown">
-        <a href="#">Kategoriler</a>
+        <a href="#">Kategoriler ▾</a>
         <ul class="dropdown-menu">
           <li><a href="index.html?cat=ask">Aşk</a></li>
-          <li><a href="index.html?cat=cinevizyon">Cinevizyon</a></li>
+          <li><a href="index.html?cat=cine">Cinevizyon</a></li>
           <li><a href="index.html?cat=siyaset">Siyaset</a></li>
           <li><a href="index.html?cat=spor">Spor</a></li>
           <li><a href="index.html?cat=tarih">Tarih</a></li>
-          <li><a href="index.html?cat=teknoloji">Teknoloji</a></li>
+          <li><a href="index.html?cat=tech">Teknoloji</a></li>
         </ul>
       </li>
-
+      <li><a href="urunler.html">ABZÜRT Ürünler</a></li>
+      <li><a href="oscars.html">ABZÜRT Oscarları</a></li>
       <li><a href="kurallar.html">Kurallar</a></li>
       <li><a href="oduller.html">Ödüller</a></li>
       <li><a href="sponsorlar.html">Sponsorlar</a></li>
@@ -40,17 +40,17 @@
   </nav>
 
   <!-- HERO GÖRSELİ (ANASAYFA) -->
-  <div id="hero">
-    <img src="assets/hero.png" alt="Ana Sayfa Hero" />
-  </div>
+  <section id="hero" class="hero">
+    <img src="assets/hero.png" alt="ABZÜRT Hero Görseli">
+  </section>
 
-  <!-- ETKİLEŞİMLİ ALAN (kategori sayfası) -->
-  <div id="interactive-area">
+  <!-- KATEGORİ SAYFALARI İÇİN (SORU+OYLAMA) -->
+  <div id="main-content">
     <!-- GÜNÜN SORUSU KARTI -->
     <section class="question-card">
       <div class="speech-bubble">
-        <h1 id="question-title">GÜNÜN SORUSU</h1>
-        <p id="question-text"></p>
+        <h1>GÜNÜN SORUSU</h1>
+        <p id="question-text">Patronunuz öğle arasında…?</p>
       </div>
       <div id="countdown">00:00:00</div>
       <div class="actions">
@@ -58,7 +58,6 @@
         <button id="view-btn">Yorumları Gör</button>
       </div>
     </section>
-
     <!-- FİLTRELER -->
     <section class="filters">
       <button class="active">Günlük</button>
@@ -66,7 +65,6 @@
       <button>Aylık</button>
       <button>Yıllık</button>
     </section>
-
     <!-- CEVAP LİSTESİ -->
     <section class="answers">
       <ul id="answers-list"></ul>
