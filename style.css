@@ -1,7 +1,7 @@
 /* ===== DEĞİŞKENLER ===== */
 :root {
-  --bg-color: #FFA500;   /* Turuncu arka plan */
-  --nav-bg: #2196F3;     /* Canlı mavi navbar */
+  --bg-color: #FFA500;
+  --nav-bg: #2196F3;
   --card-bg: rgba(255,255,255,0.9);
   --accent: #f28b82;
   --btn-bg: #84a4c0;
@@ -9,8 +9,8 @@
 }
 
 /* ===== RESET & TEMEL ===== */
-* { box-sizing:border-box; margin:0; padding:0; font-family:'Comic Neue', cursive, sans-serif; }
-html { scroll-behavior:smooth; }
+* { box-sizing: border-box; margin:0; padding:0; font-family:'Comic Neue', cursive, sans-serif; }
+html { scroll-behavior: smooth; }
 body {
   background:
     radial-gradient(circle, var(--bg-color) 10%, transparent 11%) 0 0,
@@ -22,92 +22,76 @@ body {
 
 /* ===== NAVBAR ===== */
 .navbar {
-  display:flex; align-items:center; justify-content:space-between;
-  height:60px; padding:0 20px;
-  background:var(--nav-bg); border-bottom:4px solid var(--border);
+  display: flex; align-items:center; justify-content:space-between;
+  height: 60px; padding:0 20px;
+  background: var(--nav-bg);
+  border-bottom:4px solid var(--border);
   position:sticky; top:0; z-index:100;
 }
-.navbar .logo img {
-  max-height:100%; width:auto;
-}
+.navbar .logo { display:flex; align-items:center; height:100%; }
+.navbar .logo img { max-height:100%; width:auto; }
 .navbar .menu { display:flex; gap:15px; list-style:none; }
+.navbar .menu li { position:relative; }
 .navbar .menu a {
   color:#fff; text-decoration:none; font-weight:bold;
-  padding:4px 8px; border:2px solid transparent;
-  transition:color .2s,border .2s;
+  padding:4px 8px; transition:.2s;
 }
-.navbar .menu a:hover,
-.navbar .menu a:focus { color:#000; border:2px solid var(--border); }
+.navbar .menu a:hover { color:#000; border:2px solid var(--border); }
 
-/* KATEGORİLER DROPDOWN */
-.navbar .dropdown { position:relative; }
-.navbar .dropdown-menu {
+/* Dropdown */
+.dropdown-menu {
+  display:none;
   position:absolute; top:100%; left:0;
-  background:var(--btn-bg); border:2px solid var(--border);
-  display:none; flex-direction:column;
+  background: var(--nav-bg);
+  border:2px solid var(--border);
+  border-top:none;
 }
-.navbar .dropdown:hover .dropdown-menu { display:flex; }
-.navbar .dropdown-menu li { border-bottom:1px solid #000; }
-.navbar .dropdown-menu li:last-child { border:none; }
-.navbar .dropdown-menu a {
-  color:#fff; padding:10px 20px; white-space:nowrap;
-}
+.dropdown-menu li { white-space:nowrap; }
+.dropdown-menu a { display:block; padding:8px 12px; }
+.dropdown:hover .dropdown-menu { display:block; }
 
 /* ===== HERO ===== */
-#hero {
-  text-align:center;
-  margin: 40px 0;
-}
-#hero img {
-  max-width:80%;
-  height:auto;
-}
+.hero { text-align:center; margin:40px 0; }
+.hero img { max-width:90%; height:auto; border:4px solid var(--border); }
 
-/* hide/show bölümleri */
-#interactive-area { }
-#interactive-area.hide { display:none; }
+/* ===== MAIN CONTENT (kategori sayfaları) ===== */
+#main-content { display:none; }
 
 /* ===== ÇİZGİ ROMAN SPEECH-BUBBLE ===== */
 .question-card {
   position:relative; max-width:600px; margin:40px auto; text-align:center;
 }
-.speech-bubble {
+.question-card .speech-bubble {
   display:inline-block; position:relative;
-  background:var(--card-bg); padding:20px;
+  background: var(--card-bg); padding:20px;
   border:4px solid var(--border); border-radius:.5em;
 }
-.speech-bubble::before {
+.question-card .speech-bubble::before {
   content:''; position:absolute; bottom:-24px; left:30px;
-  border-width:24px 24px 0; border-style:solid;
-  border-color:var(--border) transparent;
+  border:24px solid transparent; border-top-color:var(--border);
 }
-.speech-bubble::after {
+.question-card .speech-bubble::after {
   content:''; position:absolute; bottom:-20px; left:34px;
-  border-width:20px 20px 0; border-style:solid;
-  border-color:var(--card-bg) transparent;
+  border:20px solid transparent; border-top-color:var(--card-bg);
 }
-.speech-bubble h1 { margin:0 0 8px; font-size:28px; color:#333; }
-.speech-bubble p  { margin:0; font-size:20px; color:#333; }
-#countdown {
-  font-size:24px; font-weight:bold; margin:15px 0;
-  text-shadow:1px 1px #fff;
-}
+.question-card .speech-bubble h1 { margin:0 0 8px; font-size:28px; color:#333; }
+.question-card .speech-bubble p  { margin:0; font-size:20px; color:#333; }
+#countdown { font-size:24px; font-weight:bold; margin:15px 0; text-shadow:1px 1px #fff; }
 
 /* ===== BUTONLAR & FİLTRELER ===== */
 .actions button,
 .filters button,
 .votes {
-  border:4px solid var(--border);
-  background:var(--card-bg); color:#000;
+  border:4px solid var(--border); background:var(--card-bg);
   font-weight:bold; text-transform:uppercase;
   box-shadow:2px 2px #888; transition:transform .2s;
-  cursor:pointer;
+  cursor:pointer; color:#000;
 }
 .actions button:hover,
 .filters button:hover,
 .votes:hover { transform:scale(1.1); }
 .filters { display:flex; justify-content:center; margin:20px 0; gap:8px; }
-.filters button { padding:8px 16px; background:var(--card-bg); }
+.filters button { padding:8px 16px; } 
 .filters .active { background:var(--btn-bg); color:#fff; }
 
 /* ===== CEVAP LİSTESİ ===== */
@@ -131,26 +115,34 @@ body {
   width:90%; max-width:400px; text-align:center;
   box-shadow:4px 4px #888;
 }
-.modal-close {
-  position:absolute; top:8px; right:12px;
-  font-size:24px; cursor:pointer; color:#000;
-}
+.modal-close { position:absolute; top:8px; right:12px; font-size:24px; cursor:pointer; }
 
-/* ===== AUTH & COMMENT ===== */
+/* ===== AUTH & YORUM ===== */
 #new-comment,
-#auth-form input {
-  width:100%; margin:10px 0; padding:8px;
-  border:2px solid var(--border); border-radius:4px;
-}
+#auth-form input { width:100%; margin:10px 0; padding:8px; border:2px solid var(--border); border-radius:4px; }
 #submit-comment,
 .auth-buttons button,
 .auth-buttons .auth-link {
   display:inline-block; margin-top:8px; padding:8px 16px;
   background:var(--accent); color:#fff;
   border:4px solid var(--border); border-radius:4px;
-  text-decoration:none;
+  text-decoration:none; cursor:pointer;
 }
 .auth-buttons { display:flex; gap:8px; justify-content:center; }
 
 /* ===== REGISTER SAYFASI ===== */
-/* ... zaten önceki haliyle koruyabilirsiniz ... */
+body.register-page { background:#FFA500; }
+.register-form {
+  max-width:500px; margin:40px auto; padding:30px;
+  background:#4CAF50; color:#fff;
+  border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+.register-form h2 { text-align:center; margin-bottom:20px; font-size:28px; }
+.register-form label { display:block; margin-bottom:16px; }
+.register-form input,
+.register-form select,
+.register-form textarea {
+  width:100%; padding:8px 10px; margin-top:6px;
+  border:none; border-radius:4px; font-size:1rem;
+}
+/* cinsiyet, onay kutuları vs. zaten önceki ayarlarında hazır */
