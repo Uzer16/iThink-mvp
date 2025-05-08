@@ -24,23 +24,22 @@ body {
 
 /* ===== NAVBAR ===== */
 .navbar {
+  /* height: 60px;  <-- bunu kaldırın */
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--nav-bg);
-  border-bottom: 4px solid var(--border);
-  height: 60px;
-  padding: 0 20px;
-  position: sticky; top: 0; z-index: 100;
+  align-items: center;          /* dikeyde ortalar */
+  padding: 10px 20px;           /* üst-alt boşluğu ayarlar */
 }
+
 .navbar .logo {
-  height: 100%;
   display: flex;
-  align-items: center;
+  align-items: center;          /* logo kapsayıcısını da ortalar */
+  padding: 0;
 }
+
 .navbar .logo img {
-  max-height: 100%;  /* 60px’e sığacak */
+  max-height: 40px;             /* navbar içindeki ideal logo yüksekliği */
   width: auto;
+  display: block;
 }
 .navbar .menu {
   display: flex;
