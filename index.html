@@ -13,21 +13,63 @@
   <nav class="navbar">
     <div class="logo">
       <a href="index.html">
-        <img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo"/>
+        <img src="assets/baykus-logo-son.png" alt="ABZÜRT Logo" class="logo-img"/>
       </a>
     </div>
     <ul class="menu">
-      <li><a href="index.html">Ana Sayfa</a></li>
-      <li><a href="index.html?cat=kategoriler">Kategoriler</a></li>
-      <li><a href="index.html?cat=urunler">ABZÜRT Ürünler</a></li>
-      <li><a href="index.html?cat=oscar">ABZÜRT Oscarları</a></li>
+      <li><a href="#" data-page="home">Ana Sayfa</a></li>
+      <li class="has-dropdown">
+        <a href="#" id="nav-categories">Kategoriler ▼</a>
+        <ul class="dropdown" id="category-list">
+          <!-- JS ile doldurulacak -->
+        </ul>
+      </li>
+      <li><a href="#" data-page="products">ABZÜRT Ürünler</a></li>
+      <li><a href="#" data-page="oscars">ABZÜRT Oscarları</a></li>
       <li><a href="kurallar.html">Kurallar</a></li>
       <li><a href="oduller.html">Ödüller</a></li>
       <li><a href="sponsorlar.html">Sponsorlar</a></li>
       <li><a href="oneriler.html">Soru Öneriniz ✎</a></li>
-      <li><a href="giris.html">Giriş / Kayıt</a></li>
+      <li><a href="#" id="nav-auth">Giriş / Kayıt</a></li>
     </ul>
   </nav>
+
+  <!-- KATEGORİ SEÇİMİ -->
+  <section id="category-select" class="hero-container" style="display:none;">
+    <img src="assets/hero.png" alt="ABZÜRT Kahoot" class="hero-img" />
+  </section>
+
+  <!-- GÜNÜN SORUSU KARTI -->
+  <section class="question-card" id="question-card">
+    <div class="speech-bubble">
+      <h1 id="question-title">GÜNÜN SORUSU</h1>
+      <p id="question-text">Patronunuz öğle arasında…?</p>
+    </div>
+    <div id="countdown">00:00:00</div>
+    <div class="actions">
+      <button id="answer-btn">Yorum Yap</button>
+      <button id="view-btn">Yorumları Gör</button>
+    </div>
+  </section>
+
+  <!-- FİLTRELER -->
+  <section class="filters">
+    <button class="active">Günlük</button>
+    <button>Haftalık</button>
+    <button>Aylık</button>
+    <button>Yıllık</button>
+  </section>
+
+  <!-- CEVAP LİSTESİ -->
+  <section class="answers">
+    <ul id="answers-list"></ul>
+  </section>
+
+  <!-- MODALLAR VE SCRIPT ////////// -->
+  <!-- … önceki kodlar (yorum modal, auth modal vs.) … -->
+  <script src="script.js"></script>
+</body>
+</html>
 
   <!-- HERO GÖRSELİ -->
   <main>
