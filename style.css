@@ -46,6 +46,27 @@ body {
 }
 .navbar .has-dropdown:hover .dropdown { display:block; }
 .navbar .dropdown li a { display:block; padding:8px 16px; white-space:nowrap; }
+/* Navbar yüksekliğini sabitle ve içeriği ortala */
+.navbar {
+  height: 60px;           /* istediğin yüksekliği koru */
+  display: flex;
+  align-items: center;    /* içeriği dikey ortalar */
+  padding: 0 20px;
+}
+
+/* Logo kapsayıcısını da flex yapıp ortala */
+.navbar .logo {
+  display: flex;
+  align-items: center;    /* logoyu ortalar */
+  height: 100%;           /* navbar yüksekliğini doldur */
+  padding: 0;
+}
+
+/* Logonun boyutunu sınırla */
+.navbar .logo img {
+  max-height: 40px;       /* veya 50px gibi uygun bir değer */
+  width: auto;
+}
 
 /* ===== HERO */
 .hero-container { text-align:center; margin:60px 0; }
